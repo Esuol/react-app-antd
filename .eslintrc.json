@@ -11,7 +11,20 @@
     "react/prop-types": 0,
     "no-underscore-dangle": 0,
     "import/imports-first": ["error", "absolute-first"],
-    "import/newline-after-import": "error"
+    "import/newline-after-import": "error",
+    "no-multi-spaces": 1,
+    "jsx-quotes": 1,
+    "react/jsx-space-before-closing": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-boolean-value": 1,
+    "react/no-string-refs": 1,
+    "react/self-closing-comp": 1,
+    "react/jsx-no-bind": 1,
+    "react/sort-comp": 1,
+    "react/jsx-pascal-case": 1,
+    "no-console": "off",
+    "no-use-before-define": "off",
+    "no-param-reassign": "off"
   },
   "globals": {
     "window": true,

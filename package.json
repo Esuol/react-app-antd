@@ -15,9 +15,6 @@
     "eject": "react-scripts eject",
     "precommit": "NODE_ENV=production lint-staged"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
