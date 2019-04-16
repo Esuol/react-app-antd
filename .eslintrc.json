@@ -12,7 +12,7 @@
     "no-underscore-dangle": 0,
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
-    "no-multi-spaces": 1,
+
     "no-console": "off",
     "no-use-before-define": "off",
     "no-param-reassign": "off"
