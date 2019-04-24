@@ -1,8 +1,12 @@
 import React from 'react';
+import { Route } from 'react-router-dom'
 import { Layout } from 'antd';
 
 import SideMenu from './sideMenu'
 import HeaderView from './header'
+
+import Monitor from '../pages/dashboard/monitor'
+import Analyze from '../pages/dashboard/analyze'
 import './index.less';
 
 const { Content } = Layout;
@@ -37,7 +41,8 @@ class SiderDemo extends React.Component {
               minHeight: 280
             }}
           >
-            Content
+            <Route path="/dashboard/monitor" component={Monitor} exact></Route>
+            <Route path="/dashboard/analyze" component={Analyze} exact></Route>
           </Content>
         </Layout>
       </Layout>

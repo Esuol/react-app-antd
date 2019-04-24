@@ -9,12 +9,14 @@ export const sidebarData = [
           {
               key: '1',
               text: '数据监控',
-              path: '/dashboard/monitor'
+              path: '/dashboard/monitor',
+              component: 'Monitor'
           },
           {
               key: '2',
               text: '数据分析',
-              path: '/dashboard/analyze'
+              path: '/dashboard/analyze',
+              component: 'Analyze'
           }
       ]
   }
