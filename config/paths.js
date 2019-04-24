@@ -57,7 +57,7 @@ const moduleFileExtensions = [
 const resolveModule = (resolveFn, filePath) => {
   // eslint-disable-next-line no-unused-vars
   const extension = moduleFileExtensions.find(extensions =>
-    fs.existsSync(resolveFn(`${filePath}.${extension}`))
+    fs.existsSync(resolveFn(`${filePath}.${extensions}`))
   );
 
   if (extension) {

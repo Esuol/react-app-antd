@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import React, { Component } from 'react'
-import {Link, withRouter} from 'react-router'
+import { Link, withRouter } from 'react-router-dom'
 
 import { Layout, Menu, Icon } from 'antd';
 
@@ -12,7 +12,6 @@ const { Sider } = Layout
 const { SubMenu, Item } = Menu
 
 // eslint-disable-next-line react/prefer-stateless-function
-@withRouter
 class SideMenu extends Component {
   constructor (props) {
     super(props)
@@ -116,6 +115,6 @@ class SideMenu extends Component {
  }
 }
 
-export default SideMenu
+export default withRouter(SideMenu)
 
 
