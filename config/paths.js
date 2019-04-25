@@ -55,9 +55,9 @@ const moduleFileExtensions = [
 
 // Resolve file paths in the same order as webpack
 const resolveModule = (resolveFn, filePath) => {
-  // eslint-disable-next-line no-unused-vars
-  const extension = moduleFileExtensions.find(extensions =>
-    fs.existsSync(resolveFn(`${filePath}.${extensions}`))
+  // eslint-disable-next-line no-shadow
+  const extension = moduleFileExtensions.find(extension =>
+    fs.existsSync(resolveFn(`${filePath}.${extension}`))
   );
 
   if (extension) {
@@ -66,6 +66,7 @@ const resolveModule = (resolveFn, filePath) => {
 
   return resolveFn(`${filePath}.js`);
 };
+
 
 // config after eject: we're in ./config/
 module.exports = {
