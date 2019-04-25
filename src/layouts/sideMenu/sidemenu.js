@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 import { Layout, Menu, Icon } from 'antd';
 
-import { sidebarData, groupKey} from '../../router'
+import sidebarData from '../../router'
 // import classNames from 'classnames';
 // import styles from './index.less'
 
@@ -12,14 +12,14 @@ const { Sider } = Layout
 const { SubMenu, Item } = Menu
 
 // eslint-disable-next-line react/prefer-stateless-function
+@withRouter
 class SideMenu extends Component {
   constructor (props) {
     super(props)
     console.log(this.props)
     this.state = {
       openKeys: [],
-      selectedKeys: [],
-      rootSubmenuKeys: groupKey
+      selectedKeys: []
     }
   }
 
@@ -52,20 +52,22 @@ class SideMenu extends Component {
     this.setDefaultActiveItem(this.props);
   }
 
-  OpenChange = openKeyes => {
-    const { rootSubmenuKeys, openKeys } = this.state
-    console.log(openKeyes);
-    const latestOpenKey = openKeyes.find(
-        key => openKeys.indexOf(key) === -1
-    );
-    console.log(latestOpenKey);
-    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-        this.setState({ openKeys });
-    } else {
-        this.setState({
-            openKeys: latestOpenKey ? [latestOpenKey] : [...openKeys]
-        });
-    }
+  OpenChange = routerItemsArray => {
+    const { openKeys } = this.state
+    if (routerItemsArray.length < openKeys.length) {
+        this.setState( prevState => ({
+            openKeys: [...prevState.openKeys, routerItemsArray]
+        }))
+        return
+      }
+
+      routerItemsArray.map((item) => {
+        if (!openKeys.includes(item)) {
+          this.setState( prevState => ({
+              openKeys: [...prevState.openKeys, item]
+          }))
+        }
+      })
   }
 
   render() {
@@ -115,6 +117,6 @@ class SideMenu extends Component {
  }
 }
 
-export default withRouter(SideMenu)
+export default SideMenu
 
 

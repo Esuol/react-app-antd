@@ -1,4 +1,4 @@
-export const sidebarData = [
+const sidebarData = [
   {
       key: 'group0',
       title: {
@@ -19,7 +19,34 @@ export const sidebarData = [
               component: 'Analyze'
           }
       ]
-  }
+  },
+  {
+    key: 'group2',
+    title: {
+        icon: 'ordered-list',
+        text: '表单页'
+    },
+    children: [
+        {
+            key: '3',
+            text: '基础表单',
+            path: '/form/baseForm',
+            component: 'Monitor'
+        },
+        {
+            key: '4',
+            text: '分步表单',
+            path: '/form/stepForm',
+            component: 'Analyze'
+        },
+        {
+            key: '5',
+            text: '高级表单',
+            path: '/form/advancedForm',
+            component: 'Analyze'
+        }
+    ]
+}
 ];
 
-export const groupKey = sidebarData.map(item => item.key);
+export default sidebarData
