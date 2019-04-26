@@ -2,9 +2,13 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Avatar } from 'antd';
 
 import sidebarData from '../../router'
+import logo from '../../assets/images/logo.png'
+import styles from './index.less'
+
+console.log(styles)
 // import classNames from 'classnames';
 // import styles from './index.less'
 
@@ -102,6 +106,10 @@ class SideMenu extends Component {
             breakpoint="lg"
             collapsed={collapsed}
             trigger={collapsed}>
+            <div className={styles.logo}>
+            <Avatar size={50} src={ logo } shape="square" />
+            </div>
+
             <Menu
                 subMenuOpenDelay={0.3}
                 theme="dark"
