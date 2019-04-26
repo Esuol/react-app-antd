@@ -16,7 +16,7 @@ const { SubMenu, Item } = Menu
 class SideMenu extends Component {
   constructor (props) {
     super(props)
-    console.log(this.props)
+    console.log(props)
     this.state = {
       openKeys: [],
       selectedKeys: []
@@ -24,17 +24,17 @@ class SideMenu extends Component {
   }
 
   setDefaultActiveItem = ({ location }) => {
-    const { pathname } = location;
+    let { pathname } = location;
+    pathname = pathname === '/' ? '/dashboard/monitor' : pathname
+    console.log(pathname)
     sidebarData.map(item => {
-        if (item.pathname) {
-            // 做一些事情,这里只有二级菜单
-        }
         // 因为菜单只有二级,简单的做个遍历就可以了
         if (item.children && item.children.length > 0) {
             item.children.map(childitem => {
                 // 为什么要用match是因为 url有可能带参数等,全等就不可以了
                 // 若是match不到会返回null
                 if (pathname.match(childitem.path)) {
+                    console.log('on')
                     this.setState({
                         openKeys: [item.key],
                         selectedKeys: [childitem.key]
@@ -55,8 +55,8 @@ class SideMenu extends Component {
   OpenChange = routerItemsArray => {
     const { openKeys } = this.state
     if (routerItemsArray.length < openKeys.length) {
-        this.setState( prevState => ({
-            openKeys: [...prevState.openKeys, routerItemsArray]
+        this.setState(() => ({
+            openKeys: routerItemsArray
         }))
         return
       }
