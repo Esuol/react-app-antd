@@ -26,7 +26,6 @@ class SideMenu extends Component {
   setDefaultActiveItem = ({ location }) => {
     let { pathname } = location;
     pathname = pathname === '/' ? '/dashboard/monitor' : pathname
-    console.log(pathname)
     sidebarData.map(item => {
         // 因为菜单只有二级,简单的做个遍历就可以了
         if (item.children && item.children.length > 0) {
