@@ -1,14 +1,35 @@
+/* eslint-disable array-callback-return */
 import React from 'react'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import { Layout } from 'antd'
-import Monitor from '../pages/dashboard/monitor'
-import Analyze from '../pages/dashboard/analyze'
+import sidebarData from '../router'
 
 const { Content } = Layout;
+
+function handleRoute(arr) {
+  let newArr = []
+  arr.map((item) => {
+    if(item.children && item.children.length > 0) {
+      newArr = [...newArr, ...item.children]
+    }
+  })
+  return newArr
+ }
+
+ const childrenArr = handleRoute(sidebarData)
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Contents extends React.Component {
   render () {
+    const routes = childrenArr.map(item => (
+      <Route
+       key={item.key}
+       path={item.path}
+       exact={item.exact}
+       component={item.component}
+      >
+      </Route>
+      ))
     return (
       <Content
             style={{
@@ -19,8 +40,7 @@ export default class Contents extends React.Component {
             }}
           >
             <Switch>
-              <Route path="/dashboard/monitor" component={Monitor}></Route>
-              <Route path="/dashboard/analyze" component={Analyze}></Route>
+              {routes}
               <Redirect from="/" to="/dashboard/monitor" />
             </Switch>
 

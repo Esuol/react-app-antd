@@ -1,3 +1,6 @@
+import React from 'react'
+import Loadable from 'react-loadable'
+
 const sidebarData = [
   {
       key: 'group0',
@@ -10,13 +13,21 @@ const sidebarData = [
               key: '1',
               text: '数据监控',
               path: '/dashboard/monitor',
-              component: 'Monitor'
+              exact: true,
+              component: Loadable({
+                  loader: () => import('../pages/dashboard/monitor'),
+                  loading: () => <p>loading</p>
+              })
           },
           {
               key: '2',
               text: '数据分析',
               path: '/dashboard/analyze',
-              component: 'Analyze'
+              exact: true,
+              component: Loadable({
+                  loader: () => import('../pages/dashboard/analyze'),
+                  loading: () => <p>loading</p>
+              })
           }
       ]
   },
@@ -48,5 +59,6 @@ const sidebarData = [
     ]
 }
 ];
+
 
 export default sidebarData
