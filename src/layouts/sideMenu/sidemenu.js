@@ -109,7 +109,6 @@ class SideMenu extends Component {
             </div>
 
             <Menu
-                subMenuOpenDelay={0.3}
                 theme="dark"
                 openKeys={openKeys}
                 selectedKeys={selectedKeys}

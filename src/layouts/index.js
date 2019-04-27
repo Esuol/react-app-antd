@@ -20,7 +20,6 @@ class SiderDemo extends React.Component {
   };
 
   toggle = () => {
-    console.log(1)
     this.setState(prevState => ({ collapsed: !prevState.collapsed }));
   };
 
