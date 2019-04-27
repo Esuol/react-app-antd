@@ -8,15 +8,17 @@ const { Header } = Layout
 class HeaderView extends Component {
 
   render () {
-    const { collapsed, setParentState } = this.props
+    const { collapsed, setParentState, currentWidth } = this.props
     return (
       <Header style={{ background: '#fff', padding: 0 }}>
-      <Icon
+      { currentWidth < 768
+      ? ''
+      : <Icon
         style={{ fontSize: 20, color: '#333' }}
         className={styles.collapsed}
         type={collapsed ? 'menu-unfold' : 'menu-fold'}
         onClick={() => setParentState()}
-      />
+      /> }
     </Header>
     )
   }

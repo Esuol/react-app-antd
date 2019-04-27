@@ -25,7 +25,10 @@ class DrawerMenu extends React.Component {
           <p>Some contents...</p>
           <p>Some contents...</p>
           <p>Some contents...</p>
-           <Icon type="close" className={styles.drawerClose} onClick={() => closeDrawer() } />
+          { drawerVisible
+          ? <Icon type="close" className={styles.drawerClose} onClick={() => closeDrawer() } />
+          : ''}
+
         </Drawer>
 
 

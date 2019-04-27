@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { Layout, Icon } from 'antd';
@@ -17,7 +18,7 @@ class SiderDemo extends React.Component {
   state = {
     collapsed: false,
     currentWidth: document.body.clientWidth,
-    drawerVisible: false
+    drawerVisible: true
   };
 
   componentDidMount () {
@@ -37,7 +38,7 @@ class SiderDemo extends React.Component {
   };
 
   showDrawerMenu = () => {
-   this.setState( () => ({ drawerVisible: true}))
+   this.setState( prevState => ({ drawerVisible: !prevState.drawerVisible}))
   }
 
   closeDrawerPar = () => {
@@ -49,13 +50,14 @@ class SiderDemo extends React.Component {
     return (
       <Layout>
         {currentWidth < 768
-        ? <div className={styles.iconWrap} onClick={this.showDrawerMenu} role="presentation">
-            <Icon type="bars" style={{fontSize: '20px',width: '100%', textAlign: 'center', lineHeight: '30px'}} />
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+        ? <div className={styles.iconWrap}>
+            <Icon type="bars" onClick={this.showDrawerMenu} style={{fontSize: '20px',width: '100%', textAlign: 'center', lineHeight: '30px'}} />
             <DrawerMenu drawerVisible={drawerVisible} closeDrawer={this.closeDrawer} />
           </div>
         : <SideMenu trigger={null} collapsed={collapsed} />}
         <Layout>
-          <HeaderView collapsed={collapsed} setParentState={this.setParentState} />
+          <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
         </Layout>
       </Layout>
