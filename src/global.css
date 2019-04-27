@@ -50,3 +50,13 @@ ol {
     }
   }
 }
+
+
+/* angtd-reset */
+
+.menuDrawer .ant-drawer-content{
+  background: #001529
+}
+.menuDrawer .ant-drawer-body {
+  padding: 0
+}

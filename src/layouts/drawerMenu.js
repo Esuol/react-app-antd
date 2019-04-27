@@ -1,6 +1,7 @@
 import React from 'react'
 import { Drawer, Icon } from 'antd'
 import styles from './index.less'
+import SideMenu from './sideMenu'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DrawerMenu extends React.Component {
@@ -10,27 +11,22 @@ class DrawerMenu extends React.Component {
   }
 
   render () {
-    const { drawerVisible, closeDrawer } = this.props
+    const { drawerVisible, closeDrawer, collapsed } = this.props
 
     return (
-
-
         <Drawer
-          title="Basic Drawer"
           placement='left'
           closable={false}
+          width={200}
+          className="menuDrawer"
           onClose={ () => closeDrawer() }
           visible={drawerVisible}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+         <SideMenu trigger={null} collapsed={collapsed} />
           { drawerVisible
           ? <Icon type="close" className={styles.drawerClose} onClick={() => closeDrawer() } />
           : ''}
-
         </Drawer>
-
 
     )
   }

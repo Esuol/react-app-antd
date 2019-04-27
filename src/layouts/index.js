@@ -53,9 +53,9 @@ class SiderDemo extends React.Component {
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         ? <div className={styles.iconWrap}>
             <Icon type="bars" onClick={this.showDrawerMenu} style={{fontSize: '20px',width: '100%', textAlign: 'center', lineHeight: '30px'}} />
-            <DrawerMenu drawerVisible={drawerVisible} closeDrawer={this.closeDrawer} />
+            <DrawerMenu drawerVisible={drawerVisible} closeDrawer={this.closeDrawer} collapsed={collapsed} />
           </div>
-        : <SideMenu trigger={null} collapsed={collapsed} />}
+        : <SideMenu trigger={null} collapsed={collapsed} /> }
         <Layout>
           <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
