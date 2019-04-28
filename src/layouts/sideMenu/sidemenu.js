@@ -19,7 +19,6 @@ const { SubMenu, Item } = Menu
 class SideMenu extends Component {
   constructor (props) {
     super(props)
-    console.log(props)
     this.state = {
       openKeys: [],
       selectedKeys: []
@@ -36,7 +35,6 @@ class SideMenu extends Component {
                 // 为什么要用match是因为 url有可能带参数等,全等就不可以了
                 // 若是match不到会返回null
                 if (pathname.match(childitem.path)) {
-                    console.log('on')
                     this.setState({
                         openKeys: [item.key],
                         selectedKeys: [childitem.key]

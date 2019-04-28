@@ -5,11 +5,6 @@ import SideMenu from './sideMenu'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DrawerMenu extends React.Component {
-  constructor (props) {
-    super(props)
-    console.log(props)
-  }
-
   render () {
     const { drawerVisible, closeDrawer, collapsed } = this.props
 
