@@ -17,6 +17,7 @@ class SiderDemo extends React.Component {
     this.setParentState = this.toggle.bind(this);
     this.closeDrawer = this.closeDrawerPar.bind(this)
     this.closeDrawerSetting = this.closeDrawerSettingPar.bind(this)
+    this.openDrawerSetting= this.showDrawerSetting.bind(this)
   }
 
   state = {
@@ -27,7 +28,12 @@ class SiderDemo extends React.Component {
   };
 
   componentDidMount () {
-    window.addEventListener('resize', this.resizeBind)
+    if(document.body.clientWidth === 0) {
+      setTimeout(() => {
+        this.setState( () => ({currentWidth: document.body.clientWidth}))
+        window.addEventListener('resize', this.resizeBind)
+      },100)
+    }
   }
 
   componentWillUnmount () {
@@ -95,7 +101,7 @@ class SiderDemo extends React.Component {
           <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
           <Icon type="setting" onClick={this.showDrawerSetting} className={DrawerSettingStyle} />
-          <DrawerSetting drawerSettingVisible={drawerSettingVisible} closeDrawerSetting={this.closeDrawerSetting} />
+          <DrawerSetting drawerSettingVisible={drawerSettingVisible} closeDrawerSetting={this.closeDrawerSetting} openDrawerSetting = {this.openDrawerSetting} />
         </Layout>
       </Layout>
     );

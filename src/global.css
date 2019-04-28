@@ -60,3 +60,9 @@ ol {
 .menuDrawer .ant-drawer-body {
   padding: 0
 }
+
+.hue-picker{
+  width: 275px !important;
+  height: 12px;
+  margin-bottom: 10px
+}
