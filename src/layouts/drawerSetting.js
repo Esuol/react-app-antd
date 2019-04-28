@@ -28,7 +28,15 @@ class DrawerSetting extends React.Component {
   }
 
   handleChange = (val,name) => {
-    console.log(val,name)
+    const { themeColor } = this.state
+    // eslint-disable-next-line array-callback-return
+    themeColor.map(item => {
+      if(item.name === name) item.color = val.hex
+    })
+    this.setState(() => ({themeColor}), () => {
+     const theme = this.arrayToObj(themeColor)
+     window.less.modifyVars(theme)
+    })
   }
 
   selectCurrentColor = val => {

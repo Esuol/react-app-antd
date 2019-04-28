@@ -32,14 +32,16 @@ const ThemeOptions = {
   varFile: path.join(__dirname, `${ThemeStylePath}/variables.less`),
   mainLessFile: path.join(__dirname, `${ThemeStylePath}/index.less`),
   themeVariables: [
+    '@secondry-color',
     '@primary-color',
-    '@secondary-color',
+    '@link-color',
     '@text-color',
     '@text-color-secondary',
     '@heading-color',
-    '@layout-body-background',
+    '@secondary-color',
+    '@layout-header-background',
     '@btn-primary-bg',
-    '@layout-header-background'
+    '@bg-color'
   ]
 }
 
