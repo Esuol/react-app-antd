@@ -35,7 +35,6 @@ const ThemeOptions = {
     '@secondry-color',
     '@primary-color',
     '@link-color',
-    '@text-color',
     '@text-color-secondary',
     '@heading-color',
     '@secondary-color',

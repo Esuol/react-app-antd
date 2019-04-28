@@ -15,12 +15,11 @@ class DrawerSetting extends React.Component {
       {name: '@secondry-color', color: '#ddd'},
       {name: '@primary-color', color: '#1890ff'},
       {name: '@link-color', color: '#1890ff'},
-      {name: '@text-color', color: ' #fff'},
-      {name: '@text-color-secondary', color: ' #333'},
-      {name: '@heading-color', color: ' #ccccdd'},
+      {name: '@text-color-secondary', color: '#333'},
+      {name: '@heading-color', color: '#ccccdd'},
       {name: '@secondary-color', color:  '#0000ff'},
       {name: '@layout-header-background', color:  '#001529'},
-      {name: '@btn-primary-bg', color: ' #397dcc'},
+      {name: '@btn-primary-bg', color: '#397dcc'},
       {name: '@bg-color', color: '#dddddd'}
      ]
     }
@@ -35,6 +34,7 @@ class DrawerSetting extends React.Component {
     })
     this.setState(() => ({themeColor}), () => {
      const theme = this.arrayToObj(themeColor)
+     console.log(theme)
      window.less.modifyVars(theme)
     })
   }
