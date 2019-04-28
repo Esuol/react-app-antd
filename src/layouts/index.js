@@ -3,10 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Layout, Icon } from 'antd';
 import move from 'move-js'
+import classNames from 'classnames'
 import SideMenu from './sideMenu'
 import HeaderView from './header'
 import Content from './content'
 import DrawerMenu from './drawerMenu'
+import DrawerSetting from './drawerSetting'
 import styles from './index.less';
 
 class SiderDemo extends React.Component {
@@ -14,12 +16,14 @@ class SiderDemo extends React.Component {
     super(props)
     this.setParentState = this.toggle.bind(this);
     this.closeDrawer = this.closeDrawerPar.bind(this)
+    this.closeDrawerSetting = this.closeDrawerSettingPar.bind(this)
   }
 
   state = {
     collapsed: false,
     currentWidth: document.body.clientWidth,
-    drawerVisible: false
+    drawerVisible: false,
+    drawerSettingVisible: false
   };
 
   componentDidMount () {
@@ -65,8 +69,20 @@ class SiderDemo extends React.Component {
     this.setState( prevState => ({ drawerVisible: !prevState.drawerVisible}))
   }
 
+  showDrawerSetting = () => {
+    this.setState( prevState => ({ drawerSettingVisible: !prevState.drawerSettingVisible}))
+  }
+
+  closeDrawerSettingPar = () => {
+    this.setState( prevState => ({ drawerSettingVisible: !prevState.drawerSettingVisible}))
+  }
+
   render() {
-    const { collapsed, currentWidth, drawerVisible } = this.state;
+    const { collapsed, currentWidth, drawerVisible, drawerSettingVisible } = this.state;
+    const DrawerSettingStyle = classNames(styles.setting, {
+      [styles.settingDrawerMenu]: drawerVisible,
+      [styles.settingNoDrawerMenu]: !drawerVisible,
+    });
     return (
       <Layout>
         {currentWidth < 768
@@ -78,6 +94,8 @@ class SiderDemo extends React.Component {
         <Layout ref={node => {this.mainPage = node}}>
           <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
+          <Icon type="setting" onClick={this.showDrawerSetting} className={DrawerSettingStyle} />
+          <DrawerSetting drawerSettingVisible={drawerSettingVisible} closeDrawerSetting={this.closeDrawerSetting} />
         </Layout>
       </Layout>
     );
