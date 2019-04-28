@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom'
-import 'antd/lib/style/themes/default.less';
 import history from './histroy'
 import './global.css';
 

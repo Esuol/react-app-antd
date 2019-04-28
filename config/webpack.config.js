@@ -19,8 +19,29 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const AntDesignThemePlugin = require('antd-theme-webpack-plugin'); // 主题设置
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+
+
+// Theme
+const ThemeStylePath = '../src/styles'
+const ThemeOptions = {
+  stylesDir: path.join(__dirname, ThemeStylePath),
+  antDir: path.join(__dirname, '../node_modules/antd'),
+  varFile: path.join(__dirname, `${ThemeStylePath}/variables.less`),
+  mainLessFile: path.join(__dirname, `${ThemeStylePath}/index.less`),
+  themeVariables: [
+    '@primary-color',
+    '@secondary-color',
+    '@text-color',
+    '@text-color-secondary',
+    '@heading-color',
+    '@layout-body-background',
+    '@btn-primary-bg',
+    '@layout-header-background'
+  ]
+}
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -456,7 +477,10 @@ module.exports = function(webpackEnv) {
                 {
                   importLoaders: 2,
                   modules: true,
-                  sourceMap: isEnvProduction && shouldUseSourceMap
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                  modifyVars: {
+                    "border-radius-base": "2px"
+                  }
                 },
                 'less-loader'
               ),
@@ -550,6 +574,10 @@ module.exports = function(webpackEnv) {
       // Watcher doesn't work well if you mistype casing in a path so we use
       // a plugin that prints an error when you attempt to do this.
       // See https://github.com/facebook/create-react-app/issues/240
+
+      // ThemeColor
+      isEnvDevelopment && new AntDesignThemePlugin(ThemeOptions),
+
       isEnvDevelopment && new CaseSensitivePathsPlugin(),
       // If you require a missing module and then `npm install` it, you still have
       // to restart the development server for Webpack to discover it. This plugin
