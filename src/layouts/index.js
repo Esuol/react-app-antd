@@ -31,8 +31,8 @@ class SiderDemo extends React.Component {
     if(document.body.clientWidth === 0) {
       setTimeout(() => {
         this.setState( () => ({currentWidth: document.body.clientWidth}))
-        window.addEventListener('resize', this.resizeBind)
       },100)
+      window.addEventListener('resize', this.resizeBind)
     }
   }
 
@@ -92,8 +92,12 @@ class SiderDemo extends React.Component {
     return (
       <Layout style={{height:"100vh"}}>
         {currentWidth < 768
-        ? <div className={styles.iconWrap}>
-            <Icon type="bars" onClick={this.showDrawerMenu} style={{fontSize: '20px',width: '100%', textAlign: 'center', lineHeight: '30px'}} />
+        ? <div>
+            {!drawerVisible
+            ? <div className={styles.iconWrap}>
+                <Icon type="bars" onClick={this.showDrawerMenu} style={{fontSize: '20px',width: '100%', textAlign: 'center', lineHeight: '30px', color: '#333'}} />
+              </div>
+            : ''}
             <DrawerMenu drawerVisible={drawerVisible} closeDrawer={this.closeDrawer} collapsed={collapsed} />
           </div>
         : <SideMenu trigger={null} collapsed={collapsed} /> }

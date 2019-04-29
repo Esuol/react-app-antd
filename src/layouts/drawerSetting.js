@@ -40,8 +40,8 @@ class DrawerSetting extends React.Component {
       if(item.name === name) item.color = val.hex
     })
     this.setState(() => ({themeColor}), () => {
-     const theme = this.arrayToObj({'@primary-color': '#28a745'})
-     window.less.modifyVars(theme)
+     // const theme = this.arrayToObj()
+     window.less.modifyVars({'primary-color': '#000'})
      .then(() => {console.log('success')})
         .catch(error => {
             console.log(error);

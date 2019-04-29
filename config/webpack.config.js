@@ -127,12 +127,6 @@ module.exports = function(webpackEnv) {
       }
     ].filter(Boolean);
     if (preProcessor) {
-      loaders.push({
-        loader: require.resolve(preProcessor),
-        options: {
-          sourceMap: isEnvProduction && shouldUseSourceMap,
-        }
-      });
       const loader = {
         loader: require.resolve(preProcessor),
         options: {
@@ -141,9 +135,7 @@ module.exports = function(webpackEnv) {
       };
       if (preProcessor === 'less-loader') {
         loader.options.modifyVars = {
-          'primary-color': '#25b864',
-          'link-color': '#1DA57A',
-          'border-radius-base': '2px'
+          'primary-color': '#28a745',
         };
         loader.options.javascriptEnabled = true;
       }
