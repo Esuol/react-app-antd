@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
-import { Drawer, Icon } from 'antd'
+import { Drawer, Icon, message } from 'antd'
 import { TwitterPicker } from 'react-color'
 import ThemePicker from '../components/colorPicker'
 import PxSelects from '../components/pxSelect'
@@ -18,7 +18,7 @@ class DrawerSetting extends React.Component {
       {name: '@primary-color', color: '#1890ff'},
       {name: '@link-color', color: '#1890ff'},
       {name: '@text-color-secondary', color: '#333'},
-      {name: '@heading-color', color: '#ccccdd'},
+      {name: '@heading-color', color: '#333'},
       {name: '@layout-header-background', color:  '#001529'},
       {name: '@layout-body-background', color:  '#f0f2f5'},
       {name: '@btn-primary-bg', color: '#397dcc'},
@@ -55,10 +55,12 @@ class DrawerSetting extends React.Component {
     this.setState(() => ({themeColor}), () => {
      const theme = this.arrayToObj(themeColor, 'color')
      window.less.modifyVars(theme)
-     .then(() => {console.log('success')})
-        .catch(error => {
-            console.log(error);
-        });
+     .then(() => {
+       message.success('换肤成功，到theme.js查看配置')
+      })
+    .catch(error => {
+      console.log(error);
+    });
     const allTheme = [...themeColor, ...themePx]
     api.exportLess(allTheme)
     })
@@ -76,10 +78,12 @@ class DrawerSetting extends React.Component {
     this.setState(() => ({themePx}), () => {
       const theme = this.arrayToObj(themePx, 'px')
       window.less.modifyVars(theme)
-      .then(() => {console.log('success')})
-         .catch(error => {
-             console.log(error);
-         });
+      .then(() => {
+        message.success('字体更换成功，到theme.js查看配置')
+      })
+      .catch(error => {
+          console.log(error);
+      });
       const allTheme = [...themeColor, ...themePx]
       api.exportLess(allTheme)
     })
