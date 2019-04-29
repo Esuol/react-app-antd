@@ -42,7 +42,7 @@ class DrawerSetting extends React.Component {
   }
 
   themeCostom = (val, name) => {
-    const { themeColor } = this.state
+    const { themeColor, themePx } = this.state
     if(name instanceof Array) {
       themeColor.map(item => {
         if(name.includes(item.name)) item.color = val.hex
@@ -59,7 +59,8 @@ class DrawerSetting extends React.Component {
         .catch(error => {
             console.log(error);
         });
-    api.exportLess(theme)
+    const allTheme = [...themeColor, ...themePx]
+    api.exportLess(allTheme)
     })
   }
 
@@ -68,7 +69,7 @@ class DrawerSetting extends React.Component {
   }
 
   themePxCuotom = (val, name) => {
-    const { themePx } = this.state
+    const { themeColor, themePx } = this.state
     themePx.map(item => {
       if(item.name === name) item.px = `${val}px`
     })
@@ -79,6 +80,8 @@ class DrawerSetting extends React.Component {
          .catch(error => {
              console.log(error);
          });
+      const allTheme = [...themeColor, ...themePx]
+      api.exportLess(allTheme)
     })
   }
 

@@ -24,7 +24,8 @@ app.post('/exportLess', function (req, res) {
   let themeStr = 'const modifyVars = { \n'
 
   lessObj.map(item => {
-    themeStr += `'${item.name.slice(1)}': '${item.color}', \n`
+    if (item.color) themeStr += `'${item.name.slice(1)}': '${item.color}', \n`
+    if(item.px) themeStr += `'${item.name.slice(1)}': '${item.px}', \n`
   })
   themeStr += `} \n`
   themeStr += 'module.exports = modifyVars'
@@ -35,6 +36,6 @@ app.post('/exportLess', function (req, res) {
   res.send({ status: 1 })
 })
 
-app.listen(3040, function () {
-  console.log('export less app listening on port 3040!')
+app.listen(8010, function () {
+  console.log('export less app listening on port 8010!')
 })

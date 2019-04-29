@@ -22,6 +22,7 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const AntDesignThemePlugin = require('antd-theme-webpack-plugin'); // 主题设置
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const modifyVars = require('../theme')
 
 
 // Theme
@@ -136,9 +137,7 @@ module.exports = function(webpackEnv) {
         }
       };
       if (preProcessor === 'less-loader') {
-        loader.options.modifyVars = {
-          'primary-color': '#28a745',
-        };
+        loader.options.modifyVars = isEnvDevelopment ? {} : modifyVars
         loader.options.javascriptEnabled = true;
       }
       loaders.push(loader);
