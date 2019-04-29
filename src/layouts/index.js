@@ -104,8 +104,12 @@ class SiderDemo extends React.Component {
         <Layout ref={node => {this.mainPage = node}}>
           <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
-          <Icon type="setting" onClick={this.showDrawerSetting} className={DrawerSettingStyle} />
-          <DrawerSetting drawerSettingVisible={drawerSettingVisible} closeDrawerSetting={this.closeDrawerSetting} openDrawerSetting = {this.openDrawerSetting} />
+          {process.env.NODE_ENV === 'development'
+          ? <Icon type="setting" onClick={this.showDrawerSetting} className={DrawerSettingStyle} />
+          : ''}
+           {process.env.NODE_ENV === 'development'
+          ? <DrawerSetting drawerSettingVisible={drawerSettingVisible} closeDrawerSetting={this.closeDrawerSetting} openDrawerSetting = {this.openDrawerSetting} />
+          : ''}
         </Layout>
       </Layout>
     );
