@@ -131,10 +131,25 @@ module.exports = function(webpackEnv) {
         loader: require.resolve(preProcessor),
         options: {
           sourceMap: isEnvProduction && shouldUseSourceMap,
-          javascriptEnabled: true
         }
       });
+      const loader = {
+        loader: require.resolve(preProcessor),
+        options: {
+          sourceMap: shouldUseSourceMap
+        }
+      };
+      if (preProcessor === 'less-loader') {
+        loader.options.modifyVars = {
+          'primary-color': '#25b864',
+          'link-color': '#1DA57A',
+          'border-radius-base': '2px'
+        };
+        loader.options.javascriptEnabled = true;
+      }
+      loaders.push(loader);
     }
+
     return loaders;
   };
 
@@ -418,6 +433,7 @@ module.exports = function(webpackEnv) {
               exclude: cssModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
+                modules: true,
                 sourceMap: isEnvProduction && shouldUseSourceMap
               }),
               // Don't consider CSS imports dead code even if the
@@ -477,11 +493,7 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
-                  modules: true,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                  modifyVars: {
-                    "border-radius-base": "2px"
-                  }
+                  sourceMap: isEnvProduction && shouldUseSourceMap
                 },
                 'less-loader'
               ),

@@ -1,15 +1,15 @@
+/* eslint-disable array-callback-return */
 import React from 'react'
 import { Drawer, Icon } from 'antd'
 import { TwitterPicker } from 'react-color'
 import ThemePicker from '../components/colorPicker'
-import styles from './index.less'
+import styles from './index.css'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DrawerSetting extends React.Component {
 
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
      themeColor: [
       {name: '@secondry-color', color: '#ddd'},
@@ -27,20 +27,26 @@ class DrawerSetting extends React.Component {
   }
 
   handleChange = (val,name) => {
+    this.themeCostom(val, name)
+  }
+
+  selectCurrentColor = (val, name) => {
+    this.themeCostom(val, name)
+  }
+
+  themeCostom = (val, name) => {
     const { themeColor } = this.state
-    // eslint-disable-next-line array-callback-return
     themeColor.map(item => {
       if(item.name === name) item.color = val.hex
     })
     this.setState(() => ({themeColor}), () => {
-     const theme = this.arrayToObj(themeColor)
-     console.log(theme)
+     const theme = this.arrayToObj({'@primary-color': '#28a745'})
      window.less.modifyVars(theme)
+     .then(() => {console.log('success')})
+        .catch(error => {
+            console.log(error);
+        });
     })
-  }
-
-  selectCurrentColor = val => {
-    console.log(val.hex)
   }
 
   arrayToObj = (arr) => {
@@ -57,7 +63,7 @@ class DrawerSetting extends React.Component {
     const selectTheme = themeColor.map((item) =>
       <div key={item.name} className={styles.colorTheme}>
         <h2 className={styles.colorPickers}>{item.name}:</h2>
-        <ThemePicker selectColor={this.selectColor} className="huePicker" />
+        <ThemePicker selectColor={this.selectColor} className="huePicker" color={item.color} name={item.name} />
       </div>
 
     )

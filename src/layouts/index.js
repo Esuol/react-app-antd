@@ -9,7 +9,7 @@ import HeaderView from './header'
 import Content from './content'
 import DrawerMenu from './drawerMenu'
 import DrawerSetting from './drawerSetting'
-import styles from './index.less';
+import styles from './index.css';
 
 class SiderDemo extends React.Component {
   constructor (props) {
@@ -90,7 +90,7 @@ class SiderDemo extends React.Component {
       [styles.settingNoDrawerMenu]: !drawerVisible,
     });
     return (
-      <Layout>
+      <Layout style={{height:"100vh"}}>
         {currentWidth < 768
         ? <div className={styles.iconWrap}>
             <Icon type="bars" onClick={this.showDrawerMenu} style={{fontSize: '20px',width: '100%', textAlign: 'center', lineHeight: '30px'}} />

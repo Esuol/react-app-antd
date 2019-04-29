@@ -11,6 +11,7 @@
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.5",
+    "babel-plugin-import": "^1.11.0",
     "babel-plugin-named-asset-import": "^0.3.1",
     "babel-preset-react-app": "^7.0.2",
     "bfj": "6.1.1",
@@ -154,11 +155,20 @@
     "presets": [
       "react-app"
     ],
+
     "plugins": [
       [
         "@babel/plugin-proposal-decorators",
         {
           "legacy": true
+        }
+      ],
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "libraryDirectory": "lib",
+          "style": true
         }
       ]
     ]

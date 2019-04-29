@@ -5,10 +5,10 @@ import { HuePicker } from 'react-color'
 class ColorPicker extends React.Component {
 
   render () {
-    const {selectColor} = this.props
+    const {selectColor, color, name} = this.props
 
     return (
-      <HuePicker onChange={(val) => {selectColor(val)}} />
+      <HuePicker onChange={(val) => {selectColor(val, name)}} color={color} />
     )
   }
 }

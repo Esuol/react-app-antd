@@ -1,6 +1,6 @@
 import React from 'react'
 import { Drawer, Icon } from 'antd'
-import styles from './index.less'
+import styles from './index.css'
 import SideMenu from './sideMenu'
 
 // eslint-disable-next-line react/prefer-stateless-function

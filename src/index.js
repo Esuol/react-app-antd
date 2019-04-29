@@ -3,8 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom'
 import history from './histroy'
-import './global.css';
-
+import './global.less'
 import App from './layouts/index';
 import * as serviceWorker from './serviceWorker';
 

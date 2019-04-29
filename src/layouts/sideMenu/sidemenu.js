@@ -6,7 +6,7 @@ import { Layout, Menu, Icon, Avatar } from 'antd';
 
 import sidebarData from '../../router'
 import logo from '../../assets/images/logo.png'
-import styles from './index.less'
+import styles from './index.css'
 
 // import classNames from 'classnames';
 // import styles from './index.less'

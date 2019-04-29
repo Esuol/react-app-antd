@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Layout, Icon } from 'antd'
-import styles from './index.less'
+import styles from './index.css'
 
 
 const { Header } = Layout
