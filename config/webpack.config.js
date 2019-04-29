@@ -37,10 +37,12 @@ const ThemeOptions = {
     '@link-color',
     '@text-color-secondary',
     '@heading-color',
-    '@secondary-color',
     '@layout-header-background',
     '@btn-primary-bg',
-    '@bg-color'
+    '@bg-color',
+    '@layout-body-background',
+    '@font-size-base',
+    '@border-radius-base'
   ]
 }
 
