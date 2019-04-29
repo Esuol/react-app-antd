@@ -7,10 +7,10 @@ class PxSelects extends React.Component {
 
   render () {
 
-    const {onSelect, currentPx, name} = this.props
+    const {onSelect, currentPx, name, closeDrawerSetting} = this.props
 
     return(
-       <Slider defaultValue={currentPx} tooltipVisible min={name === '@font-size-base' ? 14 : 2} max={name === '@font-size-base' ? 30 : 6} onChange={(val) => onSelect(val, name)} />
+       <Slider defaultValue={currentPx} tooltipVisible={closeDrawerSetting} min={name === '@font-size-base' ? 14 : 2} max={name === '@font-size-base' ? 30 : 6} onChange={(val) => onSelect(val, name)} />
     )
   }
 }

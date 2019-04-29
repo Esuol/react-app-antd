@@ -5,6 +5,7 @@ import { TwitterPicker } from 'react-color'
 import ThemePicker from '../components/colorPicker'
 import PxSelects from '../components/pxSelect'
 import styles from './index.css'
+import api from '../services/index'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DrawerSetting extends React.Component {
@@ -42,9 +43,15 @@ class DrawerSetting extends React.Component {
 
   themeCostom = (val, name) => {
     const { themeColor } = this.state
-    themeColor.map(item => {
-      if(item.name === name) item.color = val.hex
-    })
+    if(name instanceof Array) {
+      themeColor.map(item => {
+        if(name.includes(item.name)) item.color = val.hex
+      })
+    } else {
+      themeColor.map(item => {
+        if(item.name === name) item.color = val.hex
+      })
+    }
     this.setState(() => ({themeColor}), () => {
      const theme = this.arrayToObj(themeColor, 'color')
      window.less.modifyVars(theme)
@@ -52,6 +59,7 @@ class DrawerSetting extends React.Component {
         .catch(error => {
             console.log(error);
         });
+    api.exportLess(theme)
     })
   }
 
@@ -66,7 +74,6 @@ class DrawerSetting extends React.Component {
     })
     this.setState(() => ({themePx}), () => {
       const theme = this.arrayToObj(themePx, 'px')
-      console.log(theme)
       window.less.modifyVars(theme)
       .then(() => {console.log('success')})
          .catch(error => {
@@ -88,10 +95,17 @@ class DrawerSetting extends React.Component {
 
     const { themeColor, themePx } = this.state
 
+    const primaryCustom = [ '@secondry-color',
+                            '@primary-color',
+                            '@link-color',
+                            '@btn-primary-bg',
+                            '@bg-color'
+                          ]
+
     const selectTheme = themeColor.map((item) =>
       <div key={item.name} className={styles.colorTheme}>
         <h2 className={styles.colorPickers}>{item.name}:</h2>
-        <ThemePicker selectColor={this.selectColor} className="huePicker" color={item.color} name={item.name} />
+        <ThemePicker selectColor={this.selectColor} className="huePicker" color={item.color} name={item.name} closeDrawerSetting={closeDrawerSetting} />
       </div>
     )
 
@@ -114,7 +128,7 @@ class DrawerSetting extends React.Component {
         >
         <div>
           <h2 className={styles.colorTitle}>主题色定制:</h2>
-          <TwitterPicker className={styles.colorPicker} onChange={(val) => this.handleChange(val,'@primary-color')} />
+          <TwitterPicker className={styles.colorPicker} onChange={(val) => this.handleChange(val,primaryCustom)} />
           {selectTheme}
           {PxSelect}
         </div>

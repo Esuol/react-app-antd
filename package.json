@@ -7,6 +7,7 @@
     "@svgr/webpack": "4.1.0",
     "antd": "^3.16.3",
     "antd-theme-webpack-plugin": "^1.2.0",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -15,6 +16,7 @@
     "babel-plugin-named-asset-import": "^0.3.1",
     "babel-preset-react-app": "^7.0.2",
     "bfj": "6.1.1",
+    "body-parser": "^1.19.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "classnames": "^2.2.6",
     "css-loader": "1.0.0",
@@ -27,6 +29,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.12.4",
+    "express": "^4.16.4",
     "file-loader": "2.0.0",
     "fs-extra": "7.0.1",
     "history": "^4.9.0",
@@ -40,6 +43,7 @@
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "0.5.0",
     "move-js": "^0.5.0",
+    "nprogress": "^0.2.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -71,7 +75,7 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "node scripts/start.js",
+    "start": "node scripts/start.js & node server.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "precommit": "NODE_ENV=production lint-staged"
@@ -155,7 +159,6 @@
     "presets": [
       "react-app"
     ],
-
     "plugins": [
       [
         "@babel/plugin-proposal-decorators",
