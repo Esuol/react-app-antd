@@ -1,8 +1,8 @@
+/* eslint-disable consistent-return */
 import Actions from '../actions'
-// import initalState from '../state'
+import initalState from '../state'
 
-// eslint-disable-next-line consistent-return
-export default function (action) {
+export default function (state = initalState, action) {
   switch(action.type) {
      case Actions.openspin:
       return {
@@ -12,6 +12,7 @@ export default function (action) {
       return {
         spinState: false
       };
-     // no default
+      default:
+      return state;
   }
 }

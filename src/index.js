@@ -12,14 +12,12 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducers)
 
-
-
 ReactDOM.render(
-  <Provider store={store}>
-    <Router histroy={history}>
-        <App />
-    </Router>
-  </Provider>
+  <Router histroy={history}>
+    <Provider store={store}>
+              <App />
+    </Provider>
+  </Router>
 
 , document.getElementById('root'));
 

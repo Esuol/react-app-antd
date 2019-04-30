@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Layout, Icon } from 'antd';
 import move from 'move-js'
 import classNames from 'classnames'
+import actions from '../store/actions'
 import SideMenu from './sideMenu'
 import HeaderView from './header'
 import Content from './content'
@@ -13,10 +14,15 @@ import DrawerSetting from './drawerSetting'
 import SpinLoading from '../components/spin'
 import styles from './index.css';
 
-function mapState (state) {
+function mapStateToProps (state) {
   return {
-    spinState: state.spinState
+    spinState: state.layoutReducers.spinState
   }
+}
+
+const mapDispatchToProps = {
+  openspin: actions.layoutAction.openspin,
+  closespin: actions.layoutAction.closespin
 }
 
 class SiderDemo extends React.Component {
@@ -93,10 +99,12 @@ class SiderDemo extends React.Component {
 
   render() {
     const { collapsed, currentWidth, drawerVisible, drawerSettingVisible } = this.state;
+
     const DrawerSettingStyle = classNames(styles.setting, {
       [styles.settingDrawerMenu]: drawerVisible,
       [styles.settingNoDrawerMenu]: !drawerVisible,
     });
+
     return (
       <Layout style={{height:"100vh"}}>
         {currentWidth < 768
@@ -125,4 +133,4 @@ class SiderDemo extends React.Component {
   }
 }
 
-export default connect(mapState)(SiderDemo);
+export default connect(mapStateToProps, mapDispatchToProps)(SiderDemo);
