@@ -1,29 +1,24 @@
 import React from 'react'
 import { Spin } from 'antd'
 import { connect } from 'react-redux'
-import actions from '../store/actions'
 import styles from './index.css'
 
-
-function mapStateToProps (state) {
+const mapStateToProps = state => {
   return {
     spinState: state.layoutReducers.spinState
   }
 }
 
-const mapDispatchToProps = {
-  openspin: actions.layoutAction.openspin,
-  closespin: actions.layoutAction.closespin
-}
-
 const spinLoading = React.memo( props => {
-  console.log(props)
+  const { spinState } = props
+  console.log(spinState)
+
   return (
     <div className={styles.spin}>
-      <Spin size="large" spinning />
+      <Spin size="large" spinning={spinState} />
     </div>
 
   )
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(spinLoading)
+export default connect(mapStateToProps)(spinLoading)

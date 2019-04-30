@@ -1,5 +1,5 @@
-import * as layoutAction from './layoutAction'
+/* eslint-disable import/prefer-default-export */
+import * as layoutActions from './layoutAction'
 
-export default {
-  layoutAction
-}
+export const layoutAction = layoutActions
+

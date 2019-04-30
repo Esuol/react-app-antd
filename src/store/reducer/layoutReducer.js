@@ -1,18 +1,18 @@
 /* eslint-disable consistent-return */
-import Actions from '../actions'
+import { layoutAction } from '../actions'
 import initalState from '../state'
 
 export default function (state = initalState, action) {
   switch(action.type) {
-     case Actions.openspin:
-      return {
+     case layoutAction.OPENSPIN:
+      return Object.assign({}, state, {
         spinState: true
-      };
-      case Actions.closespin:
-      return {
-        spinState: false
-      };
+      })
+      case layoutAction.CLOSESPIN:
+        return Object.assign({}, state, {
+          spinState: false
+        })
       default:
-      return state;
+        return state;
   }
 }

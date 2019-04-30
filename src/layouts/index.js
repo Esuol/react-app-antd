@@ -2,10 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, message } from 'antd';
 import move from 'move-js'
 import classNames from 'classnames'
-import actions from '../store/actions'
+import { layoutAction } from '../store/actions'
 import SideMenu from './sideMenu'
 import HeaderView from './header'
 import Content from './content'
@@ -14,6 +14,8 @@ import DrawerSetting from './drawerSetting'
 import SpinLoading from '../components/spin'
 import styles from './index.css';
 
+const isEnv = process.env.NODE_ENV === 'development'
+
 function mapStateToProps (state) {
   return {
     spinState: state.layoutReducers.spinState
@@ -21,8 +23,8 @@ function mapStateToProps (state) {
 }
 
 const mapDispatchToProps = {
-  openspin: actions.layoutAction.openspin,
-  closespin: actions.layoutAction.closespin
+  openspin:  layoutAction.openspin,
+  closespin: layoutAction.closespin
 }
 
 class SiderDemo extends React.Component {
@@ -32,6 +34,8 @@ class SiderDemo extends React.Component {
     this.closeDrawer = this.closeDrawerPar.bind(this)
     this.closeDrawerSetting = this.closeDrawerSettingPar.bind(this)
     this.openDrawerSetting= this.showDrawerSetting.bind(this)
+    this.themeModified = this.themeModifiedPar.bind(this)
+    this.beginmodifyTheme = this.beginmodifyThemePar.bind(this)
   }
 
   state = {
@@ -97,6 +101,28 @@ class SiderDemo extends React.Component {
     this.setState( prevState => ({ drawerSettingVisible: !prevState.drawerSettingVisible}))
   }
 
+  closeSpin = () => {
+    const { closespin } = this.props
+    closespin()
+  }
+
+  openSpin = () => {
+    const { openspin } = this.props
+    openspin()
+  }
+
+  beginmodifyThemePar = () => {
+    this.openSpin()
+  }
+
+  themeModifiedPar = () => {
+    setTimeout(() => {
+      this.closeSpin()
+      message.success('换肤成功，到theme.js查看配置')
+    }, 300);
+
+  }
+
   render() {
     const { collapsed, currentWidth, drawerVisible, drawerSettingVisible } = this.state;
 
@@ -121,11 +147,16 @@ class SiderDemo extends React.Component {
           <SpinLoading />
           <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
-          {process.env.NODE_ENV === 'development'
+          {isEnv
           ? <Icon type="setting" onClick={this.showDrawerSetting} className={DrawerSettingStyle} />
           : ''}
-           {process.env.NODE_ENV === 'development'
-          ? <DrawerSetting drawerSettingVisible={drawerSettingVisible} closeDrawerSetting={this.closeDrawerSetting} openDrawerSetting = {this.openDrawerSetting} />
+          {isEnv
+          ? <DrawerSetting
+          drawerSettingVisible={drawerSettingVisible}
+          closeDrawerSetting={this.closeDrawerSetting}
+          openDrawerSetting = {this.openDrawerSetting}
+          themeModified = {this.themeModified}
+          beginmodifyTheme={this.beginmodifyTheme} />
           : ''}
         </Layout>
       </Layout>

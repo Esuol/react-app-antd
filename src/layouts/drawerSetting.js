@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
-import { Drawer, Icon, message } from 'antd'
+import { Drawer, Icon } from 'antd'
 import { TwitterPicker } from 'react-color'
 import ThemePicker from '../components/colorPicker'
 import PxSelects from '../components/pxSelect'
@@ -43,6 +43,7 @@ class DrawerSetting extends React.Component {
 
   themeCostom = (val, name) => {
     const { themeColor, themePx } = this.state
+    const { beginmodifyTheme, themeModified } = this.props
     if(Array.isArray(name)) {
       themeColor.map(item => {
         if(name.includes(item.name)) item.color = val.hex
@@ -52,11 +53,12 @@ class DrawerSetting extends React.Component {
         if(item.name === name) item.color = val.hex
       })
     }
+    beginmodifyTheme()
     this.setState(() => ({themeColor}), () => {
      const theme = this.arrayToObj(themeColor, 'color')
      window.less.modifyVars(theme)
      .then(() => {
-       message.success('换肤成功，到theme.js查看配置')
+      themeModified()
       })
     .catch(error => {
       console.log(error);
@@ -79,7 +81,7 @@ class DrawerSetting extends React.Component {
       const theme = this.arrayToObj(themePx, 'px')
       window.less.modifyVars(theme)
       .then(() => {
-        message.success('字体更换成功，到theme.js查看配置')
+
       })
       .catch(error => {
           console.log(error);
