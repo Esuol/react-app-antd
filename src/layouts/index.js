@@ -1,6 +1,7 @@
 /* eslint-disable react/no-find-dom-node */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux'
 import { Layout, Icon } from 'antd';
 import move from 'move-js'
 import classNames from 'classnames'
@@ -9,7 +10,14 @@ import HeaderView from './header'
 import Content from './content'
 import DrawerMenu from './drawerMenu'
 import DrawerSetting from './drawerSetting'
+import SpinLoading from '../components/spin'
 import styles from './index.css';
+
+function mapState (state) {
+  return {
+    spinState: state.spinState
+  }
+}
 
 class SiderDemo extends React.Component {
   constructor (props) {
@@ -102,6 +110,7 @@ class SiderDemo extends React.Component {
           </div>
         : <SideMenu trigger={null} collapsed={collapsed} /> }
         <Layout ref={node => {this.mainPage = node}}>
+          <SpinLoading />
           <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
           {process.env.NODE_ENV === 'development'
@@ -116,4 +125,4 @@ class SiderDemo extends React.Component {
   }
 }
 
-export default SiderDemo;
+export default connect(mapState)(SiderDemo);

@@ -43,7 +43,7 @@ class DrawerSetting extends React.Component {
 
   themeCostom = (val, name) => {
     const { themeColor, themePx } = this.state
-    if(name instanceof Array) {
+    if(Array.isArray(name)) {
       themeColor.map(item => {
         if(name.includes(item.name)) item.color = val.hex
       })
