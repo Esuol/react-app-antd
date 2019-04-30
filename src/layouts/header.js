@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
+// import Animate from 'rc-animate';
 import { Layout, Icon } from 'antd'
+import RightHeader from './rightHeader'
 import './index.less'
 
 
@@ -11,7 +13,7 @@ class HeaderView extends Component {
   render () {
     const { collapsed, setParentState, currentWidth } = this.props
     return (
-      <Header style={{ background: '#fff', padding: 0 }}>
+      <Header style={{ background: '#fff', padding: 0 }} className="header" >
       { currentWidth < 768
       ? ''
       : <Icon
@@ -20,6 +22,8 @@ class HeaderView extends Component {
         type={collapsed ? 'menu-unfold' : 'menu-fold'}
         onClick={() => setParentState()}
       /> }
+      <RightHeader />
+
     </Header>
     )
   }

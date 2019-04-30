@@ -14,6 +14,8 @@ import DrawerSetting from './drawerSetting'
 import JumpLoading from '../components/jumpLoading/jumpLoading'
 import './index.less'
 
+const { Footer } = Layout
+
 const isEnv = process.env.NODE_ENV === 'development'
 
 function mapStateToProps (state) {
@@ -150,6 +152,9 @@ class SiderDemo extends React.Component {
           <JumpLoading />
           <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
+          <Footer style={{ textAlign: 'center' }}>
+            @Copyright Antd Of React Template
+          </Footer>
           {isEnv
           ? <Icon type="setting" onClick={this.showDrawerSetting} className={DrawerSettingStyle} />
           : ''}
