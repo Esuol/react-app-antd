@@ -4,7 +4,7 @@ import { Drawer, Icon } from 'antd'
 import { TwitterPicker } from 'react-color'
 import ThemePicker from '../components/colorPicker'
 import PxSelects from '../components/pxSelect'
-import styles from './index.css'
+import './index.less'
 import api from '../services/index'
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -112,15 +112,15 @@ class DrawerSetting extends React.Component {
                           ]
 
     const selectTheme = themeColor.map((item) =>
-      <div key={item.name} className={styles.colorTheme}>
-        <h2 className={styles.colorPickers}>{item.name}:</h2>
+      <div key={item.name} className="colorTheme">
+        <h2 className="colorPickers">{item.name}:</h2>
         <ThemePicker selectColor={this.selectColor} className="huePicker" color={item.color} name={item.name} closeDrawerSetting={closeDrawerSetting} />
       </div>
     )
 
     const PxSelect = themePx.map((item) =>
-    <div key={item.name} className={styles.colorTheme}>
-      <h2 className={styles.colorPickers}>{item.name}:</h2>
+    <div key={item.name} className="colorTheme">
+      <h2 className="colorPickers">{item.name}:</h2>
      <PxSelects currentPx={item.px.length === 3 ? item.px.slice(0, 1) - 0 : item.px.slice(0, 2) - 0 } name={item.name} onSelect={this.selectPx} />
     </div>
     )
@@ -136,14 +136,14 @@ class DrawerSetting extends React.Component {
           visible={drawerSettingVisible}
         >
         <div>
-          <h2 className={styles.colorTitle}>主题色定制:</h2>
-          <TwitterPicker className={styles.colorPicker} onChange={(val) => this.handleChange(val,primaryCustom)} />
+          <h2 className="colorTitle">主题色定制:</h2>
+          <TwitterPicker className="colorPicker" onChange={(val) => this.handleChange(val,primaryCustom)} />
           {selectTheme}
           {PxSelect}
         </div>
         {drawerSettingVisible
-        ? <Icon type="close" className={styles.DrawerSettingColse} onClick={ () => closeDrawerSetting() } />
-        : <Icon type="setting" className={styles.DrawerSettingColse} onClick={ () => openDrawerSetting() } />}
+        ? <Icon type="close" className="DrawerSettingColse"onClick={ () => closeDrawerSetting() } />
+        : <Icon type="setting" className="DrawerSettingColse" onClick={ () => openDrawerSetting() } />}
         </Drawer>
       </div>
     )

@@ -6,7 +6,7 @@ import { Layout, Menu, Icon, Avatar } from 'antd';
 
 import sidebarData from '../../router'
 import logo from '../../assets/images/logo.png'
-import styles from './index.css'
+import './index.less'
 
 // import classNames from 'classnames';
 // import styles from './index.less'
@@ -101,9 +101,9 @@ class SideMenu extends Component {
         <Sider
             breakpoint="lg"
             collapsed={collapsed}>
-            <div className={styles.wrap}>
-                <Avatar size={50} src={ logo } shape="square" className={styles.logo} />
-                { collapsed ? '' : <h1 className={styles.name}>Antd-React</h1>}
+            <div className="wrap">
+                <Avatar size={50} src={ logo } shape="square" className="logo" />
+                { collapsed ? '' : <h1 className="name">Antd-React</h1>}
             </div>
 
             <Menu

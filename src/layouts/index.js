@@ -11,8 +11,8 @@ import HeaderView from './header'
 import Content from './content'
 import DrawerMenu from './drawerMenu'
 import DrawerSetting from './drawerSetting'
-import SpinLoading from '../components/spin'
-import styles from './index.css';
+import JumpLoading from '../components/jumpLoading/jumpLoading'
+import './index.less'
 
 const isEnv = process.env.NODE_ENV === 'development'
 
@@ -112,23 +112,26 @@ class SiderDemo extends React.Component {
   }
 
   beginmodifyThemePar = () => {
-    this.openSpin()
+    setTimeout(() => {
+      this.openSpin()
+      message.success('换肤成功，到theme.js查看配置')
+    }, 100);
   }
 
   themeModifiedPar = () => {
     setTimeout(() => {
       this.closeSpin()
       message.success('换肤成功，到theme.js查看配置')
-    }, 300);
+    }, 1000);
 
   }
 
   render() {
     const { collapsed, currentWidth, drawerVisible, drawerSettingVisible } = this.state;
 
-    const DrawerSettingStyle = classNames(styles.setting, {
-      [styles.settingDrawerMenu]: drawerVisible,
-      [styles.settingNoDrawerMenu]: !drawerVisible,
+    const DrawerSettingStyle = classNames('setting', {
+      'settingDrawerMenu': drawerVisible,
+      'settingNoDrawerMenu': !drawerVisible,
     });
 
     return (
@@ -136,7 +139,7 @@ class SiderDemo extends React.Component {
         {currentWidth < 768
         ? <div>
             {!drawerVisible
-            ? <div className={styles.iconWrap}>
+            ? <div className="iconWrap">
                 <Icon type="bars" onClick={this.showDrawerMenu} style={{fontSize: '20px',width: '100%', textAlign: 'center', lineHeight: '30px', color: '#333'}} />
               </div>
             : ''}
@@ -144,7 +147,7 @@ class SiderDemo extends React.Component {
           </div>
         : <SideMenu trigger={null} collapsed={collapsed} /> }
         <Layout ref={node => {this.mainPage = node}}>
-          <SpinLoading />
+          <JumpLoading />
           <HeaderView collapsed={collapsed} currentWidth={currentWidth} setParentState={this.setParentState} />
           <Content />
           {isEnv

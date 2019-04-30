@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Layout, Icon } from 'antd'
-import styles from './index.css'
+import './index.less'
 
 
 const { Header } = Layout
@@ -16,7 +16,7 @@ class HeaderView extends Component {
       ? ''
       : <Icon
         style={{ fontSize: 20, color: '#333' }}
-        className={styles.collapsed}
+        className="collapsed"
         type={collapsed ? 'menu-unfold' : 'menu-fold'}
         onClick={() => setParentState()}
       /> }

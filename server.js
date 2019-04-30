@@ -30,9 +30,21 @@ app.post('/exportLess', function (req, res) {
   themeStr += `} \n`
   themeStr += 'module.exports = modifyVars'
 
-  fs.writeFile('./theme.js', themeStr, () => {
-    console.log('写入成功')
+  let str = '@import "~antd/lib/style/themes/default.less"; \n'
+
+  lessObj.map((item) => {
+    if (item.color) str += `${item.name}: ${item.color}; \n`
+    if (item.px) str += `${item.name}: ${item.px}px; \n`
   })
+
+  fs.writeFile('./theme.js', themeStr, () => {
+    console.log('写入COLOR成功')
+  })
+
+ fs.writeFile('./src/styles/variables.less', str, () => {
+    console.log('写入PX成功')
+  })
+
   res.send({ status: 1 })
 })
 

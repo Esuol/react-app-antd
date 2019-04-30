@@ -11,7 +11,6 @@ const mapStateToProps = state => {
 
 const spinLoading = React.memo( props => {
   const { spinState } = props
-  console.log(spinState)
 
   return (
     <div className={styles.spin}>
