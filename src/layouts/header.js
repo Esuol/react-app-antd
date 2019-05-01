@@ -10,10 +10,34 @@ const { Header } = Layout
 // eslint-disable-next-line react/prefer-stateless-function
 class HeaderView extends Component {
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      isShowSearch: true
+    }
+    this.searchMissed = this.searchMissedPar.bind(this)
+  }
+
+
+
+  clickHeader = () => {
+    this.setState(() => ({isShowSearch: false}))
+  }
+
+  searchMissedPar = () => {
+    this.setState(() => ({isShowSearch: true}))
+  }
+
   render () {
+
+    const { isShowSearch } = this.state
     const { collapsed, setParentState, currentWidth } = this.props
+
     return (
-      <Header style={{ background: '#fff', padding: 0 }} className="header" >
+      <Header
+      style={{ background: '#fff', padding: 0 }}
+      className="header"
+      onClick={this.clickHeader}>
       { currentWidth < 768
       ? ''
       : <Icon
@@ -22,7 +46,7 @@ class HeaderView extends Component {
         type={collapsed ? 'menu-unfold' : 'menu-fold'}
         onClick={() => setParentState()}
       /> }
-      <RightHeader />
+      <RightHeader isShowSearch={isShowSearch} searchMissed={this.searchMissed} />
 
     </Header>
     )
