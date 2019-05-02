@@ -1,7 +1,9 @@
 import exportLess from './exportLess'
+import users from './users'
 
 const api = {
-  exportLess
+  exportLess,
+  users
 }
 
 export default {

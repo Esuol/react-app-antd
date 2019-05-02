@@ -4,7 +4,7 @@ import * as antd from 'antd'
 
 
 const service = axios.create({
-  baseURL: `${process.env.VUE_APP_API_URL }/`,
+  baseURL: `http://antdReact.com/`,
   timeout: 1000 * 60,
   validateStatus (status) {
     return status >= 200

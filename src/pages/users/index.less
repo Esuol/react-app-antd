@@ -1,17 +1,44 @@
+.wrap{
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
 .login{
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: radial-gradient(200% 100% at bottom center, #043091, #03246d,#02194b, #000);
   background: radial-gradient(220% 105% at top center, #010613 20%, #010c24 40%, #021742 65%, #03194b);
   background-attachment: fixed;
   overflow: hidden;
   width: 100vw;
-	height: 100vh;
-	position: relative;
-	background-position: 50% 50%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	margin-left: auto;
-	margin-right: auto;
+  height: 100vh;
+}
+.loginWrap{
+  position: absolute;
+  background: #fff;
+  width: 350px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  opacity: .7;
+  box-shadow:2px 9px 16px 1px #010613
+}
+
+.wrap .login-form {
+  max-width: 270px;
+  margin: 0 auto;
+  margin-top: 40px
+}
+.wrap .login-form-forgot {
+  float: right;
+}
+.wrap .login-form-button {
+  width: 100%;
+}
+.loginTitle{
+  width: 100%;
+  height:30px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 70px
 }

@@ -1,58 +1,25 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 import Particles from 'react-particles-js';
+import { Form } from 'antd'
+import priticleParams from './priticle'
+import LoginForm from './loginForm'
 import './index.less'
 
 class Login extends React.Component {
 
   render () {
+    const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(LoginForm);
     return (
-      <div className="login">
+      <div className="wrap">
         <Particles
-              params={{
-                "particles": {
-                    "number": {
-                        "value": 500,
-                        "density": {
-                            "enable": true,
-                            "value_area": 1500
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "opacity": 0.02
-                    },
-                    "move": {
-                        "direction": "right",
-                        "speed": 0.05
-                    },
-                    "size": {
-                        "value": 1
-                    },
-                    "opacity": {
-                        "anim": {
-                            "enable": true,
-                            "speed": 1,
-                            "opacity_min": 0.05
-                        }
-                    }
-                },
-                "interactivity": {
-                    "events": {
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        }
-                    },
-                    "modes": {
-                        "push": {
-                            "particles_nb": 1
-                        }
-                    }
-                },
-                "retina_detect": true}}
+              params={ priticleParams }
               className="login"
               />
+       <section className="loginWrap">
+          <h2 className="loginTitle">ANTD-REACT LOGIN</h2>
+          <WrappedNormalLoginForm />
+       </section>
       </div>
     )
   }
