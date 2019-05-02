@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import reducers from './store/reducer'
 import history from './histroy'
 import './global.less'
-import App from './layouts/index';
+import App from './pages/index';
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducers)
@@ -15,7 +15,7 @@ const store = createStore(reducers)
 ReactDOM.render(
   <Router histroy={history}>
     <Provider store={store}>
-              <App />
+        <App />
     </Provider>
   </Router>
 

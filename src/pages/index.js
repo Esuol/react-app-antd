@@ -1,13 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 import {Route, Switch} from 'react-router-dom'
-// import Layout from '../layouts'
-import route from '../router/users'
+import Layout from '../layouts'
+import { globalRoute } from '../router'
 
 class App extends React.Component {
 
   render () {
-    const routes = route.map(item => (
+    const globalRoutes = globalRoute.map(item => (
       <Route
        key={item.key}
        path={item.path}
@@ -17,12 +17,10 @@ class App extends React.Component {
       </Route>
       ))
     return (
-      <div>
-        <Switch>
-          {routes}
-        </Switch>
-      </div>
-
+      <Switch>
+        { globalRoutes }
+        <Route path='/' component={Layout}/>
+      </Switch>
     )
   }
 }
