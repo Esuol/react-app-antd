@@ -8,20 +8,17 @@ export default function (state = initalState.userState, action) {
       return {
         ...state,
         loading: true,
-        error: null
       };
       case userAction.FETCH_LOGIN_SUCCESS:
         return {
-          ...state,
+          nickName: action.data.nickName,
+          token: action.data.token,
           loading: false,
-          items: action.payload.products
         };
       case userAction.FETCH_LOGIN_FAILURE:
         return {
           ...state,
-          loading: false,
-          error: action.payload.error,
-          items: []
+          loading: false
         };
       default:
         return state;

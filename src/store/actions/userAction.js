@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import * as actionTypes from './actionTypes'
+import api from '../../services/index'
 
 export const {
   FETCH_LOGIN_BEGIN,
@@ -9,13 +11,25 @@ export const fetchLoginBegin = () => ({
   type: FETCH_LOGIN_BEGIN
 });
 
-export const fetchLoginSuccess = products => ({
+export const fetchLoginSuccess = (data) => ({
   type: FETCH_LOGIN_SUCCESS,
-  payload: { products }
+  data
 });
 
-export const fetchLoginFailure = error => ({
-  type: FETCH_LOGIN_FAILURE,
-  payload: { error }
+export const fetchLoginFailure = () => ({
+  type: FETCH_LOGIN_FAILURE
 });
+
+
+export function fetchLogin() {
+  return async function action(dispatch) {
+    dispatch(fetchLoginBegin())
+
+    const request = await api.users.login()
+
+    if(request.status === 'ok') dispatch(fetchLoginSuccess(request))
+
+    else dispatch(fetchLoginFailure())
+  }
+}
 

@@ -4,7 +4,7 @@ import './index.less'
 
 const mapStateToProps = state => {
   return {
-    spinState: state.layoutReducers.spinState
+    spinState: state.layoutReducer.spinState
   }
 }
 

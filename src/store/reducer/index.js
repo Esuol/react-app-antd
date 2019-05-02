@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import layoutReducers from './layoutReducer'
+import layoutReducer from './layoutReducer'
+import userReducer from './userReducer'
 
 export default combineReducers({
-  layoutReducers
+  layoutReducer,
+  userReducer
 })

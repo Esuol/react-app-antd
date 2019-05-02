@@ -19,8 +19,9 @@ const { Footer } = Layout
 const isEnv = process.env.NODE_ENV === 'development'
 
 function mapStateToProps (state) {
+  console.log(state)
   return {
-    spinState: state.layoutReducers.spinState
+    spinState: state.layoutReducer.spinState
   }
 }
 

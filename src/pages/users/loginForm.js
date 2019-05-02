@@ -1,10 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox} from 'antd';
-import api from '../../services/index'
+import { connect } from 'react-redux'
+import { userAction } from '../../store/actions'
 import './index.less'
 
+
 class LoginForm extends React.Component {
+  fetchLogin = () => {
+    const { fetchLogin } = this.props
+    console.log(fetchLogin)
+    fetchLogin()
+  }
+
    handleSubmit = (e) => {
     const { form } = this.props
     e.preventDefault();
@@ -12,8 +20,7 @@ class LoginForm extends React.Component {
       if (!err) {
         console.log('Received values of form: ', values);
       }
-       const data = await api.users.login()
-      console.log(data)
+      this.fetchLogin()
     });
   }
 
@@ -54,4 +61,13 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm
+const mapStateToProps = state => ({
+  nickName: state.userReducer.nickName,
+  loading: state.userReducer.loading,
+  token: state.userReducer.error
+});
+const mapDispatchToProps = {
+  fetchLogin:  userAction.fetchLogin
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

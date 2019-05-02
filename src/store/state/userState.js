@@ -1,4 +1,5 @@
 export default {
   nickName: '',
-  token: ''
+  token: '',
+  loading: false
 }
