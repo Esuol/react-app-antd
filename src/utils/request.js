@@ -1,6 +1,18 @@
 import axios from 'axios'
 // import NProgress from 'nprogress'
 import * as antd from 'antd'
+import { createStore } from 'redux'
+import reducers from '../store/reducer/index'
+
+if(reducers) {
+  const store = createStore(
+    reducers
+  )
+  console.log(store)
+
+}
+
+
 
 
 const service = axios.create({

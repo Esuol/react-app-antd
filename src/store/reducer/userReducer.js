@@ -10,11 +10,11 @@ export default function (state = initalState.userState, action) {
         loading: true,
       };
       case userAction.FETCH_LOGIN_SUCCESS:
-        return {
-          nickName: action.data.nickName,
-          token: action.data.token,
+        return Object.assign({}, state, {
           loading: false,
-        };
+          token: action.data.token,
+          nickName: action.data.nickName
+        })
       case userAction.FETCH_LOGIN_FAILURE:
         return {
           ...state,
