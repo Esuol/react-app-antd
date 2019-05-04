@@ -7,7 +7,7 @@ export default [
     Mock.mock(url.tableDataOne, {
         'data':{
             'status': "ok",
-            "userName": "berlin",
+            "nickName": "berlin",
             "token": Random.guid()
         }
     })

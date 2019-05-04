@@ -1,17 +1,9 @@
 import axios from 'axios'
 // import NProgress from 'nprogress'
 import * as antd from 'antd'
-import { createStore } from 'redux'
-import reducers from '../store/reducer/index'
-
-if(reducers) {
-  const store = createStore(
-    reducers
-  )
-  console.log(store)
-
-}
-
+// import store from '../store'
+// import store from 'store'
+import { getToken } from "./token"
 
 
 
@@ -24,11 +16,11 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(config => {
-  // const token
+  const token = getToken('token')
 
-  // if (token) {
-  //   config.headers['X-Token'] = token
-  // }
+  if (token) {
+    config.headers['X-Token'] = token
+  }
 
   return config
 })
@@ -50,9 +42,6 @@ service.interceptors.response.use(
 
       return Promise.reject(new Error(response.data.msg))
     }
-
-
-
     return response.data.data
   },
   error => {

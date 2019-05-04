@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import * as actionTypes from './actionTypes'
 import api from '../../services/index'
+import { setToken } from '../../utils/token'
 
 export const {
   FETCH_LOGIN_BEGIN,
@@ -26,6 +27,8 @@ export function fetchLogin() {
     dispatch(fetchLoginBegin())
 
     const request = await api.users.login()
+
+    setToken(request.token)
 
     if(request.status === 'ok') dispatch(fetchLoginSuccess(request))
 
