@@ -11,11 +11,11 @@ import './global.less'
 
 
 ReactDOM.render(
-  <Router histroy={history}>
-    <Provider store={store}>
-        <App />
-    </Provider>
-  </Router>
+  <Provider store={store}>
+    <Router histroy={history}>
+          <App />
+    </Router>
+  </Provider>
 
 , document.getElementById('root'));
 

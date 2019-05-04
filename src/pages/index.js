@@ -1,9 +1,10 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 import Layout from '../layouts'
 import { globalRoute } from '../router'
 
+@withRouter
 class App extends React.Component {
 
   render () {

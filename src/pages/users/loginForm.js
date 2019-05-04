@@ -3,28 +3,29 @@ import React from 'react'
 import { Form, Icon, Input, Button, Checkbox} from 'antd';
 import { connect } from 'react-redux'
 import { userAction } from '../../store/actions'
+// import hostroy from '../../histroy'
 import './index.less'
-
 
 class LoginForm extends React.Component {
   fetchLogin = () => {
     const { fetchLogin } = this.props
-    console.log(fetchLogin)
     fetchLogin()
   }
 
    handleSubmit = (e) => {
     const { form } = this.props
     e.preventDefault();
-    form.validateFields(async(err, values) => {
+    form.validateFields(async (err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
       }
       this.fetchLogin()
+      // hostroy.push('/dashboard/monitor')
     });
   }
 
   render() {
+    console.log(this.context)
     const { form } = this.props
     const { getFieldDecorator } = form;
     return (
@@ -64,7 +65,7 @@ class LoginForm extends React.Component {
 const mapStateToProps = state => ({
   nickName: state.userReducer.nickName,
   loading: state.userReducer.loading,
-  token: state.userReducer.error
+  token: state.userReducer.token
 });
 const mapDispatchToProps = {
   fetchLogin:  userAction.fetchLogin
