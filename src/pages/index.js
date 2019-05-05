@@ -3,6 +3,7 @@ import React from 'react'
 import {Route, Switch, withRouter} from 'react-router-dom'
 import Layout from '../layouts'
 import { globalRoute } from '../router'
+import ScrollToTop from '../components/scrollToTop'
 
 @withRouter
 class App extends React.Component {
@@ -19,8 +20,10 @@ class App extends React.Component {
       ))
     return (
       <Switch>
-        { globalRoutes }
-        <Route path='/' component={Layout}/>
+        <ScrollToTop>
+          { globalRoutes }
+          <Route path='/' component={Layout}/>
+        </ScrollToTop>
       </Switch>
     )
   }
