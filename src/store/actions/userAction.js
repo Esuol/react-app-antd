@@ -2,7 +2,7 @@
 import * as actionTypes from './actionTypes'
 import api from '../../services/index'
 import { setToken } from '../../utils/token'
-import history from '../../histroy'
+// import history from '../../histroy'
 
 export const {
   FETCH_LOGIN_BEGIN,
@@ -33,7 +33,8 @@ export function fetchLogin() {
 
     if(request.status === 'ok') {
       dispatch(fetchLoginSuccess(request))
-      history.push('/dashboard/monitor')
+      // history.push('/dashboard/monitor')
+      window.location.href="/dashboard/monitor"
     }
 
     else dispatch(fetchLoginFailure())
