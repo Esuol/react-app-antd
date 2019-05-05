@@ -1,5 +1,6 @@
 import React from 'react'
 import Loadable from 'react-loadable'
+import Loading from '../components/jumpLoading/jumpLoading'
 
 export default{
   key: 'group2',
@@ -15,7 +16,7 @@ export default{
           exact: true,
           component: Loadable({
             loader: () => import('../pages/form/baseForm'),
-            loading: () => <p>loading</p>
+            loading: () => <Loading state />
           })
       },
       {
@@ -25,7 +26,7 @@ export default{
           exact: true,
           component: Loadable({
             loader: () => import('../pages/form/stepForm'),
-            loading: () => <p>loading</p>
+            loading: () => <Loading state />
           })
       },
       {
@@ -35,7 +36,7 @@ export default{
           exact: true,
           component: Loadable({
             loader: () => import('../pages/form/advancedForm'),
-            loading: () => <p>loading</p>
+            loading: () => <Loading state />
           })
       }
   ]

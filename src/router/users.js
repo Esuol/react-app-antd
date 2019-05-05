@@ -1,5 +1,6 @@
 import React from 'react'
 import Loadable from 'react-loadable'
+import Loading from '../components/jumpLoading/jumpLoading'
 
 export default [
     {
@@ -9,7 +10,7 @@ export default [
         exact: true,
         component: Loadable({
             loader: () => import('../pages/users/login'),
-            loading: () => <p>loading</p>
+            loading: () => <Loading state />
         })
     },
     {
@@ -19,7 +20,7 @@ export default [
         exact: true,
         component: Loadable({
             loader: () => import('../pages/users/register'),
-            loading: () => <p>loading</p>
+            loading: () => <Loading state />
         })
     }
 

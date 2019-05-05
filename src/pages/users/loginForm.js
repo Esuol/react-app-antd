@@ -25,7 +25,6 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    console.log(this.context)
     const { form } = this.props
     const { getFieldDecorator } = form;
     return (

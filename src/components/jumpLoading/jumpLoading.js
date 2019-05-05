@@ -9,10 +9,10 @@ const mapStateToProps = state => {
 }
 
 const jumpLoading = React.memo( props => {
-  const { spinState } = props
+  const { spinState, state } = props
   return (
     <div className="slice">
-      {spinState
+      {spinState || state
       ? <div className="jump"></div>
       : ''}
 

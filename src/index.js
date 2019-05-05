@@ -2,17 +2,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import store from './store'
-import history from './histroy'
+import history from './history'
 import App from './pages/index';
 import * as serviceWorker from './serviceWorker';
 import './global.less'
 
-
 ReactDOM.render(
   <Provider store={store}>
-    <Router histroy={history}>
+    <Router history={history}>
           <App />
     </Router>
   </Provider>

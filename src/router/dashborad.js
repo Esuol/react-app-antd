@@ -1,6 +1,7 @@
 
 import React from 'react'
 import Loadable from 'react-loadable'
+import Loading from '../components/jumpLoading/jumpLoading'
 
 export default {
   key: 'group0',
@@ -16,7 +17,7 @@ export default {
           exact: true,
           component: Loadable({
               loader: () => import('../pages/dashboard/monitor'),
-              loading: () => <p>loading</p>
+              loading: () => <Loading state />
           })
       },
       {
@@ -26,7 +27,7 @@ export default {
           exact: true,
           component: Loadable({
               loader: () => import('../pages/dashboard/analyze'),
-              loading: () => <p>loading</p>
+              loading: () => <Loading state />
           })
       }
   ]

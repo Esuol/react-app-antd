@@ -1,7 +1,10 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 import {Icon, Avatar, Input, Popover, Badge} from 'antd'
 import Animate from 'rc-animate'
+import history from '../history'
+import api from '../services'
 
 const { Search } = Input
 
@@ -27,6 +30,14 @@ class RightHeader extends React.Component {
     window.open('https://github.com/berlinen')
   }
 
+  logout = async () => {
+    console.log(this.props)
+    const request = await api.users.logout()
+    if(request.status === 'ok'){
+      history.push('/login')
+    }
+  }
+
   render () {
     const { isShowSearchInput } = this.state
 
@@ -48,7 +59,7 @@ class RightHeader extends React.Component {
         <p className="personal"> <Icon type="user" className="icon"/>&nbsp;&nbsp;个人中心</p>
         <p className="personal"> <Icon type="setting" className="icon"/>&nbsp;&nbsp;个人设置</p>
         <p className="personal"> <Icon type="close-circle" className="icon"/>&nbsp;&nbsp;触发报错</p>
-        <p className="personal"> <Icon type="logout" className="icon"/>&nbsp;&nbsp;退出登录</p>
+        <p className="personal" onClick={this.logout} role="presentation"> <Icon type="logout" className="icon"/>&nbsp;&nbsp;退出登录</p>
       </div>
     );
 
