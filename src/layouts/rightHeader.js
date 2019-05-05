@@ -31,7 +31,6 @@ class RightHeader extends React.Component {
   }
 
   logout = async () => {
-    console.log(this.props)
     const request = await api.users.logout()
     if(request.status === 'ok'){
       message.success('退出成功')

@@ -5,6 +5,8 @@ import { applyMiddleware, createStore } from 'redux'
 // 那么就可以传入一个函数，这个函数接收两个参数:dispatch和getState。
 // 这个dispatch可以在将来的异步请求完成后使用，对于异步action很有用
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger'
 
 // 引入reducer
 import reducers from './reducer'
@@ -12,7 +14,9 @@ import reducers from './reducer'
 // 创建store实例
 const store = createStore(
   reducers,
-  applyMiddleware(thunk)
+  composeWithDevTools(
+    applyMiddleware(thunk, logger)
+  )
 )
 
 export default store
