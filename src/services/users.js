@@ -2,7 +2,8 @@ import service from '../utils/request'
 import '../mock/user'
 
 export default {
-  login: () => service.get('/user/login'),
-  logout: () => service.get('/user/logout')
+  login: data => service.post('/user/login', data),
+  logout: () => service.get('/user/logout'),
+  register: data => service.post('/user/register', data),
 }
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
-import {Icon, Avatar, Input, Popover, Badge} from 'antd'
+import {Icon, Avatar, Input, Popover, Badge, message} from 'antd'
 import Animate from 'rc-animate'
 import history from '../history'
 import api from '../services'
@@ -34,6 +34,7 @@ class RightHeader extends React.Component {
     console.log(this.props)
     const request = await api.users.logout()
     if(request.status === 'ok'){
+      message.success('退出成功')
       history.push('/login')
     }
   }

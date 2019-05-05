@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox} from 'antd';
-import { connect } from 'react-redux'
-import { userAction } from '../../store/actions'
+import { Form, Icon, Input, Button, message} from 'antd';
+import history from '../../history'
+import api from '../../services'
 import './index.less'
 
-class LoginForm extends React.Component {
+class RegisterForm extends React.Component {
   fetchLogin = () => {
     const { fetchLogin } = this.props
     fetchLogin()
@@ -16,10 +16,23 @@ class LoginForm extends React.Component {
     e.preventDefault();
     form.validateFields(async (err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
       }
-      this.fetchLogin(values)
+      const request = await api.users.register(values)
+      if (request.status === 'ok') {
+        message.success('注册成功');
+        history.push('/login')
+      }
     });
+  }
+
+  compareToFirstPassword = (rule, value, callback) => {
+    const { form } = this.props;
+    if (value && value !== form.getFieldValue('password')) {
+      callback('两次密码输入不一致');
+    } else {
+      callback();
+    }
   }
 
   render() {
@@ -42,29 +55,28 @@ class LoginForm extends React.Component {
           )}
         </Form.Item>
         <Form.Item>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
+          {getFieldDecorator('newPassword', {
+            rules: [
+            {
+              required: true, message: 'Please input your Password!'
+            },
+            {
+              validator: this.compareToFirstPassword,
+            }],
           })(
-            <Checkbox>Remember me</Checkbox>
+            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
           )}
+        </Form.Item>
+        <Form.Item>
           <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
+           REGISTER NOW
           </Button>
-          <a href="/register">register now!</a>
         </Form.Item>
       </Form>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  nickName: state.userReducer.nickName,
-  loading: state.userReducer.loading,
-  token: state.userReducer.token
-});
-const mapDispatchToProps = {
-  fetchLogin:  userAction.fetchLogin
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+
+export default RegisterForm

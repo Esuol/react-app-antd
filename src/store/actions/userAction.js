@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import { message} from 'antd';
 import * as actionTypes from './actionTypes'
 import api from '../../services/index'
 import { setToken } from '../../utils/token'
@@ -38,14 +39,15 @@ export const failureLogout = () => ({
 });
 
 
-export function fetchLogin() {
+export function fetchLogin(data) {
   return async function action(dispatch) {
     dispatch(fetchLoginBegin())
-    const request = await api.users.login()
+    const request = await api.users.login(data)
     if(request.status === 'ok') {
       setToken(request.token)
       dispatch(fetchLoginSuccess(request))
       // history.push('/dashboard/monitor')
+      message.success('登录成功')
       window.location.href="/dashboard/monitor"
     }
     else dispatch(fetchLoginFailure())
