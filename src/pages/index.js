@@ -19,12 +19,12 @@ class App extends React.Component {
       </Route>
       ))
     return (
-      <Switch>
-        <ScrollToTop>
-          { globalRoutes }
-          <Route path='/' component={Layout}/>
-        </ScrollToTop>
-      </Switch>
+      <ScrollToTop>
+        <Switch>
+            { globalRoutes }
+            <Route path='/' component={Layout}/>
+        </Switch>
+      </ScrollToTop>
     )
   }
 }
