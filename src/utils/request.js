@@ -4,8 +4,14 @@ import * as antd from 'antd'
 // import store from '../store'
 // import store from 'store'
 import { getToken } from "./token"
+import history from '../history'
+import store from '../store/index'
 
+process.nextTick(() => {
+  console.log(store.getState())
+},0)
 
+console.log(history.location.pathname)
 
 const service = axios.create({
   baseURL: process.env.REACT_APP_URL,

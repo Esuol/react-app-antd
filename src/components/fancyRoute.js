@@ -18,7 +18,6 @@ class FancyRoute extends React.Component {
   }
 
   render () {
-    console.log( <Route {...this.props} />)
     return (
       <Route {...this.props} />
     )
