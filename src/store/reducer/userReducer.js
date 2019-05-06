@@ -19,7 +19,7 @@ export default function (state = initalState.userState, action) {
         return {
           ...state,
           loading: false
-        };
+        }
       default:
         return state;
   }

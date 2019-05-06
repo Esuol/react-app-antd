@@ -1,4 +1,6 @@
 export default {
   spinState: false,
-  ifAjax: false
+  ifAjax: false,
+  prevPath: '',
+  nprogressstate: 0
 }
