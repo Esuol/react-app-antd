@@ -8,7 +8,7 @@ import { getToken } from "./token"
 
 
 const service = axios.create({
-  baseURL: `http://antdReact.com/`,
+  baseURL: process.env.REACT_APP_URL,
   timeout: 1000 * 60,
   validateStatus (status) {
     return status >= 200
