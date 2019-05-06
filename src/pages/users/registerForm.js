@@ -72,6 +72,11 @@ class RegisterForm extends React.Component {
            REGISTER NOW
           </Button>
         </Form.Item>
+        <Form.Item>
+          <Button type="primary" onClick={() => {history.go(-1)}} className="login-form-button">
+           GO BACK
+          </Button>
+        </Form.Item>
       </Form>
     );
   }

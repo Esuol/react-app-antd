@@ -1,8 +1,9 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
-import {Route, Switch, Redirect} from 'react-router-dom'
+import { Switch, Redirect} from 'react-router-dom'
 import { Layout } from 'antd'
 import sidebarData from '../router'
+import FancyRoute from '../components/fancyRoute'
 
 const { Content } = Layout;
 
@@ -22,14 +23,8 @@ function handleRoute(arr) {
 export default class Contents extends React.Component {
   render () {
     const routes = childrenArr.map(item => (
-      <Route
-       key={item.key}
-       path={item.path}
-       exact={item.exact}
-       component={item.component}
-      >
-      </Route>
-      ))
+      <FancyRoute {...item} />
+    ))
     return (
       <Content
             style={{

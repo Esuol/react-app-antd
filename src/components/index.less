@@ -1,0 +1,27 @@
+@import '../styles/index.less';
+
+.spin {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 1000;
+  transform: translateY(-50%);
+  transform: translateX(50%);
+}
+
+#nprogress .bar {
+  background: @primary-color;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px @primary-color, 0 0 5px @primary-color;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: @primary-color;
+  border-left-color: @primary-color;
+}
