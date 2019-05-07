@@ -94,7 +94,7 @@ export default class Basiccolumn extends React.Component {
               label={autoHideXLabels ? false : {}}
               tickLine={autoHideXLabels ? false : {}}
             />
-            <Axis name="y" />
+            <Axis name="y" min={0} />
             <Tooltip showTitle={false} crosshairs={false} />
             <Geom type="interval" position="x*y" color={color} tooltip={tooltip} />
           </Chart>
