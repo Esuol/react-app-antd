@@ -6,7 +6,7 @@ import { applyMiddleware, createStore } from 'redux'
 // 这个dispatch可以在将来的异步请求完成后使用，对于异步action很有用
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension';
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 
 // 引入reducer
 import reducers from './reducer'
@@ -15,7 +15,8 @@ import reducers from './reducer'
 const store = createStore(
   reducers,
   composeWithDevTools(
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk)
+    // applyMiddleware(thunk, logger)
   )
 )
 
