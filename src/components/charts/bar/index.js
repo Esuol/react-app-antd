@@ -1,13 +1,17 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from "react";
+import Debounce from 'lodash-decorators/debounce';
+import Bind from 'lodash-decorators/bind';
 import {
   Chart,
   Geom,
   Axis,
   Tooltip,
 } from "bizcharts";
+import autoHeight from '../autoHeight';
 
-export default class Basiccolumn extends React.Component {
+@autoHeight()
+class BasicBar extends React.Component {
   state = {
     autoHideXLabels: false,
   };
@@ -28,6 +32,8 @@ export default class Basiccolumn extends React.Component {
     this.node = n;
   };
 
+  @Bind()
+  @Debounce(400)
   resize() {
     if (!this.node) {
       return;
@@ -39,6 +45,7 @@ export default class Basiccolumn extends React.Component {
     }
     const minWidth = data.length * 30;
     const { autoHideXLabels } = this.state;
+    console.log(autoHideXLabels)
 
     if (canvasWidth <= minWidth) {
       if (!autoHideXLabels) {
@@ -73,7 +80,7 @@ export default class Basiccolumn extends React.Component {
 
       const scale = {
         x:{range:
-           [0.1, 1]
+           [0.05, 1]
         }
 
       };
@@ -106,3 +113,5 @@ export default class Basiccolumn extends React.Component {
   }
 }
 
+
+export default BasicBar
