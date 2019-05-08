@@ -72,9 +72,10 @@ export default class Basiccolumn extends React.Component {
       ];
 
       const scale = {
-        x: {
-          type: 'cat'
+        x:{range:
+           [0.1, 1]
         }
+
       };
 
     return (
@@ -82,12 +83,12 @@ export default class Basiccolumn extends React.Component {
         <div ref={this.handleRef}>
           {title && <h4 style={{ marginBottom: 20 }}>{title}</h4>}
           <Chart
-          height={title ? height - 41 : height}
-          data={data}
-          scale={scale}
-          forceFit
-          title={title}
-          padding={padding || 'auto'}>
+            scale={scale}
+            height={title ? height - 41 : height}
+            data={data}
+            forceFit
+            title={title}
+            padding={padding || 'auto'}>
             <Axis
               name="x"
               title={false}
