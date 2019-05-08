@@ -1,7 +1,9 @@
+/* eslint-disable react/no-unused-state */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
+import {Row, Col} from 'antd'
 import api from '../../services'
-import Bar from '../../components/charts/bar'
+import GridContent from '../../components/pageWrapper/gridContent';
 
 
 class Monitor extends React.Component {
@@ -19,10 +21,16 @@ class Monitor extends React.Component {
   }
 
   render () {
-    const { data } = this.state
+
 
     return (
-      <Bar data={data} title="销售趋势" height={350} padding={50} />
+      <GridContent>
+        <Row gutter={24}>
+          <Col xl={18} lg={24} md={24} sm={24} xs={24} style={{ marginBottom: 24 }}>
+          </Col>
+        </Row>
+      </GridContent>
+      // <Bar data={data} title="销售趋势" height={350} padding={50} />
     )
   }
 }
