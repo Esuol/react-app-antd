@@ -21,25 +21,33 @@ export default React.memo( () => {
         <CharCard
         title="总销售额"
         icon="exclamation-circle"
-        desNum="¥ 126,560" />
+        desNum="¥ 126,560"
+        componentName="SaleCompare"
+        dayDesc="日销售额￥12,423" />
       </Col>
       <Col {...topColResponsiveProps}>
         <CharCard
         title="访问量"
         icon="exclamation-circle"
-        desNum="884,6" />
+        desNum="884,6"
+        componentName="dayVisitChart"
+        dayDesc="日访问量1,234" />
       </Col>
       <Col {...topColResponsiveProps}>
         <CharCard
-        title="访问量"
+        title="支付笔数"
         icon="exclamation-circle"
-        desNum="656,0" />
+        desNum="656,0"
+        componentName="payChart"
+        dayDesc="转化率60%" />
       </Col>
       <Col {...topColResponsiveProps}>
         <CharCard
         title="运营活动效果"
         icon="exclamation-circle"
-        desNum="78%" />
+        desNum="78%"
+        componentName="activityProgress"
+        dayDesc="日销售额￥12,423" />
       </Col>
     </Row>
   )
