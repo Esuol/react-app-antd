@@ -30,7 +30,7 @@ export default class Contents extends React.Component {
             style={{
               margin: '24px 16px',
               padding: 24,
-              background: '#fff',
+              background: '#f0f2f5',
               minHeight: 280
             }}
           >
