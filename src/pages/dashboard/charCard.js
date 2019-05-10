@@ -7,7 +7,7 @@ import CardTitle from '../../components/layout/cardTitle'
 import SaleCompare from './saleCompare'
 import Progress from './progress'
 import './index.less'
-import { modifyInterviewLoading } from '../../store/actions/analyizeAction'
+import { analyizeAction } from '../../store/actions'
 
 function mapStoP(state){
  return {
@@ -15,14 +15,22 @@ function mapStoP(state){
  }
 }
 
+const mapDispatchToProps = {
+  modifyInterviewLoading:  analyizeAction.modifyInterviewLoading
+}
+
 class charCard extends React.Component {
 
   componentDidMount () {
     setTimeout(() => {
-      console.log('on')
-      modifyInterviewLoading(false)
+      this.ModifyInterviewLoading(false)
      },2000)
 
+  }
+
+  ModifyInterviewLoading = (data) => {
+    const { modifyInterviewLoading } = this.props
+    modifyInterviewLoading(data)
   }
 
   render () {
@@ -67,4 +75,4 @@ class charCard extends React.Component {
 
 }
 
-export default connect(mapStoP)(charCard)
+export default connect(mapStoP, mapDispatchToProps)(charCard)

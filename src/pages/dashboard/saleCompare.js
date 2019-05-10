@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon } from 'antd'
+import './index.less'
 
 export default React.memo (props => {
   const {desc, descNum, descIcon, color} = props
