@@ -65,6 +65,7 @@ class BasicBar extends React.Component {
       data,
       title,
       height,
+      isHasAxis,
       color = 'rgba(24, 144, 255, 0.85)',
       padding } = this.props
 
@@ -96,13 +97,18 @@ class BasicBar extends React.Component {
             forceFit
             title={title}
             padding={padding || 'auto'}>
-            <Axis
+            {isHasAxis ?
+              <Axis
               name="x"
               title={false}
               label={autoHideXLabels ? false : {}}
               tickLine={autoHideXLabels ? false : {}}
             />
+            : null}
+
+            {isHasAxis ?
             <Axis name="y" min={0} />
+            : null}
             <Tooltip showTitle={false} crosshairs={false} />
             <Geom type="interval" position="x*y" color={color} tooltip={tooltip} />
           </Chart>

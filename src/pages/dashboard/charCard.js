@@ -3,11 +3,13 @@
 import React from 'react'
 import { Card } from 'antd';
 import { connect } from 'react-redux'
+import api from '../../services/index'
 import CardTitle from '../../components/layout/cardTitle'
 import SaleCompare from './saleCompare'
 import Progress from './progress'
 import { analyizeAction } from '../../store/actions'
 import Areanull from '../../components/charts/Areanull'
+import Bar from '../../components/charts/bar'
 import './index.less'
 
 function mapStoP(state){
@@ -22,10 +24,16 @@ const mapDispatchToProps = {
 
 class charCard extends React.Component {
 
-  componentDidMount () {
+  async componentDidMount () {
+    const visitorData = await api.dataAnalyize.getSVisitorData()
+    this.visitorData = visitorData.payload
+    const bardata = await api.dataAnalyize.getSaleData()
+    this.bardata = bardata.payload
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
-     },2000)
+     },1000)
+
+
 
   }
 
@@ -63,7 +71,20 @@ class charCard extends React.Component {
 
           {componentName === 'dayVisitChart'
           ? <div style={{marginTop: '10px', height: '30px'}}>
-              <Progress percent={90} strokeColor="rgb(19, 194, 194)" />
+              <Areanull
+              height={50}
+              isHasAxis={false}
+              isHasLegend={false}
+              visitorData={this.visitorData} />
+            </div>
+          : ''}
+
+        {componentName === 'payChart'
+          ? <div style={{marginTop: '10px', height: '30px'}}>
+             <Bar data={this.bardata}
+             isHasAxis={false}
+             height={50}
+             padding={0} />
             </div>
           : ''}
 
