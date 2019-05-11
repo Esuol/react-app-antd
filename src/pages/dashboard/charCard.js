@@ -29,12 +29,10 @@ class charCard extends React.Component {
     this.visitorData = visitorData.payload
     const bardata = await api.dataAnalyize.getSaleData()
     this.bardata = bardata.payload
+    
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
      },1000)
-
-
-
   }
 
   ModifyInterviewLoading = (data) => {

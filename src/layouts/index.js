@@ -137,7 +137,7 @@ class SiderDemo extends React.Component {
     });
 
     return (
-      <Layout style={{height:"100vh"}}>
+      <Layout>
         {currentWidth < 768
         ? <div>
             {!drawerVisible
