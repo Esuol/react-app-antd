@@ -6,8 +6,9 @@ import { connect } from 'react-redux'
 import CardTitle from '../../components/layout/cardTitle'
 import SaleCompare from './saleCompare'
 import Progress from './progress'
-import './index.less'
 import { analyizeAction } from '../../store/actions'
+import Areanull from '../../components/charts/Areanull'
+import './index.less'
 
 function mapStoP(state){
  return {
@@ -55,6 +56,12 @@ class charCard extends React.Component {
           : ''}
 
           {componentName === 'activityProgress'
+          ? <div style={{marginTop: '10px', height: '30px'}}>
+              <Progress percent={90} strokeColor="rgb(19, 194, 194)" />
+            </div>
+          : ''}
+
+          {componentName === 'dayVisitChart'
           ? <div style={{marginTop: '10px', height: '30px'}}>
               <Progress percent={90} strokeColor="rgb(19, 194, 194)" />
             </div>
