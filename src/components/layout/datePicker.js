@@ -1,24 +1,35 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 import { DatePicker } from 'antd';
+import moment from 'moment'
 
 const { RangePicker } = DatePicker;
+
+const myDate = new Date();
+const now = `${myDate.getFullYear()}/${myDate.getMonth()+1}/${myDate.getDate()}`
+const nowYear = myDate.getFullYear()
+const dateFormat = 'YYYY/MM/DD'
 
 class DataPicker extends React.Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      name: 'day'
+      name: 'day',
+      defaultValue:[moment(now,dateFormat), moment(now,dateFormat)]
     }
   }
 
   selects = (e, item) => {
-
-   this.setState( () => ({name: item}), () => {
-    const { name } = this.state
-    
-   })
+    this.setState( () => ({name: item}))
+    item === 'day' && this.setState( () => ({ defaultValue:[moment(now,dateFormat), moment(now,dateFormat)]}))
+    if(item === 'year'){
+      console.log(this.state)
+      this.setState( () => ({ defaultValue:[moment(`${nowYear}/01/01`,dateFormat), moment(`${nowYear}/12/31`,dateFormat)]}), () => {
+        console.log(this.state)
+      })
+    }
   }
 
   onChange = (value, dateString) => {
@@ -32,7 +43,7 @@ class DataPicker extends React.Component {
   }
 
 render () {
-  const { name } = this.state
+  const { name, defaultValue } = this.state
   return (
     <section className="datePickerrWrap">
       <div style={{marginTop: '10px'}}>
@@ -64,8 +75,10 @@ render () {
       <div className="rangePicker">
        <RangePicker
          showTime={{ format: 'HH:mm' }}
-         format="YYYY-MM-DD HH:mm"
+         format="YYYY-MM-DD"
          placeholder={['Start Time', 'End Time']}
+         defaultValue={defaultValue}
+         defaultPickerValue={defaultValue}
          onChange={this.onChange}
          onOk={this.onOk}
        />
