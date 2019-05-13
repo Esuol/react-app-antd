@@ -37,8 +37,7 @@ class SaleCards extends React.Component{
   }
 
  render () {
-  // const {interviewLoading} = this.props
-
+  const {interviewLoading} = this.props
   const rankList = [
     {index: 0, name: '工专路 0 号店', value: '321,234', active: true},
     {index: 1, name: '工专路 1 号店', value: '321,234', active: true},
@@ -50,7 +49,7 @@ class SaleCards extends React.Component{
   ]
 
   return (
-    <Card bordered={false} bodyStyle={{ padding: 0 }}>
+    <Card bordered={false} bodyStyle={{ padding: 0 }} loading={interviewLoading}>
       <Tabs
       defaultActiveKey="sales"
       tabBarExtraContent = {
