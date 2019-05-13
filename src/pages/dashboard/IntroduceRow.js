@@ -2,7 +2,6 @@
 import React from 'react'
 import { Row, Col, Icon, Tooltip } from 'antd';
 import CharCard from './charCard'
-import CardTitle from '../../components/layout/cardTitle'
 
 const topColResponsiveProps = {
   xs: 24,

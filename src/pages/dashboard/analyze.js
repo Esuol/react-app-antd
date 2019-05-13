@@ -21,19 +21,23 @@ class Analyze extends React.Component {
           <SaleCard></SaleCard>
         </Suspense>
 
-        <div>
-        <Row gutter={24}>
-            <Col xl={12} lg={24} md={24} sm={24} xs={24}>
-              <Suspense fallback={null}>
-                <TopSearch />
-              </Suspense>
-            </Col>
-            <Col xl={12} lg={24} md={24} sm={24} xs={24}>
-              <Suspense fallback={null}>
+        <div style={{marginTop: '30px'}}>
+          <Row gutter={24}>
+              <Col xl={12} lg={24} md={24} sm={24} xs={24}>
+                <Suspense fallback={null}>
+                  <TopSearch
+                  title="线上热门搜索"
+                  smallTitleFirst="总销售额"
+                  smallTitleSecond="人均搜索次数"
+                  icon="exclamation-circle"/>
+                </Suspense>
+              </Col>
+              <Col xl={12} lg={24} md={24} sm={24} xs={24}>
+                <Suspense fallback={null}>
 
-              </Suspense>
-            </Col>
-          </Row>
+                </Suspense>
+              </Col>
+            </Row>
         </div>
       </div>
 

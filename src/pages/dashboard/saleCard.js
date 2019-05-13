@@ -75,7 +75,7 @@ class SaleCards extends React.Component{
             </Col>
           </Row>
         </TabPane>
-        <TabPane tab="访问量" key="visit">
+        <TabPane tab="访问量" key="visit" style={{paddingBottom: '20px'}}>
           <Row>
             <Col xl={16} lg={12} md={12} sm={24} xs={24}>
               <div className="barWrap">
@@ -87,7 +87,7 @@ class SaleCards extends React.Component{
               </div>
             </Col>
             <Col xl={8} lg={12} md={12} sm={24} xs={24}>
-              <div style={{marginBottom: '15px'}}>
+              <div>
                 <RankList title="门店访问量排名" rankList={rankList} />
               </div>
             </Col>

@@ -15,7 +15,7 @@ class Areanull extends React.Component {
 
   render() {
 
-    const { visitorData, height, isHasAxis, isHasLegend } = this.props
+    const { visitorData, height, isHasAxis, isHasLegend, isHasTypeLine } = this.props
 
     const dv = new DataSet.View().source(visitorData);
 
@@ -28,7 +28,6 @@ class Areanull extends React.Component {
 
     const scale = {
       value: {
-        alias: "The Share Price in Dollars",
         formatter(val) {
           return `$${ val}`;
         }
@@ -56,7 +55,18 @@ class Areanull extends React.Component {
 
           <Tooltip crosshairs />
 
-          <Geom type="area" position="year*value" color="type" shape="smooth" />
+          <Geom type="area" position="year*value" color={isHasTypeLine ? '#BBDEFB' : 'type'} shape="smooth" />
+          { isHasTypeLine
+          ? <Geom
+            type="line"
+            position="year*value"
+            color="type"
+            shape="smooth"
+            size={2}
+          />
+          : null}
+
+
         </Chart>
       </div>
     );

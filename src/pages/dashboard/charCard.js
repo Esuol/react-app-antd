@@ -29,7 +29,7 @@ class charCard extends React.Component {
     this.visitorData = visitorData.payload
     const bardata = await api.dataAnalyize.getSaleData()
     this.bardata = bardata.payload
-    
+
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
      },1000)
@@ -75,7 +75,7 @@ class charCard extends React.Component {
               isHasLegend={false}
               visitorData={this.visitorData} />
             </div>
-          : ''}
+          : null}
 
         {componentName === 'payChart'
           ? <div style={{marginTop: '10px', height: '30px'}}>
@@ -84,7 +84,7 @@ class charCard extends React.Component {
              height={50}
              padding={0} />
             </div>
-          : ''}
+          : null}
 
           <div className="line" />
 
