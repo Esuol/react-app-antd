@@ -28,7 +28,7 @@ class Analyze extends React.Component {
                   <TopSearch
                   title="线上热门搜索"
                   smallTitleFirst="总销售额"
-                  smallTitleSecond="人均搜索次数"
+                  smallTitleSecond="搜索次数"
                   icon="exclamation-circle"/>
                 </Suspense>
               </Col>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card } from 'antd'
+import { Card, Row, Col } from 'antd'
 import { analyizeAction } from '../../store/actions'
 import api from '../../services/index'
 import CardTitle from '../../components/layout/cardTitle'
@@ -47,28 +47,33 @@ class TopSearch extends React.Component {
       loading={interviewLoading}
       title={title}>
       <div className="topCardWrap">
-        <section style={{width: '40%',margin: '20px'}}>
-            <CardTitle title={smallTitleFirst} icon={icon} />
-            <SearchData mainNumber="12,321" smallNumber={17.5} type="danger" />
-            <Areanull
-              isHasTypeLine
-              height={50}
-              isHasAxis={false}
-              isHasLegend={false}
-              visitorData={this.visitorData} />
-          </section>
-          <section style={{width: '40%', margin: '20px'}}>
-            <CardTitle title={smallTitleSecond} icon={icon} />
-            <SearchData mainNumber="121" smallNumber={23.5} type="success" />
-            <Areanull
-              isHasTypeLine
-              height={50}
-              isHasAxis={false}
-              isHasLegend={false}
-              visitorData={this.visitorData} />
-          </section>
-      </div>
-
+        <Row gutter={24} style={{width: '100%'}}>
+            <Col sm={12} xs={24}>
+              <section style={{margin: '20px'}}>
+                  <CardTitle title={smallTitleFirst} icon={icon} />
+                  <SearchData mainNumber="12,321" smallNumber={17.5} type="danger" />
+                  <Areanull
+                    isHasTypeLine
+                    height={50}
+                    isHasAxis={false}
+                    isHasLegend={false}
+                    visitorData={this.visitorData} />
+                </section>
+              </Col>
+              <Col sm={12} xs={24}>
+              <section style={{ margin: '20px'}}>
+                <CardTitle title={smallTitleSecond} icon={icon} />
+                <SearchData mainNumber="121" smallNumber={23.5} type="success" />
+                <Areanull
+                  isHasTypeLine
+                  height={50}
+                  isHasAxis={false}
+                  isHasLegend={false}
+                  visitorData={this.visitorData} />
+              </section>
+              </Col>
+          </Row>
+        </div>
       </Card>
     </section>
    )
