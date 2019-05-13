@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
@@ -9,6 +10,11 @@ const { RangePicker } = DatePicker;
 const myDate = new Date();
 const now = `${myDate.getFullYear()}/${myDate.getMonth()+1}/${myDate.getDate()}`
 const nowYear = myDate.getFullYear()
+
+const monday = moment().startOf('week').format('YYYY/MM/DD');// 周一日期
+const sunday = moment().endOf('week').format('YYYY/MM/DD');// 周日日期
+const numberOne = moment().startOf('month').format('YYYY/MM/DD');// 周日日期
+const numberEnd = moment().endOf('month').format('YYYY/MM/DD');// 周日日期
 const dateFormat = 'YYYY/MM/DD'
 
 class DataPicker extends React.Component {
@@ -24,12 +30,9 @@ class DataPicker extends React.Component {
   selects = (e, item) => {
     this.setState( () => ({name: item}))
     item === 'day' && this.setState( () => ({ defaultValue:[moment(now,dateFormat), moment(now,dateFormat)]}))
-    if(item === 'year'){
-      console.log(this.state)
-      this.setState( () => ({ defaultValue:[moment(`${nowYear}/01/01`,dateFormat), moment(`${nowYear}/12/31`,dateFormat)]}), () => {
-        console.log(this.state)
-      })
-    }
+    item === 'week' && this.setState( () => ({ defaultValue:[moment(monday,dateFormat), moment(sunday,dateFormat)]}))
+    item === 'month' && this.setState( () => ({ defaultValue:[moment(numberOne,dateFormat), moment(numberEnd,dateFormat)]}))
+    item === 'year' && this.setState( () => ({ defaultValue:[moment(`${nowYear}/01/01`,dateFormat), moment(`${nowYear}/12/31`,dateFormat)]}))
   }
 
   onChange = (value, dateString) => {
@@ -78,7 +81,7 @@ render () {
          format="YYYY-MM-DD"
          placeholder={['Start Time', 'End Time']}
          defaultValue={defaultValue}
-         defaultPickerValue={defaultValue}
+         value={defaultValue}
          onChange={this.onChange}
          onOk={this.onOk}
        />
