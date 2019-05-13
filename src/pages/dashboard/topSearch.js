@@ -127,4 +127,5 @@ class TopSearch extends React.Component {
    )
   }
 }
+
 export default connect(mapStoP, mapDispatchToProps)(TopSearch)
