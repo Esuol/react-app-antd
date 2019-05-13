@@ -1,3 +1,5 @@
+@import "~antd/lib/style/themes/default.less";
+
 .wraps{
   display: flex;
   justify-content: space-between;
@@ -13,8 +15,21 @@
 }
 .datePickerrWrap{
   display: flex;
+  width: 100%;
 }
 
 .rangePicker{
   margin: 10px 20px;
+}
+
+@media screen and (max-width: @screen-lg) {
+  .selectDate{
+    display: none
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  .datePickerrWrap{
+    display: none
+  }
 }

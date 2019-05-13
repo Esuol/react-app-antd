@@ -49,7 +49,7 @@ render () {
   const { name, defaultValue } = this.state
   return (
     <section className="datePickerrWrap">
-      <div style={{marginTop: '10px'}}>
+      <div style={{marginTop: '10px'}} className="selectDate">
        <span className="selectDate"
              onClick={(e) => this.selects(e, 'day')}
              role="presentation"

@@ -1,9 +1,11 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Tabs } from 'antd';
+import { Card, Tabs, Row ,Col } from 'antd';
 import { analyizeAction } from '../../store/actions'
+import api from '../../services/index'
 import DatePicker from '../../components/layout/datePicker'
+import Bar from '../../components/charts/bar'
 
 const { TabPane } = Tabs
 
@@ -19,7 +21,14 @@ function mapStoP(state){
 
 class SaleCards extends React.Component{
 
- 
+  async componentDidMount () {
+    const bardata = await api.dataAnalyize.getSaleData()
+    this.bardata = bardata.payload
+
+    setTimeout(() => {
+      this.ModifyInterviewLoading(false)
+     },1000)
+  }
 
   ModifyInterviewLoading = (data) => {
     const { modifyInterviewLoading } = this.props
@@ -32,14 +41,44 @@ class SaleCards extends React.Component{
   return (
     <Card bordered={false} bodyStyle={{ padding: 0 }}>
       <Tabs
-      defaultActiveKey="1"
+      defaultActiveKey="sales"
       tabBarExtraContent = {
         <DatePicker />
       }
       size="large"
       tabBarStyle={{ marginBottom: 24 }}>
-        <TabPane tab="Tab 1" key="1"> qq</TabPane>
-        <TabPane tab="Tab 3" key="3">Tab 3</TabPane>
+        <TabPane tab="销售额" key="sales">
+          <Row style={{paddingBottom: 20}}>
+            <Col xl={16} lg={12} md={12} sm={24} xs={24}>
+              <div className="barWrap">
+                <Bar data={this.bardata}
+                    isHasAxis
+                    title="销售量趋势"
+                    height={250}
+                    padding={0} />
+              </div>
+            </Col>
+            <Col xl={8} lg={12} md={12} sm={24} xs={24}>
+
+            </Col>
+          </Row>
+        </TabPane>
+        <TabPane tab="访问量" key="visit">
+          <Row>
+            <Col xl={16} lg={12} md={12} sm={24} xs={24}>
+              <div className="barWrap">
+                <Bar data={this.bardata}
+                    isHasAxis
+                    title="访问量趋势"
+                    height={250}
+                    padding={0} />
+              </div>
+            </Col>
+            <Col xl={8} lg={12} md={12} sm={24} xs={24}>
+
+            </Col>
+          </Row>
+        </TabPane>
       </Tabs>
     </Card>
   )
