@@ -6,6 +6,7 @@ import { analyizeAction } from '../../store/actions'
 import api from '../../services/index'
 import DatePicker from '../../components/layout/datePicker'
 import Bar from '../../components/charts/bar'
+import RankList from './rankList'
 
 const { TabPane } = Tabs
 
@@ -38,6 +39,16 @@ class SaleCards extends React.Component{
  render () {
   // const {interviewLoading} = this.props
 
+  const rankList = [
+    {index: 0, name: '工专路 0 号店', value: '321,234', active: true},
+    {index: 1, name: '工专路 1 号店', value: '321,234', active: true},
+    {index: 2, name: '工专路 2 号店', value: '321,234', active: true},
+    {index: 3, name: '工专路 3 号店', value: '321,234', active: false},
+    {index: 4, name: '工专路 4 号店', value: '321,234', active: false},
+    {index: 5, name: '工专路 5 号店', value: '321,234', active: false},
+    {index: 6, name: '工专路 6 号店', value: '321,234', active: false}
+  ]
+
   return (
     <Card bordered={false} bodyStyle={{ padding: 0 }}>
       <Tabs
@@ -59,7 +70,9 @@ class SaleCards extends React.Component{
               </div>
             </Col>
             <Col xl={8} lg={12} md={12} sm={24} xs={24}>
-
+              <div>
+                <RankList title="门店销售额排名" rankList={rankList} />
+              </div>
             </Col>
           </Row>
         </TabPane>
@@ -75,7 +88,9 @@ class SaleCards extends React.Component{
               </div>
             </Col>
             <Col xl={8} lg={12} md={12} sm={24} xs={24}>
-
+              <div style={{marginBottom: '15px'}}>
+                <RankList title="门店访问量排名" rankList={rankList} />
+              </div>
             </Col>
           </Row>
         </TabPane>

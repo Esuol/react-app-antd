@@ -7,7 +7,7 @@ export default React.memo (props => {
   return (
     <section className="saleCompare">
       <p style={{marginRight:'5px'}}>{desc}</p>
-      <p style={{marginRight:'10px'}}>{descNum}</p>
+      <p style={{marginRight:'5px'}}>{descNum}</p>
       <Icon type={descIcon} style={{fontSize:'10px',marginTop: '5px',color}}/>
     </section>
   )

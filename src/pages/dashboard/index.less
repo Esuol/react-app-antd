@@ -1,3 +1,4 @@
+@import "~antd/lib/style/themes/default.less";
 .line {
   width: 100%;
   margin: 20px auto;
@@ -6,12 +7,34 @@
 }
 
 .saleCompare {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 22px;
   display: flex;
   width: 50%;
+  overflow: hidden;
 }
 
 .barWrap{
-  margin-left: 30px
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+
+.rankWrap {
+  margin-left: 60px;
+  .rlinListWrap{
+    display: flex;
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: @screen-lg) {
+  .rankWrap {
+    margin-top:20px;
+    margin-left: 40px;
+    .rlinListWrap{
+      display: flex;
+      margin-top: 15px;
+    }
+  }
 }
