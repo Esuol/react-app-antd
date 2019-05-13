@@ -2,7 +2,8 @@ import Mock, {Random} from 'mockjs'
 
 const url = {
   saleData: 'http://antdReact.com/dataAnalyize/saleData',
-  visitorData: 'http://antdReact.com/dataAnalyize/visitorData'
+  visitorData: 'http://antdReact.com/dataAnalyize/visitorData',
+  searchList: 'http://antdReact.com/dataAnalyize/searchList'
 }
 export default [
     Mock.mock(url.saleData, {
@@ -26,5 +27,19 @@ export default [
             }
           ]
       },
-  })
+  }),
+  Mock.mock(url.searchList, {
+    'data':{
+        'status': "ok",
+        "payload|50": [
+          {
+            "index|+1": 1,
+            "keyword|+1": Random.csentence(8),
+            "count|200-500": 200,
+            "range|1-100": 1,
+            "status|0-1": 0
+          }
+        ]
+    },
+})
 ]

@@ -1,11 +1,49 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Row, Col } from 'antd'
+import { Card, Row, Col, Table } from 'antd'
 import { analyizeAction } from '../../store/actions'
 import api from '../../services/index'
 import CardTitle from '../../components/layout/cardTitle'
 import Areanull from '../../components/charts/Areanull'
 import SearchData from './searchData'
+
+const columns = [
+  {
+    title: '排名',
+    dataIndex: 'index',
+    key: 'index',
+  },
+  {
+    title: '搜索关键词',
+    dataIndex: 'keyword',
+    key: 'keyword',
+    render: text => <a href="/">{text}</a>,
+  },
+  {
+    title: '用户数',
+    dataIndex: 'count',
+    key: 'count',
+    sorter: (a, b) => a.count - b.count
+  },
+  {
+    title: '周涨幅',
+    titleAlign: 'left',
+    dataIndex: 'range',
+    key: 'range',
+    sorter: (a, b) => a.range - b.range,
+    render: (text, record) => {
+      const type = record.status === 1 ? 'danger' : 'success'
+      return (
+        <div style={{ display: 'flex' }}>
+          <p>{ `${record.range}%` }</p>
+          <div className={type === 'danger' ? 'searchDataWrapPullDanger' : 'searchDataWrapPullSuccess'}></div>
+        </div>
+
+      )
+    },
+    align: 'left',
+  },
+];
 
 function mapStoP(state){
   return {
@@ -18,14 +56,13 @@ function mapStoP(state){
  }
 
 class TopSearch extends React.Component {
-  constructor (props) {
-    super(props)
-    console.log(props)
-  }
 
   async componentDidMount () {
     const visitorData = await api.dataAnalyize.getSVisitorData()
     this.visitorData = visitorData.payload
+    const searchList = await api.dataAnalyize.searchList()
+    this.searchList = searchList.payload
+
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
      },1000)
@@ -74,6 +111,17 @@ class TopSearch extends React.Component {
               </Col>
           </Row>
         </div>
+        <Table
+         style={{marginBottom: '10px'}}
+         rowKey={record => record.index}
+         size="small"
+         columns={columns}
+         dataSource={this.searchList}
+         pagination={{
+           style: { marginBottom: 0 },
+           pageSize: 5,
+         }}
+        />
       </Card>
     </section>
    )
