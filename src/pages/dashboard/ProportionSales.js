@@ -4,6 +4,7 @@ import { Card } from 'antd';
 import { connect } from 'react-redux'
 import { analyizeAction } from '../../store/actions'
 import SelectPicker from '../../components/layout/selectPicker'
+import Pie from '../../components/charts/pie'
 
 // eslint-disable-next-line react/prefer-stateless-function
 function mapStoP(state){
@@ -46,8 +47,9 @@ class ProportionSales extends React.Component {
         bordered={false}
         loading={interviewLoading}
         title={title}
-        bodyStyle={{ padding: 24 }}
+        bodyStyle={{ paddingTop: 10 }}
         extra={ <SelectPicker title={['全部渠道', '线上', '门店']} onChangeSelect={this.onChangeSelect} /> }>
+        <Pie />
       </Card>
     )
   }
