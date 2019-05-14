@@ -8,7 +8,7 @@ const RankList = React.memo( ({ title, rankList }) => {
     <section className="rankWrap">
       <h4>{title}</h4>
       { rankList.map(item => {
-        return (<ul className="rlinListWrap">
+        return (<ul className="rlinListWrap" key={item.index}>
           <li style={{
             width: '20px',
             height: '20px',

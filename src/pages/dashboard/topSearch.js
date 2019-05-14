@@ -113,10 +113,10 @@ class TopSearch extends React.Component {
         </div>
         <Table
          style={{marginBottom: '10px'}}
+         dataSource={this.searchList}
          rowKey={record => record.index}
          size="small"
          columns={columns}
-         dataSource={this.searchList}
          pagination={{
            style: { marginBottom: 0 },
            pageSize: 5,
