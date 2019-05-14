@@ -18,10 +18,19 @@ function mapStoP(state){
 
 class ProportionSales extends React.Component {
 
+  constructor (props) {
+    super(props)
+    this.onChangeSelect = this.onChangeSelectPar.bind(this)
+  }
+
   async componentDidMount () {
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
      },1000)
+  }
+
+  onChangeSelectPar = (value) => {
+    console.log(value)
   }
 
   ModifyInterviewLoading = (data) => {
@@ -38,7 +47,7 @@ class ProportionSales extends React.Component {
         loading={interviewLoading}
         title={title}
         bodyStyle={{ padding: 24 }}
-        extra={ <SelectPicker title={['全部渠道', '线上', '门店']} /> }>
+        extra={ <SelectPicker title={['全部渠道', '线上', '门店']} onChangeSelect={this.onChangeSelect} /> }>
       </Card>
     )
   }
