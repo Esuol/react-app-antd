@@ -21,6 +21,30 @@ class ProportionSales extends React.Component {
 
   constructor (props) {
     super(props)
+    this.state = {
+      pieData: [
+        {
+          item: "事例一",
+          count: 40
+        },
+        {
+          item: "事例二",
+          count: 21
+        },
+        {
+          item: "事例三",
+          count: 17
+        },
+        {
+          item: "事例四",
+          count: 13
+        },
+        {
+          item: "事例五",
+          count: 9
+        }
+      ]
+    }
     this.onChangeSelect = this.onChangeSelectPar.bind(this)
   }
 
@@ -41,6 +65,7 @@ class ProportionSales extends React.Component {
 
   render () {
     const { interviewLoading,title } = this.props
+    const { pieData } =this.state
 
     return (
       <Card
@@ -50,7 +75,8 @@ class ProportionSales extends React.Component {
         title={title}
         bodyStyle={{ paddingTop: 10 }}
         extra={ <SelectPicker title={['全部渠道', '线上', '门店']} onChangeSelect={this.onChangeSelect} /> }>
-        <Pie />
+        <Pie
+         data={pieData} />
       </Card>
     )
   }
