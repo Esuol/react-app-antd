@@ -10,9 +10,9 @@ import {
   Guide
 } from "bizcharts";
 import DataSet from "@antv/data-set";
-import autoHeight from '../autoHeight';
 
-@autoHeight()
+
+
 class Donut extends React.Component {
   render() {
     const { DataView } = DataSet;
@@ -45,7 +45,7 @@ class Donut extends React.Component {
           <Axis name="percent" />
           <Legend
             position="right"
-            offsetY={-80}
+            offsetY={-360}
             offsetX={-50}
           />
           <Tooltip
@@ -67,7 +67,7 @@ class Donut extends React.Component {
             tooltip={[
               "item*percent",
               (item, percent) => {
-                percent = `${percent * 100 }%`;
+                percent = `${percent}%`;
                 return {
                   name: item,
                   value: percent
@@ -83,7 +83,7 @@ class Donut extends React.Component {
               content="percent"
               padding={10}
               formatter={(val, item) => {
-                return `${item.point.item }: ${ val}`;
+                return `${item.point.item }: ${val * 100}`;
               }}
             />
           </Geom>

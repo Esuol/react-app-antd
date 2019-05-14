@@ -3,7 +3,10 @@ import Mock, {Random} from 'mockjs'
 const url = {
   saleData: 'http://antdReact.com/dataAnalyize/saleData',
   visitorData: 'http://antdReact.com/dataAnalyize/visitorData',
-  searchList: 'http://antdReact.com/dataAnalyize/searchList'
+  searchList: 'http://antdReact.com/dataAnalyize/searchList',
+  pieDataOne: 'http://antdReact.com/dataAnalyize/pieData/one',
+  pieDataTwo: 'http://antdReact.com/dataAnalyize/pieData/two',
+  pieDataThree: 'http://antdReact.com/dataAnalyize/pieData/three',
 }
 export default [
     Mock.mock(url.saleData, {
@@ -41,5 +44,41 @@ export default [
           }
         ]
     },
+}),
+Mock.mock(url.pieDataOne, {
+  'data':{
+      'status': "ok",
+      "payload|5": [
+        {
+          "count|+1":Random.range(10, 100, 5),
+          "item|+1": [Random.ctitle(3)
+          ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
+        }
+      ]
+  },
+}),
+Mock.mock(url.pieDataTwo, {
+  'data':{
+      'status': "ok",
+      "payload|5": [
+        {
+          "count|+1":Random.range(4, 100, 8),
+          "item|+1": [Random.ctitle(3)
+          ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
+        }
+      ]
+  },
+}),
+Mock.mock(url.pieDataThree, {
+  'data':{
+      'status': "ok",
+      "payload|5": [
+        {
+          "count|+1":Random.range(2, 100, 9),
+          "item|+1": [Random.ctitle(3)
+          ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
+        }
+      ]
+  },
 })
 ]

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 import { Card } from 'antd';
@@ -5,6 +6,7 @@ import { connect } from 'react-redux'
 import { analyizeAction } from '../../store/actions'
 import SelectPicker from '../../components/layout/selectPicker'
 import Pie from '../../components/charts/pie'
+import api from '../../services'
 
 // eslint-disable-next-line react/prefer-stateless-function
 function mapStoP(state){
@@ -22,40 +24,46 @@ class ProportionSales extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      pieData: [
-        {
-          item: "事例一",
-          count: 40
-        },
-        {
-          item: "事例二",
-          count: 21
-        },
-        {
-          item: "事例三",
-          count: 17
-        },
-        {
-          item: "事例四",
-          count: 13
-        },
-        {
-          item: "事例五",
-          count: 9
-        }
-      ]
+      pieData: []
     }
     this.onChangeSelect = this.onChangeSelectPar.bind(this)
   }
 
   async componentDidMount () {
+    this.getPieDataOne()
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
      },1000)
   }
 
-  onChangeSelectPar = (value) => {
-    console.log(value)
+  getPieDataOne = async() => {
+    const pieData = await api.dataAnalyize.pieDataOne()
+
+    this.setState(() => ({
+      pieData: pieData.payload
+    }))
+  }
+
+  getPieDataTwo = async() => {
+    const pieData = await api.dataAnalyize.pieDataTwo()
+
+    this.setState(() => ({
+      pieData: pieData.payload
+    }))
+  }
+
+  getPieDataThree = async() => {
+    const pieData = await api.dataAnalyize.pieDataThree()
+
+    this.setState(() => ({
+      pieData: pieData.payload
+    }))
+  }
+
+  onChangeSelectPar = (e) => {
+    e.target.value === '全部渠道' && this.getPieDataOne()
+    e.target.value === '线上' && this.getPieDataTwo()
+    e.target.value === '门店' && this.getPieDataThree()
   }
 
   ModifyInterviewLoading = (data) => {
