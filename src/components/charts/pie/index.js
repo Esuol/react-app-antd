@@ -60,13 +60,14 @@ class Donut extends React.Component {
           data={dv}
           scale={cols}
           forceFit
+          padding={[0, 40, 0, 40]}
         >
-          <Coord type="theta" radius={0.75} innerRadius={0.6} />
+          <Coord type="theta" radius={0.6} innerRadius={0.8} />
           <Axis name="percent" />
           <Legend
             position="right"
-            offsetY={-window.innerHeight / 2 + 120}
-            offsetX={-100}
+            offsetY={-80}
+            offsetX={-50}
           />
           <Tooltip
             showTitle={false}
@@ -101,6 +102,7 @@ class Donut extends React.Component {
           >
             <Label
               content="percent"
+              padding={10}
               formatter={(val, item) => {
                 return `${item.point.item }: ${ val}`;
               }}

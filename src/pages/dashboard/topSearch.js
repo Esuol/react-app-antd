@@ -79,6 +79,7 @@ class TopSearch extends React.Component {
    return (
     <section>
       <Card
+      style={{height: 520}}
       bordered={false}
       bodyStyle={{ padding: 0 }}
       loading={interviewLoading}

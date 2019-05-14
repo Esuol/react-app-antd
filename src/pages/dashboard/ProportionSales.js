@@ -44,6 +44,7 @@ class ProportionSales extends React.Component {
 
     return (
       <Card
+        style={{height: 520}}
         bordered={false}
         loading={interviewLoading}
         title={title}

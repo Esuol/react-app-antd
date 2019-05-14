@@ -22,11 +22,12 @@ class Analyze extends React.Component {
           <SaleCard></SaleCard>
         </Suspense>
 
-        <div style={{marginTop: '30px'}}>
+        <div style={{marginTop: '20px'}}>
           <Row gutter={24}>
               <Col xl={12} lg={24} md={24} sm={24} xs={24}>
                 <Suspense fallback={null}>
                   <TopSearch
+                  className="topSearch"
                   title="线上热门搜索"
                   smallTitleFirst="总销售额"
                   smallTitleSecond="搜索次数"
@@ -35,8 +36,10 @@ class Analyze extends React.Component {
               </Col>
               <Col xl={12} lg={24} md={24} sm={24} xs={24}>
                 <Suspense fallback={null}>
+                  <div className="proportionSales">
                   <ProportionSales
-                  title="销售额类别占比" />
+                    title="销售额类别占比" />
+                  </div>
                 </Suspense>
               </Col>
             </Row>
