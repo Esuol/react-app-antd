@@ -7,6 +7,7 @@ import Loading from '../../components/jumpLoading/jumpLoading'
 const IntroduceRow = React.lazy(() => import('./IntroduceRow.js'))
 const SaleCard = React.lazy(() => import('./saleCard'))
 const TopSearch = React.lazy(() => import('./topSearch'))
+const ProportionSales = React.lazy(() => import('./ProportionSales'))
 
 class Analyze extends React.Component {
 
@@ -34,7 +35,8 @@ class Analyze extends React.Component {
               </Col>
               <Col xl={12} lg={24} md={24} sm={24} xs={24}>
                 <Suspense fallback={null}>
-
+                  <ProportionSales
+                  title="销售额类别占比" />
                 </Suspense>
               </Col>
             </Row>
