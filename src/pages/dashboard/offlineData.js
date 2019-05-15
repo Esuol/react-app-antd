@@ -1,13 +1,14 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/prefer-stateless-function */
 /* eslint-disable no-unused-vars */
 import React, { memo } from 'react';
 import { connect } from 'react-redux'
 import { Card, Tabs, Row, Col } from 'antd';
-import api from '../../services/index'
-import { analyizeAction } from '../../store/actions'
-import Pie from '../../components/charts/pie'
-import TimelineChart from '../../components/charts/timeLineChart'
-import timeData from '../../components/charts/timeLineChart/data'
+import api from '@/services/index'
+import { analyizeAction } from '@/store/actions'
+import Pie from '@/components/charts/pie'
+import TimelineChart from '@/components/charts/timeLineChart'
+import timeData from '@/components/charts/timeLineChart/data'
 
 const { TabPane } = Tabs
 const ftStyle = { color: 'rgba(0, 0, 0, 0.45)',

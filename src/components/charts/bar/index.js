@@ -45,7 +45,6 @@ class BasicBar extends React.Component {
     }
     const minWidth = data.length * 30;
     const { autoHideXLabels } = this.state;
-    console.log(autoHideXLabels)
 
     if (canvasWidth <= minWidth) {
       if (!autoHideXLabels) {
