@@ -83,7 +83,7 @@ class Donut extends React.Component {
               content="percent"
               padding={10}
               formatter={(val, item) => {
-                return `${item.point.item }: ${val * 100}`;
+                return `${item.point.item }: ${val.substring(0, val.length - 1).slice(0,4)}%`;
               }}
             />
           </Geom>

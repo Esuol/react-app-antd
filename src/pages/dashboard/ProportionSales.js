@@ -83,6 +83,9 @@ class ProportionSales extends React.Component {
         title={title}
         bodyStyle={{ paddingTop: 10 }}
         extra={ <SelectPicker title={['全部渠道', '线上', '门店']} onChangeSelect={this.onChangeSelect} /> }>
+        <h4 style={{ marginTop: 10 }}>
+          销售额
+        </h4>
         <Pie
          data={pieData} />
       </Card>
