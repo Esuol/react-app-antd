@@ -7,10 +7,10 @@ import {
   Tooltip,
   Legend,
 } from "bizcharts";
+import autoHeight from '../autoHeight'
 
+@autoHeight()
 class Stacked extends React.Component {
-
-
   render() {
     const {data, height, name, type} = this.props
 

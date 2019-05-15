@@ -10,12 +10,25 @@ import TimelineChart from '../../components/charts/timeLineChart'
 import timeData from '../../components/charts/timeLineChart/data'
 
 const { TabPane } = Tabs
+const ftStyle = { color: 'rgba(0, 0, 0, 0.45)',
+                  fontSize: '14px',
+                  lineHeight: '22px',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  wordBreak: 'break-all',
+                  marginBottom: '20px',
+                  marginTop: '20px' }
 
 const CustomTab = ({ data, currentTabKey: currentKey, pieData }) => (
   <Row gutter={8} style={{ width: 138, margin: '8px 0' }}>
     <Col span={12}>
-
-
+     <section>
+      <h4>{data.name}</h4>
+      <div style={{display: 'flex', flexDirection: 'column', cursor: 'none'}}>
+        <span style={ftStyle}>转化率</span>
+        <span style={ftStyle}>{`${data.cvr }%`}</span>
+      </div>
+     </section>
     </Col>
     <Col span={12} style={{ paddingTop: 36 }}>
         <Pie
@@ -26,7 +39,7 @@ const CustomTab = ({ data, currentTabKey: currentKey, pieData }) => (
          margin={[0, 0, 0, 0]}
          padding={[0, 40, 0, 40]}
          data={pieData}
-         height={60} />
+         height={65} />
     </Col>
   </Row>
 );
