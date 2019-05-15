@@ -7,6 +7,7 @@ import api from '../../services/index'
 import { analyizeAction } from '../../store/actions'
 import Pie from '../../components/charts/pie'
 import TimelineChart from '../../components/charts/timeLineChart'
+import timeData from '../../components/charts/timeLineChart/data'
 
 const { TabPane } = Tabs
 
@@ -43,8 +44,6 @@ const mapDis = {
 class OfflineData extends React.Component{
 
   async componentWillMount () {
-    const timeLineData = await api.dataAnalyize.timeLineData()
-    this.timeLineData = timeLineData.payload
     const pieData = await api.dataAnalyize.pieDataSmall()
     this.pieData = pieData.payload
 
@@ -74,7 +73,7 @@ class OfflineData extends React.Component{
             <div style={{ padding: '0 24px' }}>
               <TimelineChart
                 height={400}
-                data={this.timeLineData}
+                data={timeData}
               />
             </div>
           </TabPane>
