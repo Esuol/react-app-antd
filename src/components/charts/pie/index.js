@@ -17,7 +17,7 @@ class Donut extends React.Component {
   render() {
     const { DataView } = DataSet;
     const { Html } = Guide;
-    const { data } = this.props
+    const { data, height } = this.props
     const dv = new DataView();
     dv.source(data).transform({
       type: "percent",
@@ -39,13 +39,14 @@ class Donut extends React.Component {
           data={dv}
           scale={cols}
           forceFit
+          height={height}
           padding={[0, 40, 0, 40]}
         >
           <Coord type="theta" radius={0.6} innerRadius={0.8} />
           <Axis name="percent" />
           <Legend
             position="right"
-            offsetY={-360}
+            offsetY={-250}
             offsetX={-50}
           />
           <Tooltip

@@ -87,7 +87,8 @@ class ProportionSales extends React.Component {
           销售额
         </h4>
         <Pie
-         data={pieData} />
+         data={pieData}
+         height={400} />
       </Card>
     )
   }
