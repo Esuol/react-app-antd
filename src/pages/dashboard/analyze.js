@@ -3,15 +3,30 @@ import React,{Suspense} from 'react'
 import {Row, Col} from 'antd'
 // import api from '../../services'
 import Loading from '../../components/jumpLoading/jumpLoading'
+import api from '../../services/index'
 
 const IntroduceRow = React.lazy(() => import('./IntroduceRow.js'))
 const SaleCard = React.lazy(() => import('./saleCard'))
 const TopSearch = React.lazy(() => import('./topSearch'))
 const ProportionSales = React.lazy(() => import('./ProportionSales'))
+const OfflineData = React.lazy(() => import('./offlineData'))
 
 class Analyze extends React.Component {
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      offlineData: []
+    }
+  }
+
+  async componentWillMount () {
+    const offlineData = await api.dataAnalyize.offlineData()
+    this.setState(() => ({offlineData: offlineData.payload}))
+  }
+
   render () {
+    const { offlineData } = this.state
     return (
       <div>
         <Suspense fallback={<Loading />}>
@@ -44,6 +59,12 @@ class Analyze extends React.Component {
               </Col>
             </Row>
         </div>
+
+        <Suspense fallback={null}>
+        {offlineData.length > 0
+        ? <OfflineData offlineData={offlineData} />
+        : null}
+        </Suspense>
       </div>
 
     )

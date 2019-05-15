@@ -87,6 +87,11 @@ class ProportionSales extends React.Component {
           销售额
         </h4>
         <Pie
+         html="<div style=&quot;color:#8c8c8c;font-size:1.16em;text-align: center;width: 10em;&quot;>Berlin<br><span style=&quot;color:#262626;font-size:2.5em&quot;></span>定制</div>"
+         hasLegend
+         innerRadius={0.8}
+         radius={0.6}
+         padding={[0, 40, 0, 40]}
          data={pieData}
          height={400} />
       </Card>

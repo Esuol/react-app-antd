@@ -7,6 +7,8 @@ const url = {
   pieDataOne: 'http://antdReact.com/dataAnalyize/pieData/one',
   pieDataTwo: 'http://antdReact.com/dataAnalyize/pieData/two',
   pieDataThree: 'http://antdReact.com/dataAnalyize/pieData/three',
+  offlineData: 'http://antdReact.com/dataAnalyize/offlineData',
+  timeLineData: 'http://antdReact.com/dataAnalyize/timeLineData'
 }
 export default [
     Mock.mock(url.saleData, {
@@ -77,6 +79,31 @@ Mock.mock(url.pieDataThree, {
           "count|+1":Random.range(2, 100, 9),
           "item|+1": [Random.ctitle(3)
           ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
+        }
+      ]
+  },
+}),
+Mock.mock(url.offlineData, {
+  'data':{
+      'status': "ok",
+      "payload|10": [
+        {
+          "cvr|+1":Random.range(10, 100, 5),
+          "name|+1": [Random.ctitle(3)
+          ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
+        }
+      ]
+  },
+}),
+Mock.mock(url.timeLineData, {
+  'data':{
+      'status': "ok",
+      "payload|30": [
+        {
+          "year": '@DATETIME("yyyy")',
+          "value|200-500": 200,
+          "country|+1": [Random.word(5)
+          ,Random.word(5),Random.word(5),Random.word(5),Random.word(5),Random.word(5),Random.word(5),Random.word(5),Random.word(5),Random.word(5),Random.word(5),Random.word(5)]
         }
       ]
   },

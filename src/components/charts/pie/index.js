@@ -10,14 +10,14 @@ import {
   Guide
 } from "bizcharts";
 import DataSet from "@antv/data-set";
+import autoHeight from '../autoHeight';
 
-
-
-class Donut extends React.Component {
+@autoHeight()
+class Pie extends React.Component {
   render() {
     const { DataView } = DataSet;
     const { Html } = Guide;
-    const { data, height } = this.props
+    const { data, height, hasLegend, html, padding, radius, innerRadius } = this.props
     const dv = new DataView();
     dv.source(data).transform({
       type: "percent",
@@ -40,27 +40,32 @@ class Donut extends React.Component {
           scale={cols}
           forceFit
           height={height}
-          padding={[0, 40, 0, 40]}
+          padding={padding}
         >
-          <Coord type="theta" radius={0.6} innerRadius={0.8} />
+          <Coord type="theta" radius={radius} innerRadius={innerRadius} />
           <Axis name="percent" />
-          <Legend
-            position="right"
-            offsetY={-250}
-            offsetX={-50}
-          />
+          { hasLegend
+           ? <Legend
+              position="right"
+              offsetY={-250}
+              offsetX={-50}
+            />
+          : null}
+
           <Tooltip
             showTitle={false}
             itemTpl="<li><span style=&quot;background-color:{color};&quot; class=&quot;g2-tooltip-marker&quot;></span>{name}: {value}</li>"
           />
-          <Guide>
-            <Html
-              position={["50%", "50%"]}
-              html="<div style=&quot;color:#8c8c8c;font-size:1.16em;text-align: center;width: 10em;&quot;>主机<br><span style=&quot;color:#262626;font-size:2.5em&quot;>200</span>台</div>"
-              alignX="middle"
-              alignY="middle"
-            />
-          </Guide>
+
+          {html && <Guide>
+              <Html
+                position={["50%", "50%"]}
+                html={html}
+                alignX="middle"
+                alignY="middle"
+              />
+            </Guide> }
+
           <Geom
             type="intervalStack"
             position="percent"
@@ -94,4 +99,4 @@ class Donut extends React.Component {
   }
 }
 
-export default Donut
+export default Pie
