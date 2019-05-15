@@ -12,7 +12,7 @@ class Stacked extends React.Component {
 
 
   render() {
-    const {data, height} = this.props
+    const {data, height, name, type} = this.props
 
    const cols = {
       year: {
@@ -23,12 +23,12 @@ class Stacked extends React.Component {
     return (
       <div>
         <Chart height={height} data={data} scale={cols} forceFit>
-          <Axis name="year" />
-          <Axis name="value" />
+          <Axis name={name[0]} />
+          <Axis name={name[1]} />
           <Legend />
           <Tooltip
             crosshairs={{
-              type: "line"
+              type
             }}
           />
 

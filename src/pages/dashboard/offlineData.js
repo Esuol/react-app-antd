@@ -72,6 +72,8 @@ class OfflineData extends React.Component{
           <TabPane tab={<CustomTab data={item} currentTabKey={defaultKey} pieData={this.pieData} />} key={item.name}>
             <div style={{ padding: '0 24px' }}>
               <TimelineChart
+                name={['year','value']}
+                type='line'
                 height={400}
                 data={timeData}
               />
