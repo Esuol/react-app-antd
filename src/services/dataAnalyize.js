@@ -9,6 +9,7 @@ export default {
   pieDataOne: data => service.get('/dataAnalyize/pieData/one', data),
   pieDataTwo: data => service.get('/dataAnalyize/pieData/two', data),
   pieDataThree: data => service.get('/dataAnalyize/pieData/three', data),
+  pieDataSmall: data => service.get('/dataAnalyize/pieDataSmall', data),
   offlineData: data => service.get('/dataAnalyize/offlineData', data),
   timeLineData: data => service.get('/dataAnalyize/timeLineData', data)
 }

@@ -18,14 +18,14 @@ const CustomTab = ({ data, currentTabKey: currentKey, pieData }) => (
     </Col>
     <Col span={12} style={{ paddingTop: 36 }}>
         <Pie
-         html="<div style=&quot;color:#8c8c8c;font-size:1.16em;text-align: center;width: 10em;&quot;>Berlin<br><span style=&quot;color:#262626;font-size:2.5em&quot;></span>定制</div>"
-         hasLegend
-         innerRadius={0.8}
-         radius={0.6}
+         label={false}
+         toolTip={false}
+         innerRadius={1.8}
+         radius={1}
          margin={[0, 0, 0, 0]}
          padding={[0, 40, 0, 40]}
          data={pieData}
-         height={400} />
+         height={60} />
     </Col>
   </Row>
 );
@@ -45,7 +45,7 @@ class OfflineData extends React.Component{
   async componentWillMount () {
     const timeLineData = await api.dataAnalyize.timeLineData()
     this.timeLineData = timeLineData.payload
-    const pieData = await api.dataAnalyize.pieDataOne()
+    const pieData = await api.dataAnalyize.pieDataSmall()
     this.pieData = pieData.payload
 
     setTimeout(() => {

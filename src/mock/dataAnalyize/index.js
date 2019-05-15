@@ -7,6 +7,7 @@ const url = {
   pieDataOne: 'http://antdReact.com/dataAnalyize/pieData/one',
   pieDataTwo: 'http://antdReact.com/dataAnalyize/pieData/two',
   pieDataThree: 'http://antdReact.com/dataAnalyize/pieData/three',
+  pieDataSmall: 'http://antdReact.com/dataAnalyize/pieDataSmall',
   offlineData: 'http://antdReact.com/dataAnalyize/offlineData',
   timeLineData: 'http://antdReact.com/dataAnalyize/timeLineData'
 }
@@ -77,6 +78,18 @@ Mock.mock(url.pieDataThree, {
       "payload|5": [
         {
           "count|+1":Random.range(2, 100, 9),
+          "item|+1": [Random.ctitle(3)
+          ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
+        }
+      ]
+  },
+}),
+Mock.mock(url.pieDataSmall, {
+  'data':{
+      'status': "ok",
+      "payload|2": [
+        {
+          "count|+1":Random.range(40, 100, 20),
           "item|+1": [Random.ctitle(3)
           ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
         }

@@ -17,7 +17,7 @@ class Pie extends React.Component {
   render() {
     const { DataView } = DataSet;
     const { Html } = Guide;
-    const { data, height, hasLegend, html, padding, radius, innerRadius } = this.props
+    const { data, height, hasLegend, html, padding, radius, innerRadius, toolTip, label } = this.props
     const dv = new DataView();
     dv.source(data).transform({
       type: "percent",
@@ -52,10 +52,13 @@ class Pie extends React.Component {
             />
           : null}
 
-          <Tooltip
+          {toolTip
+          ? <Tooltip
             showTitle={false}
             itemTpl="<li><span style=&quot;background-color:{color};&quot; class=&quot;g2-tooltip-marker&quot;></span>{name}: {value}</li>"
           />
+          : null}
+
 
           {html && <Guide>
               <Html
@@ -65,7 +68,6 @@ class Pie extends React.Component {
                 alignY="middle"
               />
             </Guide> }
-
           <Geom
             type="intervalStack"
             position="percent"
@@ -85,13 +87,14 @@ class Pie extends React.Component {
               stroke: "#fff"
             }}
           >
-            <Label
+          {label && <Label
               content="percent"
               padding={10}
               formatter={(val, item) => {
                 return `${item.point.item }: ${val.substring(0, val.length - 1).slice(0,4)}%`;
               }}
-            />
+            />}
+
           </Geom>
         </Chart>
       </div>
