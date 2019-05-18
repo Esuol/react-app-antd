@@ -92,7 +92,8 @@
     "start": "node scripts/start.js & node server.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "precommit": "NODE_ENV=production lint-staged"
+    "precommit": "NODE_ENV=production lint-staged",
+    "deploy": "sh build.sh"
   },
   "browserslist": [
     ">0.2%",
