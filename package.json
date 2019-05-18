@@ -1,6 +1,16 @@
 {
-  "name": "my-app",
+  "name": "react-app-antd",
   "version": "0.1.0",
+  "author": "berlin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/berlinen/react-app-antd"
+  },
+  "bugs": {
+    "url": "https://github.com/berlinen/react-app-antd/issues"
+  },
+  "homepage": "https://berlinen.github.io/react-app-antd/",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@antv/data-set": "^0.10.2",
