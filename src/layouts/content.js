@@ -36,7 +36,7 @@ export default class Contents extends React.Component {
           >
             <Switch>
               {routes}
-              <Redirect from="/" to="/dashboard/analyze" />
+              <Redirect from="/" to="/login" />
             </Switch>
 
           </Content>
