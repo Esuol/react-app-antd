@@ -59,7 +59,6 @@ class Pie extends React.Component {
           />
           : null}
 
-
           {html && <Guide>
               <Html
                 position={["50%", "50%"]}

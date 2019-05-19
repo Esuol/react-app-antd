@@ -13,6 +13,7 @@ import autoHeight from '../autoHeight'
 class Areanull extends React.PureComponent {
 
   render() {
+
     const { data, height, isHasAxis, isHasLegend, isHasTypeLine, scale={}, color = 'rgba(24, 144, 255, 0.2)', borderColor = '#1089ff' } = this.props
 
     const scaleProps = {
