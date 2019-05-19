@@ -72,6 +72,7 @@ class charCard extends React.Component {
               <Areanull
               height={50}
               isHasAxis={false}
+              color="#975FE4"
               isHasLegend={false}
               data={this.visitorData} />
             </div>

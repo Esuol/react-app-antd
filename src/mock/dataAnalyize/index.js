@@ -28,7 +28,7 @@ export default [
           'status': "ok",
           "payload|20": [
             {
-              "year": '@DATETIME("yyyy")',
+              "x": '@DATETIME("yyyy")',
               "y|60-100": 60
             }
           ]

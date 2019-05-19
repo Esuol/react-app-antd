@@ -10,37 +10,34 @@ import {
 import autoHeight from '../autoHeight'
 
 @autoHeight()
-class Areanull extends React.Component {
+class Areanull extends React.PureComponent {
 
   render() {
 
-    const { data, height, isHasAxis, isHasLegend, isHasTypeLine, scale = {} } = this.props
+    const { data, height, isHasAxis, isHasLegend, isHasTypeLine, scale={}, color = 'rgba(24, 144, 255, 0.2)', borderColor = '#1089ff' } = this.props
 
     console.log(data)
-
-    // const scale = {
-    //   value: {
-    //     formatter(val) {
-    //       return `$${ val}`;
-    //     }
-    //   },
-    //   year: {
-    //     range: [0, 1]
-    //   }
-    // };
-
 
     const scaleProps = {
       x: {
         type: 'cat',
         range: [0, 1],
-        ...scale.year,
+        ...scale.x,
       },
       y: {
         min: 0,
         ...scale.y,
       },
     };
+
+    const tooltip = [
+      'x*y',
+      (x, y) => ({
+        name: x,
+        value: y,
+      }),
+    ];
+
     return (
       <div>
         <Chart
@@ -62,14 +59,15 @@ class Areanull extends React.Component {
           ? <Legend />
           : null}
 
-          <Tooltip crosshairs />
+          <Tooltip showTitle={false} crosshairs={false} />
 
-          <Geom type="area" position="year*value" color={isHasTypeLine ? '#BBDEFB' : 'type'} shape="smooth" />
+          <Geom type="area" position="x*y" shape="smooth" tooltip={tooltip} color={color} />
+
           { isHasTypeLine
           ? <Geom
             type="line"
-            position="year*value"
-            color="type"
+            color={borderColor}
+            position="x*y"
             shape="smooth"
             size={2}
           />
