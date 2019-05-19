@@ -21,8 +21,8 @@ class Pie extends React.Component {
     const dv = new DataView();
     dv.source(data).transform({
       type: "percent",
-      field: "count",
-      dimension: "item",
+      field: "x",
+      dimension: "y",
       as: "percent"
     });
     const cols = {
@@ -71,13 +71,13 @@ class Pie extends React.Component {
           <Geom
             type="intervalStack"
             position="percent"
-            color="item"
+            color="y"
             tooltip={[
-              "item*percent",
-              (item, percent) => {
+              "y*percent",
+              (y, percent) => {
                 percent = `${percent}%`;
                 return {
-                  name: item,
+                  name: y,
                   value: percent
                 };
               }
@@ -91,7 +91,7 @@ class Pie extends React.Component {
               content="percent"
               padding={10}
               formatter={(val, item) => {
-                return `${item.point.item }: ${val.substring(0, val.length - 1).slice(0,4)}%`;
+                return `${item.point.y }: ${val.substring(0, val.length - 1).slice(0,4)}%`;
               }}
             />}
 

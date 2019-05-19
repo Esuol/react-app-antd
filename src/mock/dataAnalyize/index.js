@@ -53,8 +53,8 @@ Mock.mock(url.pieDataOne, {
       'status': "ok",
       "payload|5": [
         {
-          "count|+1":Random.range(10, 100, 5),
-          "item|+1": [Random.ctitle(3)
+          "x|+1":Random.range(10, 100, 5),
+          "y|+1": [Random.ctitle(3)
           ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
         }
       ]
@@ -65,8 +65,8 @@ Mock.mock(url.pieDataTwo, {
       'status': "ok",
       "payload|5": [
         {
-          "count|+1":Random.range(4, 100, 8),
-          "item|+1": [Random.ctitle(3)
+          "x|+1":Random.range(4, 100, 8),
+          "y|+1": [Random.ctitle(3)
           ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
         }
       ]
@@ -77,8 +77,8 @@ Mock.mock(url.pieDataThree, {
       'status': "ok",
       "payload|5": [
         {
-          "count|+1":Random.range(2, 100, 9),
-          "item|+1": [Random.ctitle(3)
+          "x|+1":Random.range(2, 100, 9),
+          "y|+1": [Random.ctitle(3)
           ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
         }
       ]
@@ -89,8 +89,8 @@ Mock.mock(url.pieDataSmall, {
       'status': "ok",
       "payload|2": [
         {
-          "count|+1":Random.range(40, 100, 20),
-          "item|+1": [Random.ctitle(3)
+          "x|+1":Random.range(40, 100, 20),
+          "y|+1": [Random.ctitle(3)
           ,Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3),Random.ctitle(3)]
         }
       ]
