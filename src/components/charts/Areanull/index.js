@@ -7,7 +7,6 @@ import {
   Legend,
   Tooltip
 } from "bizcharts";
-import DataSet from "@antv/data-set";
 import autoHeight from '../autoHeight'
 
 @autoHeight()
@@ -15,38 +14,48 @@ class Areanull extends React.Component {
 
   render() {
 
-    const { visitorData, height, isHasAxis, isHasLegend, isHasTypeLine } = this.props
+    const { data, height, isHasAxis, isHasLegend, isHasTypeLine, scale = {} } = this.props
 
-    const dv = new DataSet.View().source(visitorData);
+    console.log(data)
 
-    dv.transform({
-      type: "fold",
-      fields: ["y"],
-      key: "type",
-      value: "value"
-    });
+    // const scale = {
+    //   value: {
+    //     formatter(val) {
+    //       return `$${ val}`;
+    //     }
+    //   },
+    //   year: {
+    //     range: [0, 1]
+    //   }
+    // };
 
-    const scale = {
-      value: {
-        formatter(val) {
-          return `$${ val}`;
-        }
+
+    const scaleProps = {
+      x: {
+        type: 'cat',
+        range: [0, 1],
+        ...scale.year,
       },
-      year: {
-        range: [0, 1]
-      }
+      y: {
+        min: 0,
+        ...scale.y,
+      },
     };
     return (
       <div>
         <Chart
           height={height}
-          data={dv}
+          data={data}
           padding="auto"
-          scale={scale}
+          scale={scaleProps}
           forceFit
         >
           { isHasAxis
-          ? <Axis />
+          ? <Axis
+            label={false}
+            line={false}
+            tickLine={false}
+            grid={false}/>
           : null}
 
           { isHasLegend

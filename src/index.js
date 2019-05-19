@@ -11,8 +11,8 @@ import './global.less'
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-          <App />
+    <Router history={history} basename="myapp">
+        <App />
     </Router>
   </Provider>
 

@@ -73,7 +73,7 @@ class charCard extends React.Component {
               height={50}
               isHasAxis={false}
               isHasLegend={false}
-              visitorData={this.visitorData} />
+              data={this.visitorData} />
             </div>
           : null}
 
