@@ -9,24 +9,15 @@ import {
   Legend,
   Guide
 } from "bizcharts";
-import DataSet from "@antv/data-set";
 import autoHeight from '../autoHeight';
 
 @autoHeight()
 class Pie extends React.Component {
   render() {
-    const { DataView } = DataSet;
     const { Html } = Guide;
     const { data, height, hasLegend, html, padding, radius, innerRadius, toolTip, label } = this.props
-    const dv = new DataView();
-    dv.source(data).transform({
-      type: "percent",
-      field: "x",
-      dimension: "y",
-      as: "percent"
-    });
     const cols = {
-      percent: {
+      x: {
         formatter: val => {
           val = `${val * 100}%`;
           return val;
@@ -36,14 +27,14 @@ class Pie extends React.Component {
     return (
       <div>
         <Chart
-          data={dv}
+          data={data}
           scale={cols}
           forceFit
           height={height}
           padding={padding}
         >
           <Coord type="theta" radius={radius} innerRadius={innerRadius} />
-          <Axis name="percent" />
+          <Axis name="x" />
           { hasLegend
            ? <Legend
               position="right"
@@ -69,15 +60,15 @@ class Pie extends React.Component {
             </Guide> }
           <Geom
             type="intervalStack"
-            position="percent"
+            position="x"
             color="y"
             tooltip={[
-              "y*percent",
-              (y, percent) => {
-                percent = `${percent}%`;
+              "y*x",
+              (y, x) => {
+                x = `${x}%`;
                 return {
                   name: y,
-                  value: percent
+                  value: x
                 };
               }
             ]}
@@ -90,10 +81,9 @@ class Pie extends React.Component {
               content="percent"
               padding={10}
               formatter={(val, item) => {
-                return `${item.point.y }: ${val.substring(0, val.length - 1).slice(0,4)}%`;
+                return `${item.point.y }: ${item.point.x}%`;
               }}
             />}
-
           </Geom>
         </Chart>
       </div>
