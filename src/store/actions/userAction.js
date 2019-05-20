@@ -48,7 +48,7 @@ export function fetchLogin(data) {
       dispatch(fetchLoginSuccess(request))
       // history.push('/dashboard/monitor')
       message.success('登录成功')
-      window.location.href="/dashboard/analyze"
+      window.location.href="/myapp/dashboard/analyze"
     }
     else dispatch(fetchLoginFailure())
   }

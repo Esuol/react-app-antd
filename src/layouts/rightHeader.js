@@ -1,13 +1,14 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import {Icon, Avatar, Input, Popover, Badge, message} from 'antd'
 import Animate from 'rc-animate'
-import history from '../history'
 import api from '../services'
 
 const { Search } = Input
 
+@withRouter
 class RightHeader extends React.Component {
 
   state = {
@@ -31,9 +32,10 @@ class RightHeader extends React.Component {
   }
 
   logout = async () => {
+    const { history } = this.props
     const request = await api.users.logout()
     if(request.status === 'ok'){
-      history.push('/login')
+      history.push('/myapp/login')
       message.success('退出成功')
 
     }
