@@ -57,11 +57,22 @@ function mapStoP(state){
 
 class TopSearch extends React.Component {
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      visitorData: [],
+      searchList: []
+    }
+  }
+
   async componentDidMount () {
     const visitorData = await api.dataAnalyize.getSVisitorData()
-    this.visitorData = visitorData.payload
     const searchList = await api.dataAnalyize.searchList()
-    this.searchList = searchList.payload
+
+    this.setState(() => ({
+      visitorData: visitorData.payload,
+      searchList: searchList.payload
+    }))
 
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
@@ -75,6 +86,7 @@ class TopSearch extends React.Component {
 
   render () {
    const { interviewLoading, title, smallTitleFirst, smallTitleSecond, icon } = this.props
+   const { searchList, visitorData } = this.state
 
    return (
     <section>
@@ -107,14 +119,14 @@ class TopSearch extends React.Component {
                   height={50}
                   isHasAxis={false}
                   isHasLegend={false}
-                  data={this.visitorData} />
+                  data={visitorData} />
               </section>
               </Col>
           </Row>
         </div>
         <Table
          style={{marginBottom: '10px'}}
-         dataSource={this.searchList}
+         dataSource={searchList}
          rowKey={record => record.index}
          size="small"
          columns={columns}

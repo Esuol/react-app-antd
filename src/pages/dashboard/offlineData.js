@@ -57,9 +57,16 @@ const mapDis = {
 
 class OfflineData extends React.Component{
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      pieData: []
+    }
+  }
+
   async componentWillMount () {
     const pieData = await api.dataAnalyize.pieDataSmall()
-    this.pieData = pieData.payload
+    this.setState( () => ({pieData: pieData.payload}) )
 
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
@@ -73,6 +80,7 @@ class OfflineData extends React.Component{
 
   render () {
     const { interviewLoading, offlineData } = this.props
+    const { pieData } = this.state
     const defaultKey = offlineData[0].name
 
     return (
@@ -83,7 +91,7 @@ class OfflineData extends React.Component{
     >
       <Tabs activeKey={defaultKey}>
         {offlineData.map(item => (
-          <TabPane tab={<CustomTab data={item} currentTabKey={defaultKey} pieData={this.pieData} />} key={item.name}>
+          <TabPane tab={<CustomTab data={item} currentTabKey={defaultKey} pieData={pieData} />} key={item.name}>
             <div style={{ padding: '0 24px' }}>
               <TimelineChart
                 name={['year','value']}

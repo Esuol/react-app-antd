@@ -22,9 +22,19 @@ function mapStoP(state){
 
 class SaleCards extends React.Component{
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      bardata: []
+    }
+  }
+
   async componentDidMount () {
     const bardata = await api.dataAnalyize.getSaleData()
-    this.bardata = bardata.payload
+
+    this.setState(() => ({
+      bardata: bardata.payload
+    }))
 
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
@@ -38,6 +48,7 @@ class SaleCards extends React.Component{
 
  render () {
   const {interviewLoading} = this.props
+  const {bardata} = this.state
   const rankList = [
     {index: 0, name: '工专路 0 号店', value: '321,234', active: true},
     {index: 1, name: '工专路 1 号店', value: '321,234', active: true},
@@ -61,7 +72,7 @@ class SaleCards extends React.Component{
           <Row style={{paddingBottom: 20}}>
             <Col xl={16} lg={12} md={12} sm={24} xs={24}>
               <div className="barWrap">
-                <Bar data={this.bardata}
+                <Bar data={bardata}
                     isHasAxis
                     title="销售量趋势"
                     height={250}
@@ -79,7 +90,7 @@ class SaleCards extends React.Component{
           <Row>
             <Col xl={16} lg={12} md={12} sm={24} xs={24}>
               <div className="barWrap">
-                <Bar data={this.bardata}
+                <Bar data={bardata}
                     isHasAxis
                     title="访问量趋势"
                     height={250}

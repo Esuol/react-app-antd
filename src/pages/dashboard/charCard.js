@@ -24,11 +24,22 @@ const mapDispatchToProps = {
 
 class charCard extends React.Component {
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      visitorData: [],
+      bardata: []
+    }
+  }
+
   async componentDidMount () {
     const visitorData = await api.dataAnalyize.getSVisitorData()
-    this.visitorData = visitorData.payload
+
     const bardata = await api.dataAnalyize.getSaleData()
-    this.bardata = bardata.payload
+    this.setState(() => ({
+      visitorData: visitorData.payload,
+      bardata: bardata.payload
+    }))
 
     setTimeout(() => {
       this.ModifyInterviewLoading(false)
@@ -42,6 +53,7 @@ class charCard extends React.Component {
 
   render () {
     const {title, icon, desNum, componentName, dayDesc, interviewLoading} = this.props
+    const { visitorData, bardata } = this.state
 
     return (
       <section>
@@ -74,13 +86,13 @@ class charCard extends React.Component {
               isHasAxis={false}
               color="#975FE4"
               isHasLegend={false}
-              data={this.visitorData} />
+              data={visitorData} />
             </div>
           : null}
 
         {componentName === 'payChart'
           ? <div style={{marginTop: '10px', height: '30px'}}>
-             <Bar data={this.bardata}
+             <Bar data={bardata}
              isHasAxis={false}
              height={50}
              padding={0} />
