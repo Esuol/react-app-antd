@@ -20,7 +20,7 @@ class Analyze extends React.Component {
     }
   }
 
-  async componentWillMount () {
+  async componentDidMount () {
     const offlineData = await api.dataAnalyize.offlineData()
     this.setState(() => ({offlineData: offlineData.payload}))
   }

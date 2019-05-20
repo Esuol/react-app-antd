@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox} from 'antd';
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { userAction } from '../../store/actions'
 import './index.less'
 
+@withRouter
 class LoginForm extends React.Component {
   fetchLogin = () => {
     const { fetchLogin } = this.props
@@ -12,13 +14,15 @@ class LoginForm extends React.Component {
   }
 
    handleSubmit = (e) => {
-    const { form } = this.props
+    const { form, history } = this.props
+
     e.preventDefault();
     form.validateFields(async (err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
       }
-      this.fetchLogin(values)
+      await this.fetchLogin(values)
+      history.push('/dashboard/analyze')
     });
   }
 

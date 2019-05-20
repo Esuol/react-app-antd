@@ -47,7 +47,7 @@ class SiderDemo extends React.Component {
     drawerSettingVisible: false
   };
 
-  componentDidMount () {
+  componentWillMount () {
     if(document.body.clientWidth === 0) {
       setTimeout(() => {
         this.setState( () => ({currentWidth: document.body.clientWidth}))

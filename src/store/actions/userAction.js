@@ -1,9 +1,7 @@
 /* eslint-disable no-undef */
-import { message} from 'antd';
 import * as actionTypes from './actionTypes'
 import api from '../../services/index'
 import { setToken } from '../../utils/token'
-// import history from '../../history'
 
 export const {
   FETCH_LOGIN_BEGIN,
@@ -47,8 +45,6 @@ export function fetchLogin(data) {
       setToken(request.token)
       dispatch(fetchLoginSuccess(request))
       // history.push('/dashboard/monitor')
-      message.success('登录成功')
-      window.location.href="/myapp/dashboard/analyze"
     }
     else dispatch(fetchLoginFailure())
   }

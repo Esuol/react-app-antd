@@ -11,7 +11,7 @@ class Resgister extends React.Component {
   render () {
     const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(RegisterForm);
     return (
-      <div className="wrap">
+      <div className="wrapForm">
         <Particles
               params={ priticleParams }
               className="login"

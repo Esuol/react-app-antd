@@ -107,7 +107,7 @@ class TopSearch extends React.Component {
                     height={50}
                     isHasAxis={false}
                     isHasLegend={false}
-                    data={this.visitorData} />
+                    data={visitorData} />
                 </section>
               </Col>
               <Col sm={12} xs={24}>
