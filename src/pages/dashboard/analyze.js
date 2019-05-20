@@ -28,7 +28,7 @@ class Analyze extends React.Component {
   render () {
     const { offlineData } = this.state
     return (
-      <div>
+    <Suspense fallback={<Loading />} >
         <Suspense fallback={<Loading />}>
           <IntroduceRow />
         </Suspense>
@@ -65,7 +65,7 @@ class Analyze extends React.Component {
         ? <OfflineData offlineData={offlineData} />
         : null}
         </Suspense>
-      </div>
+      </Suspense>
 
     )
   }
