@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox} from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message} from 'antd';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { userAction } from '../../store/actions'
@@ -22,6 +22,7 @@ class LoginForm extends React.Component {
         console.log('Received values of form: ', values);
       }
       await this.fetchLogin(values)
+      message.success('登陆成功')
       history.push('/dashboard/analyze')
     });
   }
