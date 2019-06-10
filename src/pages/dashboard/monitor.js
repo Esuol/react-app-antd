@@ -15,7 +15,7 @@ class Monitor extends React.Component {
     tabData: [
       {id: 1, title: '今日交易总额', content: '123,543,233元'},
       {id: 2, title: '销售目标完成率', content: '92%'},
-      {id: 3, title: '活动剩余时间', content: 'content'},
+      {id: 3, title: '活动剩余时间', content: 'COM'},
       {id: 4, title: '每秒交易总额', content: '123元'},
     ]
   }
