@@ -12,7 +12,7 @@
 # production
 /build
 
-# misc
+# misc // 
 .DS_Store
 .env.local
 .env.development.local
