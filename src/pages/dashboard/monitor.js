@@ -5,6 +5,7 @@ import {Row, Col, Card} from 'antd'
 import { connect } from 'react-redux'
 import MonitorTitle from './monitorTab'
 import ActiveChart from '../../components/ActiveChart'
+import Gauge from '../../components/charts/Gauge'
 import { analyizeAction } from '../../store/actions'
 import api from '../../services'
 import './monitor.less'
@@ -54,28 +55,32 @@ class Monitor extends React.Component {
 
     return (
         <Row gutter={24} className="mointorWrap">
+
           <Col xl={18} lg={24} md={24} sm={24} xs={24} style={{ marginBottom: 24 }}>
             <Card title="活动实时交易情况" bordered={false} loading={interviewLoading}>
               <MonitorTitle data={tabData} />
               <div className="mapImg">
                 <img
-                  className="mapImg"
+                  className="mapImgs"
                   src="https://gw.alipayobjects.com/zos/antfincdn/h%24wFbzuuzz/HBWnDEUXCnGnGrRfrpKa.png"
                   alt="map"
                 />
               </div>
             </Card>
           </Col>
+
           <Col xl={6} lg={24} md={24} sm={24} xs={24}>
             <Card title="活动情况预测" bordered={false} style={{ marginBottom: 24 }} loading={interviewLoading}>
                 <p className="f14px">目标评估</p>
                 <p className="f24px txtColor">目标评估</p>
                 <ActiveChart />
               </Card>
-              <Card title="券核效率" bordered={false}>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
+
+              <Card title="券核效率" bordered={false} style={{ marginBottom: 24 }} loading={interviewLoading}>
+                <Gauge
+                title="薪资过20k率"
+                height={180}
+                percent={25} />
               </Card>
           </Col>
         </Row>
