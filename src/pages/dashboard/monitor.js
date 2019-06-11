@@ -153,7 +153,7 @@ class Monitor extends React.Component {
               <WaterWave
                   height={196}
                   title='剩余工资未发'
-                  percent={34}
+                  percent={55}
                 />
             </div>
           </Card>
