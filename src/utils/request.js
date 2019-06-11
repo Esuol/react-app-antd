@@ -7,7 +7,7 @@ import NProgress from 'nprogress'
 import { getToken } from "./token"
 import history from '../history'
 import store from '../store/index'
-import { layoutAction } from '../store/actions';
+import { layoutAction, analyizeAction } from '../store/actions';
 
 const currentPathname = history.location.pathname
 
@@ -32,6 +32,7 @@ service.interceptors.request.use(config => {
     const prevPathname = store.getState().layoutReducer.prevPath
     if(currentPathname !== prevPathname) {
       store.dispatch(layoutAction.modifyNprogressState(0))
+      store.dispatch(analyizeAction.modifyInterviewLoading(true))
     }
     store.dispatch(layoutAction.modifyPrevPath(currentPathname))
     store.dispatch(layoutAction.modifyNprogressState(1))
