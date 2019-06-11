@@ -5,6 +5,8 @@ import {Row, Col, Card} from 'antd'
 import { connect } from 'react-redux'
 import MonitorTitle from './monitorTab'
 import ActiveChart from '../../components/ActiveChart'
+import Pie from '../../components/charts/pie'
+import WaterWave from '../../components/charts/waterWave'
 import Gauge from '../../components/charts/Gauge'
 import { analyizeAction } from '../../store/actions'
 import api from '../../services'
@@ -26,6 +28,7 @@ class Monitor extends React.Component {
     data: [
 
     ],
+    pieData: [],
     tabData: [
       {id: 1, title: '今日交易总额', content: '123,543,233元'},
       {id: 2, title: '销售目标完成率', content: '92%'},
@@ -36,6 +39,7 @@ class Monitor extends React.Component {
 
   async componentDidMount () {
    const bardata = await api.dataAnalyize.getSaleData()
+   this.getPieDataOne()
    this.setState(() => ({
      data: bardata.payload
    }))
@@ -49,13 +53,21 @@ class Monitor extends React.Component {
     modifyInterviewLoading(data)
   }
 
+  getPieDataOne = async() => {
+    const pieData = await api.dataAnalyize.pieDataSmall()
+
+    this.setState(() => ({
+      pieData: pieData.payload
+    }))
+  }
+
   render () {
     const {interviewLoading} = this.props
-    const { tabData } = this.state
+    const { tabData, pieData } = this.state
 
     return (
+      <section>
         <Row gutter={24} className="mointorWrap">
-
           <Col xl={18} lg={24} md={24} sm={24} xs={24} style={{ marginBottom: 24 }}>
             <Card title="活动实时交易情况" bordered={false} loading={interviewLoading}>
               <MonitorTitle data={tabData} />
@@ -83,7 +95,72 @@ class Monitor extends React.Component {
                 percent={25} />
               </Card>
           </Col>
-        </Row>
+      </Row>
+
+      <Row gutter={24}>
+        <Col xl={12} lg={24} sm={24} xs={24} style={{ marginBottom: 24 }}>
+          <Card title="各品类占比" bordered={false} style={{ marginBottom: 24 }} loading={interviewLoading}>
+          <Row style={{ padding: '16px 0' }}>
+            <Col span={8}>
+              <Pie
+                toolTip
+                html="<div><span style=&quot;color:#262626;font-size:2.5em&quot;></span>苹果</div>"
+                innerRadius={0.8}
+                radius={0.6}
+                padding={[0, 20, 0, 20]}
+                data={pieData}
+                height={168} />
+            </Col>
+            <Col span={8}>
+              <Pie
+                toolTip
+                html="<div><span style=&quot;color:#262626;font-size:2.5em&quot;></span>三星</div>"
+                innerRadius={0.8}
+                radius={0.6}
+                padding={[0, 20, 0, 20]}
+                data={pieData}
+                height={168} />
+            </Col>
+            <Col span={8}>
+              <Pie
+                toolTip
+                html="<div><span style=&quot;color:#262626;font-size:2.5em&quot;></span>华为</div>"
+                innerRadius={0.8}
+                radius={0.6}
+                padding={[0, 20, 0, 20]}
+                data={pieData}
+                height={168} />
+            </Col>
+          </Row>
+          </Card>
+
+        </Col>
+        <Col xl={6} lg={12} sm={24} xs={24} style={{ marginBottom: 24 }}>
+          <Card title="热门搜索" bordered={false} style={{ marginBottom: 24 }} loading={interviewLoading}>
+             <Pie
+                toolTip
+                html="<div><span style=&quot;color:#262626;font-size:2.5em&quot;></span>热门搜索</div>"
+                innerRadius={0.8}
+                radius={0.6}
+                padding={[0, 20, 0, 20]}
+                data={pieData}
+                height={200} />
+          </Card>
+        </Col>
+        <Col xl={6} lg={12} sm={24} xs={24} style={{ marginBottom: 24 }}>
+          <Card title="资源剩余" bordered={false} style={{ marginBottom: 24 }} loading={interviewLoading}>
+            <div className="waterWrap">
+              <WaterWave
+                  height={196}
+                  title='剩余工资未发'
+                  percent={34}
+                />
+            </div>
+          </Card>
+        </Col>
+      </Row>
+      </section>
+
       // <Bar data={data} title="销售趋势" height={350} padding={50} />
     )
   }
