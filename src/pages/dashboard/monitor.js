@@ -4,6 +4,7 @@ import React from 'react'
 import {Row, Col, Card} from 'antd'
 import { connect } from 'react-redux'
 import MonitorTitle from './monitorTab'
+import ActiveChart from '../../components/ActiveChart'
 import { analyizeAction } from '../../store/actions'
 import api from '../../services'
 import './monitor.less'
@@ -69,6 +70,7 @@ class Monitor extends React.Component {
             <Card title="活动情况预测" bordered={false} style={{ marginBottom: 24 }} loading={interviewLoading}>
                 <p className="f14px">目标评估</p>
                 <p className="f24px txtColor">目标评估</p>
+                <ActiveChart />
               </Card>
               <Card title="券核效率" bordered={false}>
                 <p>Card content</p>
