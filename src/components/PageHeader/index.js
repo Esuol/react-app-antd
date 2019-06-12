@@ -4,6 +4,7 @@ import { PageHeader } from 'antd';
 import {withRouter} from 'react-router-dom'
 import { getRouteList } from './breadCrumb'
 import RouteList from '../../router'
+import './index.less'
 
 console.log(RouteList)
 
@@ -22,11 +23,16 @@ const routes = [
 class Bread extends React.Component {
   render () {
     console.log(this.props)
-    const {children, contentWidth} = this.props
+    const {children, contentWidth, content, extraContent} = this.props
 
     return (
       <div>
-        <PageHeader breadcrumb={getRouteList({routes})} wide={contentWidth === 'Fixed'}/>
+        <PageHeader breadcrumb={getRouteList({routes})} wide={contentWidth === 'Fixed'}>
+          <div className="pageHeaderWrap">
+            {content && <div className='content'>{content}</div>}
+            {extraContent && <div className='extraContent'>{extraContent}</div>}
+          </div>
+        </PageHeader>
         {children ? (
           <div>{children}</div>
         ): null}
