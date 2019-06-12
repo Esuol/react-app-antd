@@ -1,12 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
+import PageHeader from '../../components/PageHeader'
 
 class WorkBentch extends React.Component {
   render () {
     return (
-      <section>
-        1
-      </section>
+      <PageHeader>
+        <div>111</div>
+      </PageHeader>
     )
   }
 }
