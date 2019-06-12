@@ -29,6 +29,16 @@ export default {
                 loader: () => import('../pages/dashboard/monitor'),
                 loading: () => <Loading state />
             })
+        },
+        {
+            key: '3',
+            text: '工作台',
+            path: '/dashboard/workbench',
+            exact: true,
+            component: Loadable({
+                loader: () => import('../pages/dashboard/workbench'),
+                loading: () => <Loading state />
+            })
         }
   ]
 }
