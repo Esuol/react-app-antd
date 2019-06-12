@@ -7,13 +7,13 @@ import RouteList from '../../router'
 
 console.log(RouteList)
 
-const routeRes = [
+const routes = [
   {
     path: '/dashboard/analyze',
     breadcrumbName: '数据分析',
   },
   {
-    path: 'first',
+    path: '/dashboard/workbench',
     breadcrumbName: '工作台',
   }
 ];
@@ -23,10 +23,10 @@ class Bread extends React.Component {
   render () {
     console.log(this.props)
     const {children, contentWidth} = this.props
-    const routes = getRouteList(routeRes)
+
     return (
       <div>
-        <PageHeader breadcrumb={{ routes }} wide={contentWidth === 'Fixed'}/>
+        <PageHeader breadcrumb={getRouteList({routes})} wide={contentWidth === 'Fixed'}/>
         {children ? (
           <div>{children}</div>
         ): null}
