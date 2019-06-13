@@ -1,7 +1,10 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
+import { Row, Col, Card, Avatar } from 'antd';
+import { Link } from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
 import './workbench.less'
+import { workBenchCardList } from '../../const/dashboard'
 
 class WorkBentch extends React.Component {
 
@@ -16,13 +19,13 @@ class WorkBentch extends React.Component {
     const extraContent = (
       <div className='extraContent'>
         <div className='statItem'>
-          <p>项目数</p>
-          <p>56</p>
+          <p>姓名</p>
+          <p>Berlin</p>
         </div>
         <div className='statItem'>
-          <p>团队内排名</p>
+          <p>爱好</p>
           <p>
-            8<span> / 24</span>
+            健身<span>/Code</span>
           </p>
         </div>
         <div className='statItem'>
@@ -36,7 +39,30 @@ class WorkBentch extends React.Component {
       <PageHeader
         content={pageHeaderContent}
         extraContent={extraContent}>
-        <div>111</div>
+        <Row gutter={24} style={{ marginTop: 24 }}>
+          <Col xl={16} lg={24} md={24} sm={24} xs={24}>
+            <Card title="海子的诗集" extra={<Link to="/">全部项目</Link>}>
+              {workBenchCardList.map(item =>
+                 <Card.Grid key={item.id}>
+                    <Card bodyStyle={{ padding: 0 }} bordered={false}>
+                      <Card.Meta
+                          avatar={<Avatar src={item.avtar} />}
+                          title={item.title}
+                          description={item.content}
+                        />
+                        <div className='projectItemContent'>
+                            <span className='datetime' title={item.updatedAt}>
+                              {item.time}
+                            </span>
+                        </div>
+                    </Card>
+                  </Card.Grid>
+                )}
+
+            </Card>
+          </Col>
+          <Col xl={8} lg={24} md={24} sm={24} xs={24}> 1 </Col>
+        </Row>
       </PageHeader>
     )
   }
