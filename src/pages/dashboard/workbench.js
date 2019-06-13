@@ -168,7 +168,7 @@ class WorkBentch extends React.Component {
                 <Row gutter={48}>
                   {workNotice.map(item => (
                     <Col span={12} key={`members-item-${item.id}`}>
-                      <Link to={item.href}>
+                      <Link to={item.logo}>
                         <Avatar src={item.logo} size="small" />
                         <span className="member">{item.member}</span>
                       </Link>
