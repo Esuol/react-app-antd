@@ -69,7 +69,6 @@ class WorkBentch extends React.Component {
     );
 
     const { interviewLoading } = this.props;
-    console.log(interviewLoading);
 
     return (
       <PageHeader
@@ -141,7 +140,7 @@ class WorkBentch extends React.Component {
               <EditableLinkGroup
                 onAdd={() => {}}
                 links={links}
-                linkElement={Link}
+                linkElement="a"
               />
             </Card>
             <Card

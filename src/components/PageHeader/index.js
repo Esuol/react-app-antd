@@ -3,10 +3,10 @@ import React from 'react';
 import { PageHeader } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { getRouteList } from './breadCrumb';
-import RouteList from '../../router';
+// import RouteList from '../../router';
 import './index.less';
 
-console.log(RouteList);
+// console.log(RouteList);
 
 const routes = [
   {
@@ -22,7 +22,6 @@ const routes = [
 @withRouter
 class Bread extends React.Component {
   render() {
-    console.log(this.props);
     const {
       children,
       contentWidth,
