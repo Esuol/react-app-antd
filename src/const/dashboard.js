@@ -79,3 +79,56 @@ export const links = [
     href: ''
   }
 ];
+
+export const radarData = [
+  {
+    item: 'Java',
+    a: 70,
+    b: 30
+  },
+  {
+    item: 'JavaScript',
+    a: 60,
+    b: 70
+  },
+  {
+    item: 'Python',
+    a: 50,
+    b: 60
+  },
+  {
+    item: 'C',
+    a: 40,
+    b: 50
+  },
+  {
+    item: 'C++',
+    a: 60,
+    b: 70
+  },
+  {
+    item: 'C#',
+    a: 70,
+    b: 50
+  },
+  {
+    item: 'Go',
+    a: 50,
+    b: 40
+  },
+  {
+    item: 'Php',
+    a: 30,
+    b: 40
+  },
+  {
+    item: 'Dart',
+    a: 60,
+    b: 40
+  },
+  {
+    item: 'Ruby',
+    a: 50,
+    b: 60
+  }
+];

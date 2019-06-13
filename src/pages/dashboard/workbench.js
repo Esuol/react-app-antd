@@ -5,7 +5,13 @@ import { Row, Col, Card, Avatar, List } from 'antd';
 import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
 import EditableLinkGroup from '../../components/EditableLinkGroup';
-import { workBenchCardList, activityList, links } from '../../const/dashboard';
+import Radar from '../../components/charts/Radar';
+import {
+  workBenchCardList,
+  activityList,
+  links,
+  radarData
+} from '../../const/dashboard';
 import { analyizeAction } from '../../store/actions';
 import './workbench.less';
 
@@ -131,6 +137,16 @@ class WorkBentch extends React.Component {
                 links={links}
                 linkElement={Link}
               />
+            </Card>
+            <Card style={{ marginBottom: 24 }} bordered={false} title="XX 指数">
+              <div className="chart">
+                <Radar
+                  height={340}
+                  padding={[20, 20, 95, 20]}
+                  data={radarData}
+                  hasLegend
+                />
+              </div>
             </Card>
           </Col>
         </Row>
