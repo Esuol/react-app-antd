@@ -1,6 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 import PageHeader from '../../components/PageHeader'
+import './workbench.less'
 
 class WorkBentch extends React.Component {
 
@@ -13,7 +14,22 @@ class WorkBentch extends React.Component {
     )
 
     const extraContent = (
-      <div>yes</div>
+      <div className='extraContent'>
+        <div className='statItem'>
+          <p>项目数</p>
+          <p>56</p>
+        </div>
+        <div className='statItem'>
+          <p>团队内排名</p>
+          <p>
+            8<span> / 24</span>
+          </p>
+        </div>
+        <div className='statItem'>
+          <p>项目访问</p>
+          <p>2,223</p>
+        </div>
+      </div>
     )
 
     return (
