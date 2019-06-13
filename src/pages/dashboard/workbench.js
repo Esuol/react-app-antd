@@ -1,12 +1,35 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
-import { Row, Col, Card, Avatar } from 'antd';
+import { connect } from 'react-redux'
+import { Row, Col, Card, Avatar, List } from 'antd';
 import { Link } from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
 import './workbench.less'
-import { workBenchCardList } from '../../const/dashboard'
+import { workBenchCardList, activityList } from '../../const/dashboard'
+import { analyizeAction } from '../../store/actions'
+
+function mapStateProps (state) {
+  return {
+    interviewLoading: state.analyizeReducer.interviewLoading
+   }
+}
+
+const mapDispatchToProps = {
+  modifyInterviewLoading:  analyizeAction.modifyInterviewLoading
+}
 
 class WorkBentch extends React.Component {
+
+  async componentDidMount () {
+    setTimeout(() => {
+     this.ModifyInterviewLoading(false)
+    },1000)
+   }
+
+  ModifyInterviewLoading = (data) => {
+    const { modifyInterviewLoading } = this.props
+    modifyInterviewLoading(data)
+  }
 
   render () {
     const pageHeaderContent = (
@@ -35,13 +58,15 @@ class WorkBentch extends React.Component {
       </div>
     )
 
+    const {interviewLoading} = this.props
+
     return (
       <PageHeader
         content={pageHeaderContent}
         extraContent={extraContent}>
         <Row gutter={24} style={{ marginTop: 24 }}>
           <Col xl={16} lg={24} md={24} sm={24} xs={24}>
-            <Card title="海子的诗集" extra={<Link to="/">全部项目</Link>}>
+            <Card title="海子的诗集" extra={<Link to="/">全部项目</Link>} loading={interviewLoading}>
               {workBenchCardList.map(item =>
                  <Card.Grid key={item.id}>
                     <Card bodyStyle={{ padding: 0 }} bordered={false}>
@@ -58,7 +83,28 @@ class WorkBentch extends React.Component {
                     </Card>
                   </Card.Grid>
                 )}
-
+            </Card>
+            <Card
+              loading={interviewLoading}
+              style={{ marginTop: 24, paddingLeft: 24 }}
+              bodyStyle={{ padding: 0 }}
+              bordered={false}
+              title="动态"
+            >
+               <List
+                loading={interviewLoading}
+                itemLayout="horizontal"
+                dataSource={activityList}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta
+                      avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                      title={<a href="https://ant.design">{item.title}</a>}
+                      description={item.time}
+                    />
+                  </List.Item>
+                )}
+                />
             </Card>
           </Col>
           <Col xl={8} lg={24} md={24} sm={24} xs={24}> 1 </Col>
@@ -68,4 +114,4 @@ class WorkBentch extends React.Component {
   }
 }
 
-export default WorkBentch
+export default connect(mapStateProps, mapDispatchToProps)(WorkBentch)

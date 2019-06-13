@@ -7,3 +7,12 @@ export const workBenchCardList = [
   {id: 5, title: '讯 问', avtar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', time: '9天前', content: '你无力偿还 一颗放射光芒的星辰 在你头顶寂寞燃烧'},
   {id: 6, title: '麦子熟了', avtar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', time: '12天前', content: '在回家的路上 在水面混了三十多年的父亲还家了'},
 ]
+
+export const activityList = [
+  {id: 1, title: '漆黑的夜里有一种笑声笑断我坟墓的木板', time: '1天前'},
+  {id: 2, title: '你可知道。这是一片埋葬老虎的土地', time: '3天前'},
+  {id: 3, title: '正当水面上渡过一只火红的老虎', time: '5天前'},
+  {id: 4, title: '你的笑声使河流漂浮 的老虎 断了两根骨头', time: '7天前'},
+  {id: 5, title: '正当这条河流开始在存有笑声的黑夜里结冰', time: '9天前'},
+  {id: 6, title: '断腿的老虎顺流而下 来到我的 窗前', time: '11天前'}
+]
