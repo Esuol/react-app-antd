@@ -43,5 +43,24 @@
 .projectItemContent {
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px
+  margin-top: 10px;
+}
+
+.members {
+  a {
+    display: block;
+    height: 24px;
+    margin: 12px 0;
+    color: @text-color;
+    transition: all 0.3s;
+    .member {
+      margin-left: 12px;
+      font-size: @font-size-base;
+      line-height: 24px;
+      vertical-align: top;
+    }
+    &:hover {
+      color: @primary-color;
+    }
+  }
 }

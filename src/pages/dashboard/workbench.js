@@ -10,7 +10,8 @@ import {
   workBenchCardList,
   activityList,
   links,
-  radarData
+  radarData,
+  workNotice
 } from '../../const/dashboard';
 import { analyizeAction } from '../../store/actions';
 import './workbench.less';
@@ -71,7 +72,11 @@ class WorkBentch extends React.Component {
     console.log(interviewLoading);
 
     return (
-      <PageHeader content={pageHeaderContent} extraContent={extraContent}>
+      <PageHeader
+        content={pageHeaderContent}
+        extraContent={extraContent}
+        interviewLoading={interviewLoading}
+      >
         <Row gutter={24} style={{ marginTop: 24 }}>
           <Col xl={16} lg={24} md={24} sm={24} xs={24}>
             <Card
@@ -127,6 +132,7 @@ class WorkBentch extends React.Component {
           </Col>
           <Col xl={8} lg={24} md={24} sm={24} xs={24}>
             <Card
+              loading={interviewLoading}
               style={{ marginBottom: 24 }}
               title="快速开始 / 便捷导航"
               bordered={false}
@@ -138,7 +144,12 @@ class WorkBentch extends React.Component {
                 linkElement={Link}
               />
             </Card>
-            <Card style={{ marginBottom: 24 }} bordered={false} title="XX 指数">
+            <Card
+              style={{ marginBottom: 24 }}
+              bordered={false}
+              title="XX 指数"
+              loading={interviewLoading}
+            >
               <div className="chart">
                 <Radar
                   height={340}
@@ -146,6 +157,25 @@ class WorkBentch extends React.Component {
                   data={radarData}
                   hasLegend
                 />
+              </div>
+            </Card>
+            <Card
+              bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}
+              bordered={false}
+              title="计算机语言"
+              loading={interviewLoading}
+            >
+              <div className="members">
+                <Row gutter={48}>
+                  {workNotice.map(item => (
+                    <Col span={12} key={`members-item-${item.id}`}>
+                      <Link to={item.href}>
+                        <Avatar src={item.logo} size="small" />
+                        <span className="member">{item.member}</span>
+                      </Link>
+                    </Col>
+                  ))}
+                </Row>
               </div>
             </Card>
           </Col>

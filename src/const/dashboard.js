@@ -132,3 +132,36 @@ export const radarData = [
     b: 60
   }
 ];
+
+export const workNotice = [
+  {
+    id: 1,
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
+    member: 'Java'
+  },
+  {
+    id: 2,
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
+    member: 'JavaScript'
+  },
+  {
+    id: 3,
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
+    member: 'Ruby'
+  },
+  {
+    id: 4,
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
+    member: 'Go'
+  },
+  {
+    id: 5,
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
+    member: 'Python'
+  },
+  {
+    id: 6,
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
+    member: 'C++'
+  }
+];

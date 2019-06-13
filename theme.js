@@ -1,14 +1,14 @@
-const modifyVars = { 
-'secondry-color': '#0693e3', 
-'primary-color': '#0693e3', 
-'link-color': '#0693e3', 
-'text-color-secondary': '#333', 
-'heading-color': '#ff0053', 
-'layout-header-background': '#001529', 
-'layout-body-background': '#f0f2f5', 
-'btn-primary-bg': '#0693e3', 
-'bg-color': '#0693e3', 
-'font-size-base': '14px', 
-'border-radius-base': '4px', 
-} 
-module.exports = modifyVars
+const modifyVars = {
+  'secondry-color': '#ddd',
+  'primary-color': '#1890ff',
+  'link-color': '#1890ff',
+  'text-color-secondary': '#333',
+  'heading-color': '#333',
+  'layout-header-background': '#001529',
+  'layout-body-background': '#f0f2f5',
+  'btn-primary-bg': '#397dcc',
+  'bg-color': '#dddddd',
+  'font-size-base': '22px',
+  'border-radius-base': '4px'
+};
+module.exports = modifyVars;
