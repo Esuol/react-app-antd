@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
@@ -24,6 +25,8 @@ const AntDesignThemePlugin = require('antd-theme-webpack-plugin'); // 主题设�
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // happypack
 const HappyPack = require('happypack');
+// eslint-disable-next-line no-unused-vars
+const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
 
 // eslint-disable-next-line no-unused-vars
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
@@ -541,9 +544,14 @@ module.exports = function(webpackEnv) {
     },
     plugins: [
       // dllPlugin
-      // new webpack.DllReferencePlugin({
-      //   context: '.',
-      //   manifest: require("./build/bundle.manifest.json"),
+      // 告诉 Webpack 使用了哪些动态链接库
+      // new DllReferencePlugin({
+      //   // 描述 react 动态链接库的文件内容
+      //   manifest: require('../dll/react.manifest.json')
+      // }),
+      // new DllReferencePlugin({
+      //   // 描述 polyfill 动态链接库的文件内容
+      //   manifest: require('../dll/polyfill.manifest.json')
       // }),
       // happyPack
       new HappyPack({
