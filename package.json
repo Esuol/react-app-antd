@@ -102,6 +102,7 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "dll": "node config/webpack.dll.config.js",
     "start": "node scripts/start.js & node server.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",

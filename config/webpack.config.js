@@ -540,6 +540,11 @@ module.exports = function(webpackEnv) {
       ]
     },
     plugins: [
+      // dllPlugin
+      // new webpack.DllReferencePlugin({
+      //   context: '.',
+      //   manifest: require("./build/bundle.manifest.json"),
+      // }),
       // happyPack
       new HappyPack({
         id: 'js',
@@ -551,6 +556,7 @@ module.exports = function(webpackEnv) {
 
       new HappyPack({
         id: 'styles',
+        threadPool: happyThreadPool,
         threads: 2,
         loaders: ['style-loader', 'css-loader', 'less-loader']
       }),
