@@ -20,13 +20,14 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const AntDesignThemePlugin = require('antd-theme-webpack-plugin'); // 主题设置
+// 注意这个引入的坑，最新版的需要这样引入，而不是直接const CleanWebpackPlugin
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
-const modifyVars = require('../theme')
-
+const modifyVars = require('../theme');
 
 // Theme
-const ThemeStylePath = '../src/styles'
+const ThemeStylePath = '../src/styles';
 const ThemeOptions = {
   stylesDir: path.join(__dirname, ThemeStylePath),
   antDir: path.join(__dirname, '../node_modules/antd'),
@@ -45,7 +46,7 @@ const ThemeOptions = {
     '@font-size-base',
     '@border-radius-base'
   ]
-}
+};
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -137,7 +138,7 @@ module.exports = function(webpackEnv) {
         }
       };
       if (preProcessor === 'less-loader') {
-        loader.options.modifyVars = isEnvDevelopment ? {} : modifyVars
+        loader.options.modifyVars = isEnvDevelopment ? {} : modifyVars;
         loader.options.javascriptEnabled = true;
       }
       loaders.push(loader);
@@ -584,6 +585,12 @@ module.exports = function(webpackEnv) {
       // ThemeColor
       isEnvDevelopment && new AntDesignThemePlugin(ThemeOptions),
 
+      // 删除dist文件
+      isEnvDevelopment && new CleanWebpackPlugin(),
+
+      // 使用 HotModuleReplacement (热模块替换HMR)
+      isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
+
       isEnvDevelopment && new CaseSensitivePathsPlugin(),
       // If you require a missing module and then `npm install` it, you still have
       // to restart the development server for Webpack to discover it. This plugin
@@ -661,6 +668,12 @@ module.exports = function(webpackEnv) {
       net: 'empty',
       tls: 'empty',
       child_process: 'empty'
+    },
+
+    devServer: {
+      hot: true,
+      contentBase: path.join(__dirname, './dist'),
+      historyApiFallback: true // 该选项的作用所有的404都连接到index.html
     },
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
