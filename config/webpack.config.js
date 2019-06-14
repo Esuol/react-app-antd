@@ -22,6 +22,12 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const AntDesignThemePlugin = require('antd-theme-webpack-plugin'); // 主题设置
 // 注意这个引入的坑，最新版的需要这样引入，而不是直接const CleanWebpackPlugin
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// happypack
+const HappyPack = require('happypack');
+
+// eslint-disable-next-line no-unused-vars
+const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
+
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const modifyVars = require('../theme');
@@ -344,6 +350,11 @@ module.exports = function(webpackEnv) {
           include: paths.appSrc
         },
         {
+          test: /\.js$/,
+          use: ['happypack/loader?id=js'],
+          exclude: /node_modules/
+        },
+        {
           // "oneOf" will traverse all following loaders until one will
           // match the requirements. When no loader matches it will fall
           // back to the "file" loader at the end of the loader list.
@@ -480,7 +491,6 @@ module.exports = function(webpackEnv) {
                 'sass-loader'
               )
             },
-            // less 解析配置
             {
               test: lessRegex,
               exclude: lessModuleRegex,
@@ -489,7 +499,8 @@ module.exports = function(webpackEnv) {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap
                 },
-                'less-loader'
+                'less-loader',
+                'happypack/loader?id=styles'
               ),
               sideEffects: true
             },
@@ -529,6 +540,21 @@ module.exports = function(webpackEnv) {
       ]
     },
     plugins: [
+      // happyPack
+      new HappyPack({
+        id: 'js',
+        threadPool: happyThreadPool,
+        cache: true,
+        verbose: true,
+        loaders: ['babel-loader?babelrc&cacheDirectory=true']
+      }),
+
+      new HappyPack({
+        id: 'styles',
+        threads: 2,
+        loaders: ['style-loader', 'css-loader', 'less-loader']
+      }),
+
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
