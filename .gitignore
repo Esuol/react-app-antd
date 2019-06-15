@@ -11,8 +11,10 @@
 
 # production
 /build
+/build_client
+/build_dll
 
-# misc // 
+# misc //
 .DS_Store
 .env.local
 .env.development.local

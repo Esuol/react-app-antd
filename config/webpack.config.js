@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable global-require */
 const fs = require('fs');
 const path = require('path');
@@ -545,14 +546,14 @@ module.exports = function(webpackEnv) {
     plugins: [
       // dllPlugin
       // 告诉 Webpack 使用了哪些动态链接库
-      // new DllReferencePlugin({
-      //   // 描述 react 动态链接库的文件内容
-      //   manifest: require('../dll/react.manifest.json')
-      // }),
-      // new DllReferencePlugin({
-      //   // 描述 polyfill 动态链接库的文件内容
-      //   manifest: require('../dll/polyfill.manifest.json')
-      // }),
+      new DllReferencePlugin({
+        // 描述 react 动态链接库的文件内容
+        manifest: require('../build_dll/react-manifest.json')
+      }),
+      new DllReferencePlugin({
+        // 描述 polyfill 动态链接库的文件内容
+        manifest: require('../build_dll/polyfill-manifest.json')
+      }),
       // happyPack
       new HappyPack({
         id: 'js',
