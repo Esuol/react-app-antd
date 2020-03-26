@@ -8,7 +8,7 @@ const modifyVars = {
   'layout-body-background': '#f0f2f5',
   'btn-primary-bg': '#397dcc',
   'bg-color': '#dddddd',
-  'font-size-base': '22px',
+  'font-size-base': '19px',
   'border-radius-base': '4px'
 };
 module.exports = modifyVars;

@@ -1,9 +1,9 @@
-@import "~antd/lib/style/themes/default.less";
+@import '~antd/lib/style/themes/default.less';
 .line {
   width: 100%;
   margin: 20px auto;
   height: 1px;
-  background: #ccc
+  background: #ccc;
 }
 
 .saleCompare {
@@ -14,23 +14,22 @@
   overflow: hidden;
 }
 
-.barWrap{
+.barWrap {
   margin-left: 30px;
   margin-right: 30px;
 }
 
-
 .rankWrap {
   margin-left: 60px;
-  .rlinListWrap{
+  .rlinListWrap {
     display: flex;
     margin-top: 15px;
   }
 }
 
-.topCardWrap{
+.topCardWrap {
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .searchDataWrap {
@@ -39,37 +38,38 @@
   margin-top: 10px;
 }
 
-.searchDataWrapPullDanger{
-  width:0px;
-  height:0px;
-  border-bottom:6px solid #f00;
-  border-left:6px solid transparent;
-  border-right:6px solid transparent;
-  margin: 7px
- }
- .searchDataWrapPullSuccess{
-  width:0px;
-  height:0px;
-  border-top:6px solid #006633;
-  border-left:6px solid transparent;
-  border-right:6px solid transparent;
-  margin: 7px
- }
+.searchDataWrapPullDanger {
+  width: 0px;
+  height: 0px;
+  border-bottom: 6px solid #f00;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  margin: 7px;
+}
+.searchDataWrapPullSuccess {
+  width: 0px;
+  height: 0px;
+  border-top: 6px solid #006633;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  margin: 7px;
+}
 
 @media screen and (max-width: @screen-lg) {
   .rankWrap {
-    margin-top:20px;
+    margin-top: 20px;
     margin-left: 40px;
-    .rlinListWrap{
+    .rlinListWrap {
       display: flex;
       margin-top: 15px;
+      // top: 1rem /* 75/75 */;
     }
   }
 }
 
 @media screen and (max-width: @screen-xl) {
-  .proportionSales{
+  .proportionSales {
     margin-top: 20px;
-    padding-bottom: 20px
+    padding-bottom: 20px;
   }
 }
